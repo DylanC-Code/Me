@@ -1,0 +1,192 @@
+@charset "UTF-8";
+*, *:before, *:after {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+@font-face {
+  font-family: Handlee;
+  src: url("/assets/fonts/Handlee/Handlee-Regular.ttf");
+}
+@font-face {
+  font-family: Jumper;
+  font-weight: 100;
+  src: url("/assets/fonts//jumper_3/JumperPERSONALUSEONLY-ThinItalic.ttf");
+}
+@font-face {
+  font-family: Jumper;
+  font-weight: 200;
+  src: url("/assets/fonts//jumper_3/JumperPERSONALUSEONLY-LightItalic.ttf");
+}
+@font-face {
+  font-family: Jumper;
+  font-weight: 400;
+  src: url("/assets/fonts//jumper_3/JumperPERSONALUSEONLY-RegularItalic.ttf");
+}
+@font-face {
+  font-family: Jumper;
+  font-weight: 600;
+  src: url("/assets/fonts//jumper_3/JumperPERSONALUSEONLY-BoldItalic.ttf");
+}
+@font-face {
+  font-family: Jumper;
+  font-weight: 800;
+  src: url("/assets/fonts//jumper_3/JumperPERSONALUSEONLY-Extra-BoldItalic.ttf");
+}
+@font-face {
+  font-family: "Louis George Café";
+  font-weight: 200;
+  src: url("/assets/fonts//louis_george_cafe George Cafe Light.ttf");
+}
+@font-face {
+  font-family: "Louis George Café";
+  font-weight: 400;
+  src: url("/assets/fonts//louis_george_cafe George Cafe.ttf");
+}
+@font-face {
+  font-family: "Louis George Café";
+  font-weight: 600;
+  src: url("/assets/fonts//louis_george_cafe George Cafe Bold.ttf");
+}
+nav {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  grid-area: 2/2/3/3;
+  display: flex;
+  justify-content: center;
+  place-self: start;
+}
+nav > figure {
+  position: absolute;
+  left: -0.1%;
+  top: -1%;
+  border-left: 1px dashed;
+  border-top: 1px dashed;
+  padding: 0.6rem;
+  margin-right: 4rem;
+  cursor: pointer;
+}
+nav > button {
+  font: 1.6rem Jumper;
+  color: #38C7C7;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.8rem 2rem 0 0;
+}
+
+* {
+  font-family: "Louis George Café";
+  color: #F5F5F5;
+}
+
+body {
+  background: #222429;
+}
+
+header {
+  display: grid;
+  grid-template: 15vh 7vh/20vw 50vw 30vw;
+  place-items: center;
+}
+header > figure {
+  width: 100%;
+  height: 100%;
+  border-right: 1px dashed;
+  border-bottom: 1px dashed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header > figure > img {
+  display: block;
+  margin: auto;
+}
+
+main {
+  height: 75vh;
+  display: grid;
+  grid-template-columns: 20vw 80vw;
+  align-items: center;
+}
+
+#socials {
+  height: 40vh;
+  width: 30%;
+  margin: 0 60px 0 auto;
+  position: relative;
+  border: 1px dashed;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+#socials::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  bottom: 100%;
+  height: 4.1rem;
+  width: 4.1rem;
+  border-left: 1px dashed;
+  border-bottom: 1px dashed;
+}
+#socials::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 100.1%;
+  height: 4.1rem;
+  width: 4.1rem;
+  border-right: 1px dashed;
+  border-top: 1px dashed;
+}
+#socials > figure {
+  cursor: pointer;
+}
+
+#main p {
+  font: 2.05rem "Louis George Café";
+  text-align: center;
+}
+
+/*# sourceMappingURL=output.css.map */

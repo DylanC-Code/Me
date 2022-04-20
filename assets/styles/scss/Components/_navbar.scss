@@ -1,0 +1,29 @@
+nav {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  grid-area: 2/2/3/3;
+  display: flex;
+  justify-content: center;
+  place-self: start;
+
+  & > figure {
+    position: absolute;
+    left: -0.1%;
+    top: -1%;
+    border-left: 1px dashed;
+    border-top: 1px dashed;
+    padding: 0.6rem;
+    margin-right: 4rem;
+    cursor: pointer;
+
+  }
+  & > button {
+    font: 1.6rem $font-title;
+    color: $text-blue;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.8rem 2rem 0 0;
+  }
+}
