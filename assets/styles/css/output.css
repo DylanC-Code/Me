@@ -96,12 +96,13 @@ nav {
   place-self: start;
 }
 nav > figure {
+  width: 60px;
+  height: 60px;
   position: absolute;
   left: -0.1%;
   top: -1%;
   border-left: 1px dashed;
   border-top: 1px dashed;
-  padding: 0.6rem;
   margin-right: 4rem;
   cursor: pointer;
 }
@@ -111,16 +112,33 @@ nav > button {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.8rem 2rem 0 0;
+  margin: 1rem;
+}
+nav > button:nth-child(2) {
+  border-bottom: 2px solid #38C7C7;
 }
 
+#deploy {
+  animation: pulse infinite 2.5s;
+}
+
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(none);
+  }
+  33% {
+    filter: drop-shadow(0px 0px 10px #38C7C7);
+  }
+  66% {
+    filter: drop-shadow(0px 0px 10px #38C7C7);
+  }
+  100% {
+    filter: drop-shadow(none);
+  }
+}
 * {
   font-family: "Louis George Café";
   color: #F5F5F5;
-}
-
-body {
-  background: #222429;
 }
 
 header {
@@ -143,7 +161,8 @@ header > figure > img {
 }
 
 main {
-  height: 75vh;
+  grid-area: 2/1/2/3;
+  height: 78vh;
   display: grid;
   grid-template-columns: 20vw 80vw;
   align-items: center;
@@ -187,6 +206,16 @@ main {
 #main p {
   font: 2.05rem "Louis George Café";
   text-align: center;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #222429;
+  z-index: -1;
 }
 
 /*# sourceMappingURL=output.css.map */

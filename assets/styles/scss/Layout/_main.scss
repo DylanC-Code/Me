@@ -1,5 +1,6 @@
 main{
-  height: 75vh;
+  grid-area: 2/1/2/3 ;
+  height: 78vh;
   display: grid;
   grid-template-columns: 20vw 80vw;
   align-items: center; 
