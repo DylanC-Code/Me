@@ -8,46 +8,63 @@ nav {
   display: flex;
   justify-content: center;
   place-self: start;
+  overflow: hidden;
+  left: -0.1%;
+  top: -0.1%;
 
   //~ Deploy nav buttons (container svg)
   & > figure {
     width: 60px;
-    height:  60px;
+    height: 60px;
     position: absolute;
-    left: -0.1%;
-    top: -1%;
-    border-left: 1px dashed;
-    border-top: 1px dashed;
+    z-index: 10;
+    left: 0;
+    top: 0;
     margin-right: 4rem;
     cursor: pointer;
+    background: $background-color;
+    border-top: 1px dashed;
+    border-left: 1px dashed;
+
+    //~ SVG path
+    & > svg > path {
+      //# Blue pulse animation
+      animation: pulse infinite 2.5s;
+    }
   }
 
-  //~ Buttons nav
-  & > button {
-    font: 1.6rem $font-title;
-    color: $text-blue;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    margin: 1rem;
+  & > div {
+    border-top: 1px dashed;
+    position: absolute;
+    left: -100%;
 
-  &:nth-child(2){
-    border-bottom: 2px solid $text-blue;
-  }
+    //~ Buttons nav
+    & > button {
+      font: 1.6rem $font-title;
+      color: $text-blue;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      margin: 1rem;
+
+      &:nth-child(2) {
+        border-bottom: 2px solid $text-blue;
+      }
+    }
   }
 }
 
-#deploy{
-  animation: pulse infinite 2.5s;
-}
-@keyframes pulse{
-  0%{
-    filter:drop-shadow(none);
-  }33%{
-    filter:drop-shadow(0px 0px 10px $text-blue);
-  }66%{
-    filter:drop-shadow(0px 0px 10px $text-blue);
-  }100%{
-    filter:drop-shadow(none);
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(none);
+  }
+  33% {
+    filter: drop-shadow(0px 0px 10px $text-blue);
+  }
+  66% {
+    filter: drop-shadow(0px 0px 10px $text-blue);
+  }
+  100% {
+    filter: drop-shadow(none);
   }
 }

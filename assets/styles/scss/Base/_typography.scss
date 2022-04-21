@@ -8,17 +8,17 @@ $road: "/assets/fonts";
 }
 
 //* Jumper
-$jumper : "/jumper_3";
+$jumper: "/jumper_3";
 
 @font-face {
   font-family: Jumper;
   font-weight: 100;
-  src: url("#{$road}/#{$jumper}/JumperPERSONALUSEONLY-ThinItalic.ttf")
+  src: url("#{$road}/#{$jumper}/JumperPERSONALUSEONLY-ThinItalic.ttf");
 }
 @font-face {
   font-family: Jumper;
   font-weight: 200;
-  src: url("#{$road}/#{$jumper}/JumperPERSONALUSEONLY-LightItalic.ttf")
+  src: url("#{$road}/#{$jumper}/JumperPERSONALUSEONLY-LightItalic.ttf");
 }
 @font-face {
   font-family: Jumper;
@@ -37,20 +37,20 @@ $jumper : "/jumper_3";
 }
 
 //* Louis George Café
-$louis : "/louis_george_cafe";
+$louis: "louis_george_cafe";
 
 @font-face {
   font-family: "Louis George Café";
   font-weight: 200;
-  src: url("#{$road}/#{$louis}\ George\ Cafe\ Light.ttf");
+  src: url("#{$road}/#{$louis}/Louis\ George\ Cafe\ Light.ttf");
 }
 @font-face {
   font-family: "Louis George Café";
   font-weight: 400;
-  src: url("#{$road}/#{$louis}\ George\ Cafe.ttf");
+  src: url("#{$road}/#{$louis}/Louis\ George\ Cafe.ttf");
 }
 @font-face {
   font-family: "Louis George Café";
   font-weight: 600;
-  src: url("#{$road}/#{$louis}\ George\ Cafe\ Bold.ttf");
+  src: url("#{$road}/#{$louis}/Louis\ George\ Cafe\ Bold.ttf");
 }
