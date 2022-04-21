@@ -74,17 +74,17 @@ input {
 @font-face {
   font-family: "Louis George Café";
   font-weight: 200;
-  src: url("/assets/fonts//louis_george_cafe George Cafe Light.ttf");
+  src: url("/assets/fonts/louis_george_cafe/Louis George Cafe Light.ttf");
 }
 @font-face {
   font-family: "Louis George Café";
   font-weight: 400;
-  src: url("/assets/fonts//louis_george_cafe George Cafe.ttf");
+  src: url("/assets/fonts/louis_george_cafe/Louis George Cafe.ttf");
 }
 @font-face {
   font-family: "Louis George Café";
   font-weight: 600;
-  src: url("/assets/fonts//louis_george_cafe George Cafe Bold.ttf");
+  src: url("/assets/fonts/louis_george_cafe/Louis George Cafe Bold.ttf");
 }
 nav {
   position: relative;
@@ -94,19 +94,32 @@ nav {
   display: flex;
   justify-content: center;
   place-self: start;
+  overflow: hidden;
+  left: -0.1%;
+  top: -0.1%;
 }
 nav > figure {
   width: 60px;
   height: 60px;
   position: absolute;
-  left: -0.1%;
-  top: -1%;
-  border-left: 1px dashed;
-  border-top: 1px dashed;
+  z-index: 10;
+  left: 0;
+  top: 0;
   margin-right: 4rem;
   cursor: pointer;
+  background: #222429;
+  border-top: 1px dashed;
+  border-left: 1px dashed;
 }
-nav > button {
+nav > figure > svg > path {
+  animation: pulse infinite 2.5s;
+}
+nav > div {
+  border-top: 1px dashed;
+  position: absolute;
+  left: -100%;
+}
+nav > div > button {
   font: 1.6rem Jumper;
   color: #38C7C7;
   background: transparent;
@@ -114,12 +127,8 @@ nav > button {
   cursor: pointer;
   margin: 1rem;
 }
-nav > button:nth-child(2) {
+nav > div > button:nth-child(2) {
   border-bottom: 2px solid #38C7C7;
-}
-
-#deploy {
-  animation: pulse infinite 2.5s;
 }
 
 @keyframes pulse {
