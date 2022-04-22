@@ -1,23 +1,31 @@
 "use-strict";
 
-import { navbarAnim } from "../animations/navbar.animations.js";
+import { navbarAnims } from "../animations/navbar.animations.js";
+import { projectsView } from "../views/projects.view.js";
+import { contactView } from "../views/contact.view.js";
+import { aboutView } from "../views/about.view.js";
+import { homeView } from "../views/home.view.js";
+
+//^ Controllers For The Navbar Element
+//^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 export function navbarControllers() {
-  const { dash_anim, nav_anim, circle_anim } = navbarAnim();
-  
-  document.querySelector("nav > figure > svg").addEventListener("click", () => {
-    let valid = window
-      .getComputedStyle(document.querySelector("nav > figure"))
-      .width.split("p")[0];
+  let buttons = document.querySelectorAll("nav > div > button");
+  let anim = navbarAnims();
+  let valid = false;
 
-    if (valid < "150") {
-      dash_anim.play();
-      nav_anim.play();
-      circle_anim.play();
-    } else {
-      dash_anim.reverse();
-      nav_anim.reverse();
-      circle_anim.reverse();
-    }
+  //~ Events on circle element (svg)
+  document.querySelector("nav > figure > svg").addEventListener("click", () => {
+    //^ Verif if the anims as already play and play or reverse them
+    if (!valid) {
+      for (let i in anim) anim[i].play();
+      valid = true;
+    } else for (let i in anim) anim[i].reverse();
   });
+
+  //~ Display views on nav buttons click
+  buttons[0].addEventListener("click", homeView);
+  buttons[1].addEventListener("click", aboutView);
+  buttons[2].addEventListener("click", contactView);
+  buttons[3].addEventListener("click", projectsView);
 }

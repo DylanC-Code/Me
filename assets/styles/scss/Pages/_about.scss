@@ -1,0 +1,39 @@
+.main_about {
+  display: grid;
+  grid-template: 14vh 64vh / 80%;
+
+  & h1 {
+    margin-bottom: 4rem;
+    font: 3rem $font-title;
+  }
+}
+
+.sub_navbar {
+  width: 0%;
+  height: 0%;
+  align-self: flex-end;
+  border-bottom: 1px dashed;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+
+  & > button {
+    position: relative;
+    transform: translateY(1px);
+    width: 80px;
+    margin-left: 1rem;
+    background: transparent;
+    border: 1px dashed white;
+    border-bottom: none;
+    color: white;
+    font-weight: 100;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+
+    &:nth-child(2) {
+      border: 1px solid $text-blue;
+      color: $text-blue;
+    }
+  }
+}

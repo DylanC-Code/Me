@@ -127,7 +127,7 @@ nav > div > button {
   cursor: pointer;
   margin: 1rem;
 }
-nav > div > button:nth-child(2) {
+nav > div > button:nth-child(1) {
   border-bottom: 2px solid #38C7C7;
 }
 
@@ -176,11 +176,16 @@ main {
   grid-template-columns: 20vw 80vw;
   align-items: center;
 }
+main > div:first-of-type {
+  display: grid;
+  grid-template-rows: 14vh 64vh;
+}
 
 #socials {
+  grid-area: 2/1/3/2;
   height: 40vh;
   width: 30%;
-  margin: 0 60px 0 auto;
+  margin: -1px 63px 0 auto;
   position: relative;
   border: 1px dashed;
   display: flex;
@@ -225,6 +230,43 @@ canvas {
   height: 100vh;
   background: #222429;
   z-index: -1;
+}
+
+.main_about {
+  display: grid;
+  grid-template: 14vh 64vh/80%;
+}
+.main_about h1 {
+  margin-bottom: 4rem;
+  font: 3rem Jumper;
+}
+
+.sub_navbar {
+  width: 0%;
+  height: 0%;
+  align-self: flex-end;
+  border-bottom: 1px dashed;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.sub_navbar > button {
+  position: relative;
+  transform: translateY(1px);
+  width: 80px;
+  margin-left: 1rem;
+  background: transparent;
+  border: 1px dashed white;
+  border-bottom: none;
+  color: white;
+  font-weight: 100;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.sub_navbar > button:nth-child(2) {
+  border: 1px solid #38C7C7;
+  color: #38C7C7;
 }
 
 /*# sourceMappingURL=output.css.map */
