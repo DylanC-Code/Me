@@ -5,7 +5,7 @@ export function subNavbarAnims() {
     [
       { width: 0, height: 0, overflow: "hidden" },
       { width: "25%", height: 0, overflow: "hidden" },
-      { width: "25%", height: "30%", overflow: "visible" },
+      { width: "25%", height: "30px", overflow: "visible" },
     ],
     {
       duration: 1500,

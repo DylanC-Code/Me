@@ -268,5 +268,9 @@ canvas {
   border: 1px solid #38C7C7;
   color: #38C7C7;
 }
+.sub_navbar:nth-child(2) {
+  border: 1px solid #38C7C7;
+  color: #38C7C7;
+}
 
 /*# sourceMappingURL=output.css.map */

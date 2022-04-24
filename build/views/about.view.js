@@ -1,9 +1,10 @@
 "use-strict";
 
 import { subNavbarAnims } from "../animations/subNavbar.animations.js";
-import { About } from "../components/About.js";
+import { About } from "../contents/about.content.js";
 import { Container } from "../components/Containers.js";
 import { SubNavbar } from "../components/SubNavbar.js";
+import { aboutControllers } from "../controllers/about.controllers.js";
 
 export function aboutView() {
   let main = document.getElementById("main");
@@ -15,6 +16,8 @@ export function aboutView() {
 
   let subContainer = Container.SubContainer();
   subContainer.style.margin = "3rem";
-  subContainer.innerHTML = About();
+  About(subContainer);
+
   subNavbarAnims();
+  aboutControllers();
 }

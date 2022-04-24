@@ -36,4 +36,10 @@
       color: $text-blue;
     }
   }
-}
+
+    &:nth-child(2) {
+      border: 1px solid $text-blue;
+      color: $text-blue;
+    }
+  }
+
