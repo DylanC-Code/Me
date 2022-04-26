@@ -23,6 +23,14 @@ export function navbarControllers() {
     } else for (let i in anim) anim[i].reverse();
   });
 
+  buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      buttons.forEach((btn) => (btn.style.borderBottom = "none"));
+
+      e.target.style.borderBottom = "2px solid #38C7C7";
+    });
+  });
+
   //~ Display views on nav buttons click
   buttons[0].addEventListener("click", homeView);
   buttons[1].addEventListener("click", aboutView);

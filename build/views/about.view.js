@@ -7,7 +7,7 @@ import { aboutControllers } from "../controllers/about.controllers.js";
 
 export function aboutView() {
   let main = document.getElementById("main");
-  main.classList.add("main_about");
+  main.className = "main_about";
 
   let container = Container.Base();
   container.classList.add("sub_navbar");

@@ -145,6 +145,30 @@ nav > div > button:nth-child(1) {
     filter: drop-shadow(none);
   }
 }
+.main_contact > #container > svg > g > foreignObject > input {
+  width: 100%;
+  height: 45px;
+  padding: 0.5rem 0rem 0 2rem;
+  background: none;
+  border: none;
+  font: 1.1rem Jumper;
+  color: #38C7C7;
+}
+.main_contact > #container > svg > g > foreignObject > input:focus {
+  outline: none;
+}
+.main_contact > #container > svg > g > foreignObject > textarea {
+  padding: 0.5rem 0rem 0 2rem;
+  background: none;
+  border: none;
+  font: 1.1rem Jumper;
+  color: #38C7C7;
+  resize: none;
+}
+.main_contact > #container > svg > g > foreignObject > textarea:focus {
+  outline: none;
+}
+
 * {
   font-family: "Louis George Café";
   color: #F5F5F5;
@@ -217,11 +241,6 @@ main > div:first-of-type {
   cursor: pointer;
 }
 
-#main p {
-  font: 2.05rem "Louis George Café";
-  text-align: center;
-}
-
 canvas {
   position: absolute;
   top: 0;
@@ -238,7 +257,13 @@ canvas {
 }
 .main_about h1 {
   margin-bottom: 4rem;
+}
+.main_about h1 > span {
   font: 3rem Jumper;
+  text-transform: uppercase;
+}
+.main_about p > span {
+  font: 2.25rem "Louis George Café";
 }
 
 .sub_navbar {
@@ -271,6 +296,68 @@ canvas {
 .sub_navbar:nth-child(2) {
   border: 1px solid #38C7C7;
   color: #38C7C7;
+}
+
+.main_contact {
+  display: grid;
+  grid-template: 78vh/80%;
+}
+.main_contact > #container {
+  padding: 4rem 10rem;
+}
+.main_contact > #container > h1 > span {
+  font: 4rem Jumper;
+  color: #38C7C7;
+  text-transform: uppercase;
+}
+.main_contact > #container > p > span {
+  font: 2.25rem "Louis George Café";
+  color: rgba(255, 255, 255, 0.5);
+}
+.main_contact > #container > svg {
+  margin-top: 2rem;
+  width: 100%;
+  height: 50vh;
+}
+.main_contact > #container > svg line {
+  stroke-dasharray: 3px;
+}
+.main_contact > #container > svg > g:nth-child(1) {
+  width: 55%;
+  height: 45px;
+}
+.main_contact > #container > svg > g:nth-child(1) > rect {
+  fill: rgba(255, 255, 255, 0.15);
+  width: 55%;
+  height: 45px;
+}
+.main_contact > #container > svg > g:nth-child(2) {
+  width: 35%;
+  height: 45px;
+}
+.main_contact > #container > svg > g:nth-child(2) > rect {
+  fill: rgba(255, 255, 255, 0.15);
+  width: 35%;
+  height: 45px;
+}
+.main_contact > #container > svg > g:nth-child(3) {
+  width: 100%;
+  height: 40vh;
+}
+.main_contact > #container > svg > g:nth-child(3) > rect {
+  fill: rgba(255, 255, 255, 0.15);
+  width: 100%;
+  height: 50%;
+}
+
+#main > p {
+  font: 2.05rem "Louis George Café";
+  text-align: center;
+}
+
+#graph line {
+  stroke-dasharray: 3px;
+  stroke: white;
 }
 
 /*# sourceMappingURL=output.css.map */

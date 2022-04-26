@@ -16,5 +16,6 @@ export function aboutControllers() {
 
   new TypeWriter(h1, Contents.about.h1).play();
   new TypeWriter(p, Contents.about.p, 50).delay(2000);
-  skillsView;
+
+  buttons[0].addEventListener("click", skillsView);
 }

@@ -4,7 +4,14 @@
 
   & h1 {
     margin-bottom: 4rem;
-    font: 3rem $font-title;
+    & > span {
+      font: 3rem $font-title;
+      text-transform: uppercase;
+    }
+  }
+
+  & p > span {
+    font: 2.25rem $font-text;
   }
 }
 
@@ -37,9 +44,8 @@
     }
   }
 
-    &:nth-child(2) {
-      border: 1px solid $text-blue;
-      color: $text-blue;
-    }
+  &:nth-child(2) {
+    border: 1px solid $text-blue;
+    color: $text-blue;
   }
-
+}
