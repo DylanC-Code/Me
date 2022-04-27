@@ -5,7 +5,7 @@
   attributeType="XML"
   dur="1s"
   keyTimes="0; 0.5; 1"
-  values="M0 0; M2 2 L4 2 L6 2;M2 2 L4 2 L6 2 L100 100"
+  values="M 00; M2 2 L4 2 L6 2;M2 2 L4 2 L6 2 L100 100"
   fill="freeze"
   />
   </path>

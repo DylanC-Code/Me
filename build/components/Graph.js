@@ -1,27 +1,39 @@
 "use-strict";
 
-export function Graph() {
-  let svg = document.querySelector("#subContainer >svg");
-  let w = document.querySelector("#subContainer >svg").clientWidth;
-  let h = document.querySelector("#subContainer >svg").clientHeight;
+export class Graph {
+  constructor(svg, xStart, xEnd, yStart, yEnd, year) {
+    this.w = svg.clientWidth;
+    this.h = svg.clientHeight;
+    this.xStart = xStart;
+    this.xEnd = xEnd;
+    this.yStart = yStart;
+    this.yEnd = yEnd;
+    this.widthStart = (this.xStart * this.w) / 100;
+    this.widthEnd = (this.xEnd * this.w) / 100;
+    this.heightStart = (this.yStart * this.h) / 100;
+    this.heightEnd = (this.yEnd * this.h) / 100;
+    this.result = "";
+    this.year = year;
+  }
 
-  //~ Important values for calculate position elements in the svg
-  let x = 20;
-  let y = 90;
-  let lV = 5;
-  let startW = (40 * w) / 100 / 2;
-  let endW = w - (20 * w) / 100;
-  let endH = (90 * h) / 100;
-  let douze = (12 * w) / 100;
-  let graph = "";
+  get display() {
+    this.create();
+    return `<g id="graph">${this.result}</g>`;
+  }
+  percent(percent, reference) {
+    return parseFloat((percent * reference) / 100);
+  }
 
-  //~ Create the horizontal bottom line with his arrow
-  graph += `
+  create() {
+    //~ Create the horizontal bottom line with his arrow
+    this.result += `
   <g>
-    <line x1="${x}%" x2="${x}%" y1="${y}%" y2="${y}%">
+    <line data-baseX="${this.xStart}" data-baseY="${this.yEnd}"  x1="${
+      this.xStart
+    }%" x2="${this.xStart}%" y1="${this.yEnd}%" y2="${this.yEnd}%">
       <animate
         attributeName="x2"
-        from="${x}%" to="80%"
+        from="${this.xStart}%" to="${this.xEnd}%"
         dur="1.2s"
         fill="freeze"
         id="animLV1"
@@ -33,11 +45,13 @@ export function Graph() {
             attributeType="XML"
             keyTimes="0;0.5;1"
             values="
-            M${endW + 4} ${endH - 3};
-            M${endW + 4} ${endH - 3} L${endW + 8} ${endH};
-            M${endW + 4} ${endH - 3} L${endW + 8} ${endH} L${endW + 4} ${
-    endH + 3
-  }"
+            M${this.widthEnd + 4} ${this.heightEnd - 3};
+            M${this.widthEnd + 4} ${this.heightEnd - 3} L${this.widthEnd + 8} ${
+      this.heightEnd
+    };
+            M${this.widthEnd + 4} ${this.heightEnd - 3} L${this.widthEnd + 8} ${
+      this.heightEnd
+    } L${this.widthEnd + 4} ${this.heightEnd + 3}"
             dur="0.5s"
             fill="freeze"
             begin="animLV1.end"
@@ -46,14 +60,17 @@ export function Graph() {
   </g>
   `;
 
-  //~ Create the vertical lines their arrow
-  for (let i = 0; i < lV; i++) {
-    graph += `
+    //~ Create the vertical lines their arrow
+    for (let i = 0; i < 5; i++) {
+      this.result += `
     <g>
-        <line x1="${x + 12 * i}%" x2="${x + 12 * i}%" y1="${y}%" y2="${y}%">
+    <text x="${this.xStart + 12 * i - 1.5}%" y="4%">${this.year + i}</text>
+        <line data-year="${this.year + i}" x1="${this.xStart + 12 * i}%" x2="${
+        this.xStart + 12 * i
+      }%" y1="${this.yEnd}%" y2="${this.yEnd}%">
         <animate
           attributeName="y2"
-          from="${y}%" to="5%"
+          from="${this.yEnd}%" to="${this.yStart}%"
           dur="1.2s"
           fill="freeze"
           begin="${0.24 * i}s"
@@ -66,11 +83,13 @@ export function Graph() {
             attributeType="XML"
             keyTimes="0;0.5;1"
             values="
-            M${startW + douze * i - 3} 20;
-            M${startW + douze * i - 3} 20 L${startW + douze * i} 16;
-            M${startW + douze * i - 3} 20 L${startW + douze * i} 16 L${
-      startW + douze * i + 3
-    } 20"
+            M${this.widthStart + this.percent(12, this.w) * i - 3} 45;
+            M${this.widthStart + this.percent(12, this.w) * i - 3} 45 L${
+        this.widthStart + this.percent(12, this.w) * i
+      } 42;
+            M${this.widthStart + this.percent(12, this.w) * i - 3} 45 L${
+        this.widthStart + this.percent(12, this.w) * i
+      } 42 L${this.widthStart + this.percent(12, this.w) * i + 3} 45"
             dur="0.5s"
             fill="freeze"
             begin="animLV${i}.end"
@@ -78,6 +97,36 @@ export function Graph() {
         </path>
         </g>
       `;
+    }
+
+    //~ Create percentage value on vertical line
+    for (let b = 0; b < 4; b++) {
+      this.result += `<g>
+      <text x="${this.xStart - 4}%" y="${
+        this.yEnd -
+        this.percent(20, this.yEnd - this.yStart) -
+        this.percent(20, this.yEnd - this.yStart) * b
+      }%">${20 + b * 20}%</text>
+      <line x1="${this.xStart - 0.4}%" x2="${this.xStart - 0.4}%" y1="${
+        this.yEnd -
+        this.percent(20, this.yEnd - this.yStart) -
+        this.percent(20, this.yEnd - this.yStart) * b
+      }%" y2="${
+        this.yEnd -
+        this.percent(20, this.yEnd - this.yStart) -
+        this.percent(20, this.yEnd - this.yStart) * b
+      }%">
+      <animate
+      attributeName="x2"
+      dur="0.5s"
+      from="${this.xStart - 0.4}%"
+      to="${this.xStart + 0.4}%"
+      begin="${1.2 / 5 + (1.2 / 5) * b}"
+      fill="freeze"
+      />
+      </line>
+      </g>
+      `;
+    }
   }
-  svg.innerHTML = `<g id="graph">${graph}</g>`;
 }

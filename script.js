@@ -10,7 +10,7 @@ function homeControllers() {
     let p = document.querySelector("#main > p");
     new TypeWriter(p, Contents.home.p).play();
   });
-  
+
   navbarControllers();
 }
 

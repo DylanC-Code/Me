@@ -1,6 +1,7 @@
 "use-strict";
 
 import { Graph } from "../components/Graph.js";
+import { Skill } from "../components/Skill.js";
 
 export function skillsView() {
   let subContainer = document.getElementById("subContainer");
@@ -11,5 +12,8 @@ export function skillsView() {
       </svg>
     `;
 
-  Graph();
+  let svg = document.querySelector("#subContainer >svg");
+  svg.innerHTML = new Graph(svg, 20, 80, 10, 95, 2021).display;
+
+  svg.innerHTML += new Skill("html", 2025, 30).display;
 }

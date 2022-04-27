@@ -359,5 +359,16 @@ canvas {
   stroke-dasharray: 3px;
   stroke: white;
 }
+#graph text {
+  fill: white;
+  opacity: 0;
+  animation: textGraph 2s 2s 1 forwards;
+}
+
+@keyframes textGraph {
+  to {
+    opacity: 0.7;
+  }
+}
 
 /*# sourceMappingURL=output.css.map */
