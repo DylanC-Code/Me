@@ -18,7 +18,7 @@ export class Graph {
 
   get display() {
     this.create();
-    return `<g id="graph">${this.result}</g>`;
+    return `<g id="graph">${this.result}</g><g id="skills"></g>`;
   }
   percent(percent, reference) {
     return parseFloat((percent * reference) / 100);
@@ -28,7 +28,7 @@ export class Graph {
     //~ Create the horizontal bottom line with his arrow
     this.result += `
   <g>
-    <line data-baseX="${this.xStart}" data-baseY="${this.yEnd}"  x1="${
+    <line data-baseX="${this.xStart}" data-baseY="${this.yEnd}" data-endX="${this.xEnd}" data-endY="${this.yStart}"  x1="${
       this.xStart
     }%" x2="${this.xStart}%" y1="${this.yEnd}%" y2="${this.yEnd}%">
       <animate
@@ -107,7 +107,9 @@ export class Graph {
         this.percent(20, this.yEnd - this.yStart) -
         this.percent(20, this.yEnd - this.yStart) * b
       }%">${20 + b * 20}%</text>
-      <line x1="${this.xStart - 0.4}%" x2="${this.xStart - 0.4}%" y1="${
+      <line data-percentage="${20 + b * 20}" x1="${this.xStart - 0.4}%" x2="${
+        this.xStart - 0.4
+      }%" y1="${
         this.yEnd -
         this.percent(20, this.yEnd - this.yStart) -
         this.percent(20, this.yEnd - this.yStart) * b
