@@ -1,0 +1,79 @@
+.main_contact {
+  display: grid;
+  grid-template: 78vh/80%;
+
+  & > #container {
+    padding: 4rem 10rem;
+
+    & > h1 > span {
+      font: 4rem $font-title;
+      color: $text-blue;
+      text-transform: uppercase;
+    }
+
+    & > p > span {
+      font: 2.25rem $font-text;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    & > svg {
+      margin-top: 2rem;
+      width: 100%;
+      height: 50vh;
+
+      & line {
+        stroke-dasharray: 3px;
+      }
+
+      & > g {
+        &:nth-child(1) {
+          width: 55%;
+          height: 45px;
+
+          & > rect {
+            fill: rgba(255, 255, 255, 0.15);
+            width: 55%;
+            height: 45px;
+          }
+        }
+
+        &:nth-child(2) {
+          width: 35%;
+          height: 45px;
+
+          & > rect {
+            fill: rgba(255, 255, 255, 0.15);
+            width: 35%;
+            height: 45px;
+          }
+        }
+
+        &:nth-child(3) {
+          width: 100%;
+          height: 40vh;
+
+          & > rect {
+            fill: rgba(255, 255, 255, 0.15);
+            width: 100%;
+            height: 50%;
+          }
+        }
+        &:nth-child(4) {
+          & > rect {
+            fill-opacity: 0.15;
+          }
+          & > foreignObject > button {
+            width: 100%;
+            height: 100%;
+            padding-top: 0.5rem;
+            background: none;
+            border: none;
+            font: 1.1rem Jumper;
+            letter-spacing: 1px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

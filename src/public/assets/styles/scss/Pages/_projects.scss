@@ -1,0 +1,11 @@
+.main_projects {
+  margin: 5rem;
+
+  & h1 {
+    font: 3rem $font-title;
+    margin: 2rem 0;
+  }
+  & h2 {
+    font: 1.8rem $font-special;
+  }
+}
