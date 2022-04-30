@@ -1,2 +1,4 @@
 /node_modules
 /.gitignore
+/src/server/configs/.env
+/src/server/database/portfolio.sqlite
