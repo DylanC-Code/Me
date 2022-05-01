@@ -20,8 +20,7 @@ async function CreateCategory(req, res) {
     category[1]
       ? res.status(201).send({ result: `${name} as been add succesfully !` })
       : res.status(404).send({ result: `${name} already exist !` });
-  }
-  res.status(400).send({ result: "Error category is undefined !" });
+  } else res.status(400).send({ result: "Error category is undefined !" });
 }
 
 //* @ GET /api/categories

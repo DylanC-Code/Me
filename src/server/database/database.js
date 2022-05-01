@@ -8,6 +8,6 @@ const sequelize = new Sequelize({
 });
 
 sequelize.authenticate();
-sequelize.sync({ alter: true });
+sequelize.sync({});
 
 export default sequelize;
