@@ -14,10 +14,12 @@ app.use(Express.json());
 import { ProjectsRoutes } from "./routes/projects.routes.js";
 import { CategoriesRoutes } from "./routes/categories.routes.js";
 import { LanguagesRoutes } from "./routes/languages.routes.js";
+import { ConceptsRoutes } from "./routes/concepts.routes.js";
 
 app.use("/api/projects", ProjectsRoutes);
 app.use("/api/categories", CategoriesRoutes);
 app.use("/api/languages", LanguagesRoutes);
+app.use("/api/concepts", ConceptsRoutes);
 
 app.listen(
   process.env.PORT,
