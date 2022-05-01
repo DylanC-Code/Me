@@ -1,16 +1,13 @@
 "use-strict";
 
 import Express from "express";
-import {
-  CreateCategory,
-  GetAllCategories,
-  GetCategory,
-} from "../controllers/categories.controllers.js";
+import * as Controllers from "../controllers/categories.controllers.js";
 
 const router = Express.Router();
 
-router.post("/create", CreateCategory);
-router.get("/:pk", GetCategory);
-router.get("/", GetAllCategories);
+router.post("/create", Controllers.CreateCategory);
+router.delete("/delete/:pk", Controllers.DeleteCategory);
+router.put("/update",Controllers.UpdateCategory)
+router.get("/", Controllers.GetAllCategories);
 
 export { router as CategoriesRoutes };

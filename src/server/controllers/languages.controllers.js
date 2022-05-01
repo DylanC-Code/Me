@@ -5,7 +5,9 @@ import Language from "../models/Language.model.js";
 
 //^ Different association between the tables
 
-Category.hasMany(Language, { foreignKey: "id_category" });
+Category.hasMany(Language, {
+  foreignKey: { name: "id_category", allowNull: false },
+});
 Language.belongsTo(Category, { foreignKey: "id_category" });
 
 //# CONTROLLERS

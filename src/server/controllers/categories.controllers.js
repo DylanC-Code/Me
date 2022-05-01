@@ -23,29 +23,52 @@ async function CreateCategory(req, res) {
   } else res.status(400).send({ result: "Error category is undefined !" });
 }
 
+//* @ DELETE /api/categories/delete/:pk
+//* @ Delete category
+async function DeleteCategory(req, res) {
+  //~ Find the name of category with it primaryKey
+  let { pk } = req.params;
+  let name = await Category.findByPk(pk, {
+    attributes: ["name"],
+    raw: true,
+  });
+
+  //~ Delete the category with it primaryKey
+  let result = await Category.destroy({ where: { id_category: pk } });
+
+  //~ Send response to the client
+  result
+    ? res
+        .status(200)
+        .send({ result: `Category '${name.name}' has been delete !` })
+    : res.status(404).send({ result: `Category '${pk}' hasn't been found !` });
+}
+
+//* @ GET /api/categories
+//* @ Get all categories
+async function UpdateCategory(req, res) {
+  //~ Find the category with it primaryKey and update it
+  let { pk, name } = req.body;
+  let result = await Category.update({ name }, { where: { id_category: pk } });
+
+  //~ Send the response to the client
+  result[0]
+    ? res
+        .status(200)
+        .send({ result: `Category '${name}' has been update succesfully !` })
+    : res.status(404).send({ result: `Category '${pk}' hasn't been found !` });
+}
+
 //* @ GET /api/categories
 //* @ Get all categories
 async function GetAllCategories(req, res) {
   //~ Find all instances in table categories
   let result = await Category.findAll({ raw: true });
 
-  //~ Return response to the client
+  //~ Send the response to the client
   result[0]
     ? res.status(200).send({ result })
     : res.status(404).send({ result: "Nothing has been find !" });
 }
 
-//* @ GET /api/categories/:pk
-//* @ Get one category
-async function GetCategory(req, res) {
-  //~ Find with primary key
-  let { pk } = req.params;
-  let result = await Category.findByPk(pk, { raw: true });
-
-  //~ Return response to the client
-  result
-    ? res.status(200).send({ result })
-    : res.status(404).send({ result: "Nothing has been find !" });
-}
-
-export { CreateCategory, GetAllCategories, GetCategory };
+export { CreateCategory, DeleteCategory, UpdateCategory, GetAllCategories };
