@@ -9,11 +9,13 @@ Language.belongsToMany(Concept, {
   through: Language_Concept,
   foreignKey: "id_language",
   otherKey: "id_concept",
+  onDelete: "CASCADE",
 });
 Concept.belongsToMany(Language, {
   through: Language_Concept,
   foreignKey: "id_concept",
   otherKey: "id_language",
+  onDelete: "CASCADE",
 });
 
 //# CONTROLLERS
@@ -23,18 +25,22 @@ Concept.belongsToMany(Language, {
 //* @ Add new concept
 async function AddConcept(req, res) {
   //~ Find concept with this name and create if not exist
-  let { name, value } = req.body;
+  let { name, value, languages } = req.body;
   let result = await Concept.findOrCreate({
     where: { name },
     defaults: { name, value },
   });
 
   //~ Send response to the client
-  result[1]
-    ? res.status(201).send({ result: result[0] })
-    : res
-        .status(400)
-        .send({ result: `Concept '${name}' already in database !` });
+  if (result[1]) {
+    let { id_concept } = result[0].dataValues;
+    let bulk = [];
+    for (let l of languages) bulk.push({ id_concept, id_language: l });
+
+    let jointure = await Language_Concept.bulkCreate(bulk);
+    res.status(201).send({ result: result[0], jointure });
+  } else
+    res.status(400).send({ result: `Concept '${name}' already in database !` });
 }
 
 //* @ DELETE /api/concepts/delete/:pk

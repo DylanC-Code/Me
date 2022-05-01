@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/database.js";
-import Language from "./Language.model.js";
 
 const Note = sequelize.define("Note", {
   id_note: {

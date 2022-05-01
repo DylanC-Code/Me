@@ -12,11 +12,11 @@ const Language = sequelize.define(
       autoIncrement: true,
     },
     name: { type: DataTypes.STRING, unique: true, allowNull: false },
-    // id_category: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: { model: Category, key: "id_category" },
-    // },
+    id_category: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: Category, key: "id_category" },
+    },
   },
   { timestamps: false }
 );
