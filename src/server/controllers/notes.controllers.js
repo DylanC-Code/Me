@@ -2,6 +2,8 @@
 
 import Language from "../models/Language.model.js";
 import Note from "../models/Note.model.js";
+import Concept from "../models/Concept.model.js";
+import Language_Concept from "../models/Language_Concept.model.js";
 
 //* @ DELETE /api/notes/delete/:pk
 //* @ Delete a concept with primaryKey
@@ -96,9 +98,9 @@ async function GetLanguagesOfCategory(req, res) {
 
   let result = [];
 
+  //~ Get notes, dates for each languages push them in an array [key=>value]
   for (const v of languages) {
     let id_language = v.id_language;
-    // let index = result.get(id_language);
     let notes = await Note.findAll({
       where: { id_language },
       attributes: ["percentage", "date"],
@@ -108,13 +110,40 @@ async function GetLanguagesOfCategory(req, res) {
     result.push([v.name, notes]);
   }
 
-  console.log(result);
+  //~ Send the response to the client
   result
     ? res.status(200).send({ result })
     : res.status(404).send({ result: `Data hasn't been find !` });
 }
 
-async function GetConceptsOfLanguage(req, res) {}
+//* @ GET /api/notes/language/:pk
+//* @ Get each concepts with its value for a language
+async function GetConceptsOfLanguage(req, res) {
+  //~ Get all id_concept with its id_language
+  let { id_language } = req.params;
+  let id_concepts = await Language_Concept.findAll({
+    where: { id_language },
+    raw: true,
+    attributes: ["id_concept"],
+  });
+
+  //~ Get name and value for each concept with its primaryKey
+  let result = [];
+  for (const v of id_concepts) {
+    let concept = await Concept.findByPk(v.id_concept, {
+      attributes: { exclude: ["id_concept"] },
+      raw: true,
+    });
+    result.push(concept);
+  }
+
+  //~ Send response to the client
+  result[0]
+    ? res.status(200).send({ result })
+    : res.status(404).send({
+        result: `Concepts for language '${id_language}' hasn't been find !`,
+      });
+}
 
 //~Export all the function created in this present file to whatever other file would ask for.
 export {
