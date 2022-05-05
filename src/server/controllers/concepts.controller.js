@@ -31,13 +31,16 @@ async function AddConcept(req, res) {
     defaults: { name, value },
   });
 
-  //~ Send response to the client
   if (result[1]) {
+    //~ Get pk of the new concept
     let { id_concept } = result[0].dataValues;
     let bulk = [];
-    for (let l of languages) bulk.push({ id_concept, id_language: l });
 
+    //~ Bulk create ont the language_concept table
+    for (let l of languages) bulk.push({ id_concept, id_language: l });
     let jointure = await Language_Concept.bulkCreate(bulk);
+
+    //~ Send response to the client
     res.status(201).send({ result: result[0], jointure });
   } else
     res.status(400).send({ result: `Concept '${name}' already in database !` });
@@ -55,7 +58,7 @@ async function DeleteConcept(req, res) {
     ? res
         .status(200)
         .send({ result: `Concept '${pk}' has been deleted succesfully !` })
-    : res.status(404).send({ result: `Concept '${pk}' hasn't been found !` });
+    : res.status(404).send({ result: `Concept '${pk}' hasn't been find !` });
 }
 
 //* @ PUT /api/concepts/update
@@ -63,6 +66,7 @@ async function DeleteConcept(req, res) {
 async function UpdateConcept(req, res) {
   //~ Update the concept with it primaryKey
   let { pk, name, value } = req.body;
+
   let result = await Concept.update(
     { name, value },
     { where: { id_concept: pk } }
@@ -73,11 +77,32 @@ async function UpdateConcept(req, res) {
     ? res
         .status(200)
         .send({ result: `Concept '${pk}' has been update succesfully !` })
-    : res.status(404).send({ result: `Concept '${pk}' hasn't been found !` });
+    : res.status(404).send({ result: `Concept '${pk}' hasn't been find !` });
 }
 
 //* @ GET /api/concepts/:pk
 //* @ Get all concepts of a language with it primaryKey
-async function GetAllConcepts(req, res) {}
+async function GetAllConcepts(req, res) {
+  //~ Find all concepts related to a language using the primaryKey 
+  let { pk } = req.params;
+  let result = await Language_Concept.findAll({
+    where: { id_language: pk },
+    attributes: ["id_concept"],
+    raw: true,
+  });
+
+  //~ Controll if the language exist or has concepts
+  if (result[0]) {
+    let concept = [];
+    for (let c in result)
+      concept.push(await Concept.findByPk(result[c].id_concept, { raw: true }));
+
+      //~ Send response to the client
+    res.status(200).send({ result: concept });
+  } else
+    res.status(404).send({
+      result: `Language '${pk}' hasn't been find or doesn't have concepts !`,
+    });
+}
 
 export { AddConcept, DeleteConcept, UpdateConcept, GetAllConcepts };

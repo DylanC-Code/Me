@@ -13,7 +13,12 @@ const Concept = sequelize.define(
       allowNull: false,
     },
     name: { type: DataTypes.STRING, allowNull: false, unique: true },
-    value: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
+    value: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+      validate: { min: 0, max: 5 },
+    },
   },
   { timestamps: false }
 );
