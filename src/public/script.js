@@ -1,5 +1,6 @@
 "use-strict";
 
+import { accessAdmin } from "./build/admin/access.admin.js";
 import { TypeWriter } from "./build/animations/TypeWriter.js";
 import { Contents } from "./build/contents/global.contents.js";
 import { navbarControllers } from "./build/controllers/navbar.controllers.js";
@@ -11,6 +12,7 @@ function homeControllers() {
     new TypeWriter(p, Contents.home.p).play();
   });
 
+  accessAdmin();
   navbarControllers();
 }
 

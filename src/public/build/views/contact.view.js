@@ -6,7 +6,7 @@ import { Contact } from "../components/Contact.js";
 
 export function contactView() {
   let main = document.getElementById("main");
-  main.classList = "main_contact";
+  main.className = "main_contact";
 
   let container = Container.Base();
   container.innerHTML = `
@@ -14,6 +14,5 @@ export function contactView() {
     <p></p>
     <svg>${Contact()}</svg>
   `;
-
   contactControllers();
 }
