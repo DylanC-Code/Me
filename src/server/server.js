@@ -2,6 +2,7 @@
 
 import Express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config({ path: "src/server/configs/.env" });
 const app = Express();
@@ -9,6 +10,7 @@ const app = Express();
 //# Middlewares
 import UpdateOrAddDates from "./middlewares/Notes.middlewares.js";
 
+app.use(cors());
 app.use(Express.json());
 app.use(UpdateOrAddDates);
 

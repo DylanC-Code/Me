@@ -50,4 +50,21 @@ async function UpdateUser(req, res) {
     : res.status(400).send({ result: `User '${pk}' hasn't been find !` });
 }
 
-export { CreateUser, DeleteUser, UpdateUser };
+async function Login(req, res) {
+  let { username, password } = req.body;
+
+  let user = await User.findOne({
+    where: { username },
+    attributes: ["password"],
+    raw: true,
+  });
+  let result;
+  if (user) {
+    result = password == user.password ? true : false;
+  } else result = false;
+
+  result
+    ? res.status(200).send({ result: true })
+    : res.status(400).send({ result: false });
+}
+export { CreateUser, DeleteUser, UpdateUser, Login };
