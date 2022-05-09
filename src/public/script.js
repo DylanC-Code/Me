@@ -1,6 +1,6 @@
 "use-strict";
 
-import { accessAdmin } from "./build/admin/access.admin.js";
+import { accessAdmin } from "../admin/controllers/access.controllers.js";
 import { TypeWriter } from "./build/animations/TypeWriter.js";
 import { Contents } from "./build/contents/global.contents.js";
 import { navbarControllers } from "./build/controllers/navbar.controllers.js";
@@ -17,3 +17,4 @@ function homeControllers() {
 }
 
 homeControllers();
+ 

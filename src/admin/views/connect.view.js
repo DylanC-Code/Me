@@ -1,8 +1,8 @@
 "use-strict";
 
 import { connectAnims } from "../animations/connect.animations.js";
-import { Connect } from "../components/Connect.js";
-import { Container } from "../components/Containers.js";
+import { Connect } from "../../public/build/components/Connect.js";
+import { Container } from "../../public/build/components/Containers.js";
 import { connectControllers } from "../controllers/connect.controllers.js";
 
 export function connectView() {

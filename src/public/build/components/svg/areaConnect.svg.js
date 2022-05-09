@@ -53,38 +53,38 @@ export function areaConnectSVG() {
 <defs>
   <filter id="shadow_t" width="100%" height="100%" x="0" y="0" filterUnits="userSpaceOnUse">
     <feFlood width="97%" height="10px" x="2%" y="3%" flood-color="#38C7C7" flood-opacity="0.5" >
-      <animate
-      attributeName="y"
-      from="3%"
-      to="50%"
-      begin="connect_end.end + 1s"
-      dur="1s"
-      fill="freeze"
-      />
-      <animate
-          attributeName="width"
-          from="97%"
-          to="0%"
-          begin="connect_end.end + 2s"
-          dur="1s"
-          fill="freeze"
-          />
-      <animate
-          attributeName="x"
-          from="2%"
-          to="50%"
-          begin="connect_end.end + 2s"
-          dur="1s"
-          fill="freeze"
-          />
-          <animate
-        attributeName="flood-opacity"
-        from="0.5"
-        to="0"
-        dur="1s"
+    <animate
+    attributeName="y"
+    from="3%"
+    to="50%"
+    begin="connect_end.end + 1s"
+    dur="1s"
+    fill="freeze"
+    />
+    <animate
+        attributeName="width"
+        from="97%"
+        to="0%"
         begin="connect_end.end + 2s"
+        dur="1s"
         fill="freeze"
         />
+    <animate
+        attributeName="x"
+        from="2%"
+        to="50%"
+        begin="connect_end.end + 2s"
+        dur="1s"
+        fill="freeze"
+        />
+        <animate
+      attributeName="flood-opacity"
+      from="0.5"
+      to="0"
+      dur="1s"
+      begin="connect_end.end + 2s"
+      fill="freeze"
+      />
     </feFlood>
     <feBlend in="SourceGraphic"/>
     <feGaussianBlur stdDeviation="5"/>

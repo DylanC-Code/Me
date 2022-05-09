@@ -1,6 +1,8 @@
 "use-strict";
 
 import User from "../models/User.model.js";
+import bcrypt from "bcrypt";
+import session from "express-session";
 
 //* @ POST /api/user/create
 //* @ Create an user
@@ -37,7 +39,7 @@ async function DeleteUser(req, res) {
 //* @ PUT /api/user/update/
 //* @ Update an user
 async function UpdateUser(req, res) {
-  let { pk, username, password } = req.body;
+  let { pk, username } = req.body;
 
   //~ Update user with its primaryKey
   let result = User.update({ username }, { where: { id_user: pk } });
@@ -50,21 +52,25 @@ async function UpdateUser(req, res) {
     : res.status(400).send({ result: `User '${pk}' hasn't been find !` });
 }
 
+//* @ POST /api/user/login/
+//* @ Log the admin user
 async function Login(req, res) {
   let { username, password } = req.body;
 
+  //~ Find user with its username
   let user = await User.findOne({
     where: { username },
     attributes: ["password"],
     raw: true,
   });
-  let result;
-  if (user) {
-    result = password == user.password ? true : false;
-  } else result = false;
 
-  result
-    ? res.status(200).send({ result: true })
-    : res.status(400).send({ result: false });
+  //~ If the request return an user, test his password
+  let result;
+  if (user) result = bcrypt.compareSync(password, user.password);
+  else result = false;
+
+  //~ Send response to the client
+  result ? res.status(200).send({ result }) : res.status(400).send({ result });
 }
+
 export { CreateUser, DeleteUser, UpdateUser, Login };

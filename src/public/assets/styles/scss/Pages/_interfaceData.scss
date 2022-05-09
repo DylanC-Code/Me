@@ -1,0 +1,28 @@
+.main_interface {
+  display: grid;
+  grid-template: 14vh 64vh /80%;
+
+  #container {
+    border-bottom: 1px dashed white;
+    height: 100%;
+    width: 0;
+    display: flex;
+    align-items: flex-end;
+
+    ul {
+      height: 0;
+      width: 50%;
+      margin-left: 10%;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  #subContainer {
+    width: 70%;
+    height: 0;
+    margin-left: 10%;
+    border-left: 1px dashed white;
+    border-right: 1px dashed white;
+  }
+}
