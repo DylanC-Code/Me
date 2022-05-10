@@ -1,6 +1,7 @@
 "use-strict";
 
 import Category from "../models/Category.model.js";
+import Language from "../models/Language.model.js";
 
 //* @ POST /api/categories/create
 //* @ Create new category
@@ -60,10 +61,16 @@ async function UpdateCategory(req, res) {
 }
 
 //* @ GET /api/categories
-//* @ Get all categories
+//* @ Get all categories and count its languages
 async function GetAllCategories(req, res) {
   //~ Find all instances in table categories
   let result = await Category.findAll({ raw: true });
+
+  //~ Add number of languages for each category
+  for (const c of result)
+    c.languages = await Language.count({
+      where: { id_category: c.id_category },
+    });
 
   //~ Send the response to the client
   result[0]

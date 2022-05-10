@@ -1,0 +1,52 @@
+.card_category {
+  width: 0;
+  height: 0;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  h1 {
+    font: 1.4rem $font-title;
+    color: $text-blue;
+    margin: 0.5rem 0 1rem;
+    opacity: 0;
+  }
+  p {
+    opacity: 0;
+  }
+
+  div:nth-of-type(2) {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem 0;
+
+    button {
+      border: none;
+      background: none;
+      font: 1.2rem $font-title;
+      color: rgba(255, 255, 255);
+      opacity: 0.7;
+      display: block;
+      margin: 0.5rem auto;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &:hover {
+    border: 1px solid $text-blue;
+  }
+  &:hover div:nth-of-type(2) {
+    display: block;
+    background: rgba(34, 36, 41, 0.8);
+  }
+}
