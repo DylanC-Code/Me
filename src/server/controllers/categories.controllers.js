@@ -3,6 +3,15 @@
 import Category from "../models/Category.model.js";
 import Language from "../models/Language.model.js";
 
+Category.hasMany(Language, {
+  foreignKey: { name: "id_category", allowNull: false },
+  onDelete: "CASCADE",
+});
+Language.belongsTo(Category, {
+  foreignKey: "id_category",
+  onDelete: "CASCADE",
+});
+
 //* @ POST /api/categories/create
 //* @ Create new category
 async function CreateCategory(req, res) {
@@ -36,6 +45,7 @@ async function DeleteCategory(req, res) {
 
   //~ Delete the category with it primaryKey
   let result = await Category.destroy({ where: { id_category: pk } });
+  console.log(result);
 
   //~ Send response to the client
   result

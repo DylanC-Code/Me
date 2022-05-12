@@ -5,8 +5,9 @@ import { Container } from "../../public/build/components/Containers.js";
 import { categoriesDataAnims } from "../animations/categoriesData.animations.js";
 import { headerInterfaceAnims } from "../animations/headerInterface.animations.js";
 import { interfaceDataAnims } from "../animations/subNavInterface.animations.js";
-import { CardCategory } from "../components/svg/CardCategory.js";
-import { HeaderInterface } from "../components/svg/HeaderInterface.js";
+import { CardCategory } from "../components/CardCategory.js";
+import { HeaderInterface } from "../components/HeaderInterface.js";
+import { categoriesControllers } from "../controllers/categories.controllers.js";
 
 export async function interfaceDataView() {
   //~ Request for get categories
@@ -20,18 +21,18 @@ export async function interfaceDataView() {
 
   let subContainer = Container.SubContainer();
   subContainer.innerHTML = `
-    ${HeaderInterface()}
+    ${HeaderInterface(result > 4)}
     <section></section>
   `;
 
-  result.forEach((cat) => {
-    document.querySelector("#subContainer > section").innerHTML +=
-      CardCategory(cat);
-    document.querySelector("#subContainer > section").innerHTML +=
-      CardCategory(cat);
-  });
+  for (let c = 0; c < 4; c++)
+    document.querySelector("#subContainer > section").innerHTML += CardCategory(
+      result[c]
+    );
 
   interfaceDataAnims().forEach((anim) => anim.play());
   headerInterfaceAnims().forEach((anim) => anim.play());
   categoriesDataAnims().forEach((anim) => anim.play());
+
+  categoriesControllers(result);
 }

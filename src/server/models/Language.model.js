@@ -18,7 +18,7 @@ const Language = sequelize.define(
       references: { model: Category, key: "id_category" },
     },
   },
-  { timestamps: false }
+  { timestamps: false ,}
 );
 
 export default Language;

@@ -217,12 +217,73 @@ nav > div > button:nth-child(1) {
   background: rgba(34, 36, 41, 0.8);
 }
 
+#modal {
+  position: absolute;
+  display: flex;
+  align-items: space-around;
+  justify-content: space-around;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vw;
+  min-height: 50vh;
+  padding: 2rem;
+  background: #222429;
+  border: 1px solid white;
+}
+#modal h1 {
+  text-align: center;
+  font-size: 2rem;
+  line-height: 5vh;
+}
+#modal h1 mark.color_red {
+  background: none;
+  color: #FF4B33;
+}
+#modal h1 mark.text_blue {
+  background: none;
+  color: #38C7C7;
+}
+#modal input {
+  background: none;
+  height: 45px;
+  width: 70%;
+  color: white;
+  border: 1px solid white;
+  padding-left: 1rem;
+  margin: 1rem auto;
+  font-size: 1.4rem;
+}
+#modal div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+#modal div button {
+  display: block;
+  font: 1.5rem Jumper;
+  color: #38C7C7;
+  background: transparent;
+  border: 1px solid white;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+#modal div button:hover {
+  transform: scale(1.05);
+  color: #FF4B33;
+  border: 1px solid #FF4B33;
+}
+
 * {
   font-family: "Louis George Café";
 }
 
 body {
   color: #F5F5F5;
+  position: relative;
 }
 
 header {
@@ -529,7 +590,7 @@ canvas {
 }
 .main_interface #container ul {
   position: relative;
-  bottom: -0.5px;
+  bottom: -1px;
   height: 0;
   width: 70%;
   overflow: hidden;

@@ -33,7 +33,7 @@ export class Request {
   }
   async fetch() {
     let res;
-    if (this.method != "GET") {
+    if (this.method != "GET" && this.method != "DELETE") {
       this.init.body = JSON.stringify(this.body);
       res = await fetch(`${this.url}`, this.init);
       return res.json();

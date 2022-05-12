@@ -13,7 +13,7 @@ export function homeView() {
   let p = document.querySelector("#main > p");
   let session = sessionCheck();
 
-  session
-    ? new TypeWriter(p, ContentsAdmin.home.p).play()
-    : new TypeWriter(p, Contents.home.p).play();
+  // session
+  //   ? new TypeWriter(p, ContentsAdmin.home.p).play()
+  //   : new TypeWriter(p, Contents.home.p).play();
 }

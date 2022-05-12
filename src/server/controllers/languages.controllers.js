@@ -7,8 +7,12 @@ import Language from "../models/Language.model.js";
 
 Category.hasMany(Language, {
   foreignKey: { name: "id_category", allowNull: false },
+  onDelete: "CASCADE",
 });
-Language.belongsTo(Category, { foreignKey: "id_category" });
+Language.belongsTo(Category, {
+  foreignKey: "id_category",
+  onDelete: "CASCADE",
+});
 
 //# CONTROLLERS
 //#############
