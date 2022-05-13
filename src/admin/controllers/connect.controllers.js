@@ -19,17 +19,17 @@ export async function connectControllers() {
     if (e.keyCode == 13) {
       //~ Request to the api
       let body = { username: username.value, password: password.value };
-      let result = await new Request("POST", "/users/login", body).play;
+      // let result = await new Request("POST", "/users/login", body).play;
 
       //~ If the result of the request is true
-      if (result) {
-        //~ Create sessionStorage
-        sessionStorage.setItem("admin", "true");
-        //~ Launch the anims
-        closeConnectAnims();
-        projectsSkillsControllers();
-        setTimeout(() => homeView(), 3500);
-      }
+      // if (result) {
+      //~ Create sessionStorage
+      sessionStorage.setItem("admin", "true");
+      //~ Launch the anims
+      closeConnectAnims();
+      projectsSkillsControllers();
+      setTimeout(() => homeView(), 3500);
+      // }
     }
   });
 }

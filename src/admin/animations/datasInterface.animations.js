@@ -3,7 +3,7 @@
 //^^ Animations for create the data interface
 //^ Return functions in array
 
-export function test() {
+export function datasInterfaceAnims() {
   //~ Select container, subcontainer and ul in the container
   let container = document.getElementById("container");
   let subContainer = document.getElementById("subContainer");

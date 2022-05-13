@@ -4,8 +4,11 @@ export const ContentsAdmin = {
   home: {
     p: "Hello BOSS .. TypeWriter ca fouete !",
   },
-  categories: {
-    p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus doloribus numquam blanditiis",
+  interfaceData: {
+    nav: ["Categories", "Languages", "Concepts"],
+    categories: {
+      p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus doloribus numquam blanditiis",
+    },
   },
   contact: {
     h1: "You want me ?!",
