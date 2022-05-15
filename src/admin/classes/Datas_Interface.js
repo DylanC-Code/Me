@@ -4,25 +4,33 @@ import { Container } from "../../public/build/components/Containers.js";
 import { ContentsAdmin } from "../../public/build/contents/admin.contents.js";
 
 export class Datas_Interface {
-  /** Create data interface body
+  /**
+   *^ Create body of data interface view
    */
   constructor() {
     this._interface = new DocumentFragment();
-    this._container = Container.Base();
-    this._subContainer = Container.SubContainer();
+    this.container = Container.Base();
+    this.subContainer = Container.SubContainer();
+    this.anims;
   }
 
+  //^ Getter return this.interface framgent
   get interface() {
     this.createContainer();
     this.createSubContainer();
-    this._interface.append(this._container, this._subContainer);
+    this._interface.append(this.container, this.subContainer);
 
     return this._interface;
   }
 
-  /**
-   ** Create top container with the sub navigation
-   */
+  get anims() {
+    return this._anims;
+  }
+  set anims(values) {
+    this._anims = values;
+  }
+
+  //^ Create top container with the sub navigation
   createContainer() {
     //~ Create ul
     let ul = document.createElement("ul");
@@ -35,18 +43,16 @@ export class Datas_Interface {
     });
 
     //~ Append ul to this._container
-    this._container.appendChild(ul);
+    this.container.appendChild(ul);
   }
 
-  /**
-   ** Create bottom container with header and section
-   */
+  //^ Create bottom container with header and section
   createSubContainer() {
     //~ Create header and section
     let header = document.createElement("header");
     let section = document.createElement("section");
 
     //~ Append to this._interface
-    this._subContainer.append(header, section);
+    this.subContainer.append(header, section);
   }
 }

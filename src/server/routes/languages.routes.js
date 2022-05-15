@@ -8,6 +8,7 @@ const router = Express.Router();
 router.post("/create", Controllers.AddLanguage);
 router.delete("/delete/:pk", Controllers.DeleteLanguage);
 router.put("/update", Controllers.UpdateLanguage);
-router.get("/:pk", Controllers.GetAllLanguages);
+router.get("/:pk", Controllers.GetAllLanguagesByCategory);
+router.get("/", Controllers.GetAllLanguages);
 
 export { router as LanguagesRoutes };

@@ -2,14 +2,13 @@
 
 import { Request } from "../../public/build/api/Request.js";
 
-/** Controllers for the update of the element
- * @param  { STRING } table The name of the about table
- * @param  { INTEGER } primaryKey The primaryKey of the element click
- */
+//^ Controllers for the update of the element
+// * @param  { STRING } table The name of the about table
+// * @param  { INTEGER } primaryKey The primaryKey of the element click
 export function updateControllers(table, primaryKey) {
+  let modal = document.getElementById("modal");
   let inputs = document.querySelectorAll("#modal input[type=text]");
   let buttons = document.querySelectorAll("#modal button");
-  let modal = document.getElementById("modal");
   let valid = [];
 
   //~ Create array with value equal 0 for each input

@@ -14,12 +14,21 @@ export class Datas {
     this.datas = datas;
     this.header = document.querySelector("#subContainer header");
     this.section = document.querySelector("#subContainer section");
+    this.anims;
   }
 
   //~ Get of the interface
   get display() {
     this.createHeader();
     this.createSection();
+  }
+
+  get anims() {
+    return this._anims;
+  }
+
+  set anims(value) {
+    this._anims = value;
   }
 
   //^ Verify if the elements are bigger than 4

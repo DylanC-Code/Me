@@ -75,7 +75,7 @@ async function UpdateLanguage(req, res) {
 
 //* @ GET /api/languages/:pk
 //* @ Get all languages of the primaryKey category
-async function GetAllLanguages(req, res) {
+async function GetAllLanguagesByCategory(req, res) {
   let { pk } = req.params;
 
   //~ Find languages with the primaryKey category
@@ -93,4 +93,27 @@ async function GetAllLanguages(req, res) {
       });
 }
 
-export { GetAllLanguages, DeleteLanguage, AddLanguage, UpdateLanguage };
+//* @ GET /api/languages/
+//* @ Get all languages
+async function GetAllLanguages(req, res) {
+  //~ Find languages with the primaryKey category
+  let result = await Language.findAll({
+    attributes: ["id_language", "name"],
+    raw: true,
+  });
+
+  //~ Send response to the client
+  result[0]
+    ? res.status(200).send({ result })
+    : res.status(404).send({
+        result: `Error languages hasn't been find ! `,
+      });
+}
+
+export {
+  GetAllLanguagesByCategory,
+  GetAllLanguages,
+  DeleteLanguage,
+  AddLanguage,
+  UpdateLanguage,
+};

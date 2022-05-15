@@ -1,7 +1,7 @@
 "use-strict";
 
 import { projectsSkillsAnimations } from "../animations/projects&Skills.animations.js";
-import { interfaceDataView } from "../views/interfaceData.view.js";
+import { Datas_Interface_View } from "../views/Datas_Interface_View.view.js";
 import { interfaceProjectView } from "../views/interfaceProject.view.js";
 
 //^ Control events on thoses buttons, launch anims and display views
@@ -34,6 +34,9 @@ export function projectsSkillsControllers() {
     });
   });
 
-  buttons[0].addEventListener("click", interfaceDataView);
+  buttons[0].addEventListener(
+    "click",
+    () => new Datas_Interface_View("categories").display
+  );
   buttons[1].addEventListener("click", interfaceProjectView);
 }

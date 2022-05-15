@@ -1,9 +1,10 @@
 "use-strict";
 
+//! Ameliorer
 export class Request {
   /**
-   * Create new instance for request in asynchronus
-   * Return the result of the request
+   *^ Create new instance for request in asynchronus
+   *^ Return the result of the request
    * @param  { STRING } method Write in CAPS
    * @param  { STRING } url Start with "/" and write the road
    * @param  { OBJECT } body The body of the request (facultatif)

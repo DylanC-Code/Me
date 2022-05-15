@@ -45,7 +45,6 @@ async function DeleteCategory(req, res) {
 
   //~ Delete the category with it primaryKey
   let result = await Category.destroy({ where: { id_category: pk } });
-  console.log(result);
 
   //~ Send response to the client
   result
@@ -74,12 +73,15 @@ async function UpdateCategory(req, res) {
 //* @ Get all categories and count its languages
 async function GetAllCategories(req, res) {
   //~ Find all instances in table categories
-  let result = await Category.findAll({ raw: true });
+  let result = await Category.findAll({
+    raw: true,
+    attributes: [["id_category", "id"], "name"],
+  });
 
   //~ Add number of languages for each category
   for (const c of result)
     c.languages = await Language.count({
-      where: { id_category: c.id_category },
+      where: { id_category: c.id },
     });
 
   //~ Send the response to the client

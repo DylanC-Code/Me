@@ -2,7 +2,7 @@
 
 export class Card {
   /**
-   *^ Create card for the interface data view
+   * Create card for the interface data view
    * @param  { STRING } table The name of the table
    * @param  { OBJECT } datas The data of the element
    */
@@ -31,7 +31,7 @@ export class Card {
 
     //~ Create the content for the hidden div
     let div2 = document.createElement("div");
-    div2.setAttribute("data-category", this.datas.id_category);
+    div2.setAttribute("data-category", this.datas.id);
     div2.innerHTML = `
       <button class="update">Update</button>
       <button class="delete">Delete</button>

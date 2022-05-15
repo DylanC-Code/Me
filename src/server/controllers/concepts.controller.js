@@ -82,8 +82,8 @@ async function UpdateConcept(req, res) {
 
 //* @ GET /api/concepts/:pk
 //* @ Get all concepts of a language with it primaryKey
-async function GetAllConcepts(req, res) {
-  //~ Find all concepts related to a language using the primaryKey 
+async function GetAllConceptsByLanguage(req, res) {
+  //~ Find all concepts related to a language using the primaryKey
   let { pk } = req.params;
   let result = await Language_Concept.findAll({
     where: { id_language: pk },
@@ -97,7 +97,7 @@ async function GetAllConcepts(req, res) {
     for (let c in result)
       concept.push(await Concept.findByPk(result[c].id_concept, { raw: true }));
 
-      //~ Send response to the client
+    //~ Send response to the client
     res.status(200).send({ result: concept });
   } else
     res.status(404).send({
@@ -105,4 +105,24 @@ async function GetAllConcepts(req, res) {
     });
 }
 
-export { AddConcept, DeleteConcept, UpdateConcept, GetAllConcepts };
+//* @ GET /api/concepts/
+//* @ Get all concepts
+async function GetAllConcepts(req, res) {
+  let result = await Concept.findAll({
+    attributes: ["id_concept", "name"],
+    raw: true,
+  });
+
+  //~ Send response to the client
+  result[0]
+    ? res.status(200).send({ result })
+    : res.status(404).send({ result: `Error concept hasn't been find !` });
+}
+
+export {
+  AddConcept,
+  DeleteConcept,
+  UpdateConcept,
+  GetAllConcepts,
+  GetAllConceptsByLanguage,
+};
