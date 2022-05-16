@@ -132,17 +132,11 @@ nav > div > button:nth-child(1) {
 }
 
 @keyframes pulse {
-  0% {
-    filter: drop-shadow(none);
-  }
   33% {
     filter: drop-shadow(0px 0px 10px #38C7C7);
   }
   66% {
     filter: drop-shadow(0px 0px 10px #38C7C7);
-  }
-  100% {
-    filter: drop-shadow(none);
   }
 }
 .main_contact > #container > svg > g > foreignObject > input {
@@ -220,7 +214,6 @@ nav > div > button:nth-child(1) {
 #modal {
   position: absolute;
   display: flex;
-  align-items: space-around;
   justify-content: space-around;
   flex-direction: column;
   top: 50%;
@@ -232,16 +225,19 @@ nav > div > button:nth-child(1) {
   background: #222429;
   border: 1px solid white;
 }
-#modal h1 {
+#modal h1,
+#modal h2 {
   text-align: center;
   font-size: 2rem;
   line-height: 5vh;
 }
-#modal h1 mark.color_red {
+#modal h1 mark.color_red,
+#modal h2 mark.color_red {
   background: none;
   color: #FF4B33;
 }
-#modal h1 mark.text_blue {
+#modal h1 mark.text_blue,
+#modal h2 mark.text_blue {
   background: none;
   color: #38C7C7;
 }
@@ -249,7 +245,7 @@ nav > div > button:nth-child(1) {
   background: none;
   height: 45px;
   width: 70%;
-  color: white;
+  color: #38C7C7;
   border: 1px solid white;
   padding-left: 1rem;
   margin: 1rem auto;
@@ -275,6 +271,22 @@ nav > div > button:nth-child(1) {
   transform: scale(1.05);
   color: #FF4B33;
   border: 1px solid #FF4B33;
+}
+#modal div label {
+  width: 33%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  text-align: center;
+}
+#modal div input[type=radio] {
+  width: 0;
+  height: 0;
+  border: none;
+  background: transparent;
+  display: none;
+}
+#modal div input[type=radio]:checked + label {
+  color: #38C7C7;
 }
 
 * {

@@ -1,6 +1,8 @@
 "use-strict";
 
-import { Create, Delete, Update } from "../components/Modal.js";
+import { Create } from "../components/Create.js";
+import { Delete } from "../components/Delete.js";
+import { Update } from "../components/Update.js";
 import { Datas_Interface_View } from "../views/Datas_Interface_View.view.js";
 import { Modal_Controllers } from "./Modal.controllers.js";
 
@@ -72,8 +74,8 @@ export class Datas_Interface_Controllers {
     //~ Apply click listener to the button
     add.addEventListener("click", async () => {
       //~ Create modal
-      let modal = new Create(this.table);
-      await this.section.appendChild(modal.modal);
+      let modal = await new Create(this.table);
+      this.section.appendChild(modal.modal);
 
       //~ Apply controllers to the modal
       new Modal_Controllers("CREATE", this.table).active;

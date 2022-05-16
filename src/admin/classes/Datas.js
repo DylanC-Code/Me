@@ -35,8 +35,8 @@ export class Datas {
   //^ Return an article or a empty string
   special() {
     let article = "";
-    //~ If bigger than four create the article button for switch to the next page
-    if (this.datas.length > 4) {
+    //~ If bigger than four && is an object create the article button for switch to the next page
+    if (this.datas.length > 4 && typeof this.datas == "object") {
       //~ Create article and set its attribute
       article = document.createElement("article");
       article.setAttribute("id", "next");
@@ -96,11 +96,12 @@ export class Datas {
 
   //^ Create all cards of the section
   async createSection() {
-    //~ While c < 4 create new card
-    for (let c = 0; c < 4; c++) {
-      let card = new Card(this.table, this.datas[c]).card;
-      //~ Append the card to the section
-      this.section.appendChild(card);
+    //~ While d < 4 create new card and if is an object
+    for (const d of this.datas) {
+      if (this.datas.indexOf(d) < 4 && typeof this.datas == "object") {
+        let card = new Card(this.table, d).card;
+        this.section.appendChild(card);
+      }
     }
   }
 }

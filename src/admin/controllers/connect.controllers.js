@@ -28,8 +28,7 @@ export async function connectControllers() {
       //~ Launch the anims
       closeConnectAnims();
       projectsSkillsControllers();
-      setTimeout(() => homeView(), 3500);
-      // }
+      // setTimeout(() => homeView(), 3500);
     }
   });
 }

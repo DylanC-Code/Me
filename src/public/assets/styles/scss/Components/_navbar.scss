@@ -56,7 +56,6 @@ nav {
 
 @keyframes pulse {
   0% {
-    filter: drop-shadow(none);
   }
   33% {
     filter: drop-shadow(0px 0px 10px $text-blue);
@@ -65,6 +64,5 @@ nav {
     filter: drop-shadow(0px 0px 10px $text-blue);
   }
   100% {
-    filter: drop-shadow(none);
   }
 }
