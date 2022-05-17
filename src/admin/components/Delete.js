@@ -15,13 +15,8 @@ export class Delete extends Modal {
     this.id = id;
   }
 
-  //~ Getter of the modal (create and return)
-  get modal() {
-    this.create();
-    return this._modal;
-  }
-
-  //~ Method for create the modal
+  //^ Method for create the modal
+  //^ Return 'this._modal'
   create() {
     let h1 = document.createElement("h1");
     h1.innerHTML = `
@@ -38,5 +33,6 @@ export class Delete extends Modal {
     `;
 
     this._modal.append(h1, div);
+    return this._modal;
   }
 }

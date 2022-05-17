@@ -8,7 +8,7 @@ $road: "/src/public/assets/fonts/";
 }
 
 //* Jumper
-$jumper: "/jumper_3";
+$jumper: "jumper_3";
 
 @font-face {
   font-family: Jumper;
@@ -39,18 +39,18 @@ $jumper: "/jumper_3";
 //* Louis George Café
 $louis: "louis_george_cafe";
 
-@font-face {
-  font-family: "Louis George Café";
-  font-weight: 200;
-  src: url("#{$road}/#{$louis}/Louis\ George\ Cafe\ Light.ttf");
-}
-@font-face {
-  font-family: "Louis George Café";
-  font-weight: 400;
-  src: url("#{$road}/#{$louis}/Louis\ George\ Cafe.ttf");
-}
-@font-face {
-  font-family: "Louis George Café";
-  font-weight: 600;
-  src: url("#{$road}/#{$louis}/Louis\ George\ Cafe\ Bold.ttf");
-}
+// @font-face {
+//   font-family: "Louis George Café";
+//   font-weight: 200;
+//   src: url("#{$road}/#{$louis}/Louis\ George\ Cafe\ Light.ttf");
+// }
+// @font-face {
+//   font-family: "Louis George Café";
+//   font-weight: 400;
+//   src: url("#{$road}/#{$louis}/Louis\ George\ Cafe.ttf");
+// }
+// @font-face {
+//   font-family: "Louis George Café";
+//   font-weight: 600;
+//   src: url("#{$road}/#{$louis}/Louis\ George\ Cafe\ Bold.ttf");
+// }

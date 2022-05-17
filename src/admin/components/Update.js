@@ -18,10 +18,25 @@ export class Update extends Modal {
     this.id = id;
   }
 
-  //^ Getter for create modal
-  //^ Return this._modal
-  get modal() {
-    this.create();
+  //^ Create the modal
+  async create() {
+    //~ Call this.special() for control differences
+    let special = await this.special();
+
+    //~ Create many HTMLElements
+    let h1 = document.createElement("h1");
+    h1.innerHTML = `Update <mark class="text_blue">${this.datas.name}</mark>`;
+
+    let name = new Input("text", this.datas.name, "name").input;
+
+    let div = document.createElement("div");
+    div.innerHTML = `
+    <button id="yes">Update</button>
+    <button id="no">Cancel</button>
+  `;
+
+    //~ Append elements to this._modal
+    this._modal.append(h1, name, special, div);
     return this._modal;
   }
 
@@ -70,26 +85,5 @@ export class Update extends Modal {
 
     //~ Return the fragment
     return fragment;
-  }
-
-  //^ Create the modal
-  async create() {
-    //~ Call this.special() for control differences
-    let special = await this.special();
-
-    //~ Create many HTMLElements
-    let h1 = document.createElement("h1");
-    h1.innerHTML = `Update <mark class="text_blue">${this.datas.name}</mark>`;
-
-    let name = new Input("text", this.datas.name, "name").input;
-
-    let div = document.createElement("div");
-    div.innerHTML = `
-      <button id="yes">Update</button>
-      <button id="no">Cancel</button>
-    `;
-
-    //~ Append elements to this._modal
-    this._modal.append(h1, name, special, div);
   }
 }

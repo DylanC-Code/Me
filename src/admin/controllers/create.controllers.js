@@ -8,26 +8,36 @@ export async function createControllers() {
     let valid = [0, 0, 0, 0];
 
     //~ Control if input name is valid
-    valid[0];
-    let name = document.querySelector('#modal input[type="text"]');
-    // .value.matches(/^[\wÜ-ü]{2,15}(\s)?[\wÜ-ü]{0,15}$/)
-    // ? 1
-    // : 0;
-    console.log(name);
+    valid[0] = document
+      .querySelector('#modal input[type="text"]')
+      .value.match(/^[\wÜ-ü]{2,15}(\s)?[\wÜ-ü]{0,15}$/)
+      ? 1
+      : 0;
 
-    let radio = document.querySelector('#modal input[type="radio"]:checked');
+    //~ Control if radio is checked
+    valid[1] = document.querySelector('#modal input[type="radio"]:checked')
+      ? 1
+      : 0;
 
-    let checkbox = document.querySelectorAll(
+    //~ Control if an input checkbox is checked
+    valid[2] = document.querySelectorAll(
       '#modal input[type="checkox"]:checked'
-    );
-    let value = document
-      .querySelector("input[type='number']")
-      .value.matches(/^[0-5]$/);
+    )[0]
+      ? 1
+      : 0;
 
-    console.log(radio);
-    console.log(checkbox);
-    console.log(value);
-    console.log(valid);
+    let value = document.querySelector("#modal input[type='number']");
+    if (value !== null) valid[3] = value.value.match(/^[0-5]$/) ? 1 : 0;
+    else valid[3] = 0;
+
+    switch (key) {
+      case value:
+        
+        break;
+    
+      default:
+        break;
+    }
   });
 
   buttons[1].addEventListener("click", () => modal.remove());

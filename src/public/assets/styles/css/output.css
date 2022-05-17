@@ -49,42 +49,27 @@ input {
 @font-face {
   font-family: Jumper;
   font-weight: 100;
-  src: url("/src/public/assets/fonts///jumper_3/JumperPERSONALUSEONLY-ThinItalic.ttf");
+  src: url("/src/public/assets/fonts//jumper_3/JumperPERSONALUSEONLY-ThinItalic.ttf");
 }
 @font-face {
   font-family: Jumper;
   font-weight: 200;
-  src: url("/src/public/assets/fonts///jumper_3/JumperPERSONALUSEONLY-LightItalic.ttf");
+  src: url("/src/public/assets/fonts//jumper_3/JumperPERSONALUSEONLY-LightItalic.ttf");
 }
 @font-face {
   font-family: Jumper;
   font-weight: 400;
-  src: url("/src/public/assets/fonts///jumper_3/JumperPERSONALUSEONLY-RegularItalic.ttf");
+  src: url("/src/public/assets/fonts//jumper_3/JumperPERSONALUSEONLY-RegularItalic.ttf");
 }
 @font-face {
   font-family: Jumper;
   font-weight: 600;
-  src: url("/src/public/assets/fonts///jumper_3/JumperPERSONALUSEONLY-BoldItalic.ttf");
+  src: url("/src/public/assets/fonts//jumper_3/JumperPERSONALUSEONLY-BoldItalic.ttf");
 }
 @font-face {
   font-family: Jumper;
   font-weight: 800;
-  src: url("/src/public/assets/fonts///jumper_3/JumperPERSONALUSEONLY-Extra-BoldItalic.ttf");
-}
-@font-face {
-  font-family: "Louis George Café";
-  font-weight: 200;
-  src: url("/src/public/assets/fonts//louis_george_cafe/Louis George Cafe Light.ttf");
-}
-@font-face {
-  font-family: "Louis George Café";
-  font-weight: 400;
-  src: url("/src/public/assets/fonts//louis_george_cafe/Louis George Cafe.ttf");
-}
-@font-face {
-  font-family: "Louis George Café";
-  font-weight: 600;
-  src: url("/src/public/assets/fonts//louis_george_cafe/Louis George Cafe Bold.ttf");
+  src: url("/src/public/assets/fonts//jumper_3/JumperPERSONALUSEONLY-Extra-BoldItalic.ttf");
 }
 nav {
   position: relative;

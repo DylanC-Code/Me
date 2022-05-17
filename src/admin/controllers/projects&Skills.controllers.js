@@ -34,9 +34,8 @@ export function projectsSkillsControllers() {
     });
   });
 
-  buttons[0].addEventListener(
-    "click",
-    () => new Datas_Interface_View("categories").display
+  buttons[0].addEventListener("click", () =>
+    new Datas_Interface_View("categories").create()
   );
   buttons[1].addEventListener("click", interfaceProjectView);
 }

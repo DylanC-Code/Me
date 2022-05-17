@@ -5,8 +5,9 @@ import { Datas } from "../classes/Datas.js";
 import { categoriesDataAnims } from "../animations/categoriesData.animations.js";
 import { headerInterfaceAnims } from "../animations/headerInterface.animations.js";
 import { datasInterfaceAnims } from "../animations/datasInterface.animations.js";
-import { datasInterfaceControllers } from "../controllers/datasInterface.controllers.js";
+// import { datasInterfaceControllers } from "../controllers/datasInterface.controllers.js";
 import { Datas_Interface } from "../classes/Datas_Interface.js";
+import { Datas_Interface_Controllers } from "../controllers/Datas_Interface.controllers.js";
 
 export class Datas_Interface_View {
   /**
@@ -18,10 +19,6 @@ export class Datas_Interface_View {
     this.view = document.getElementById("main");
     this.view.className = "main_interface";
     this.anims;
-  }
-
-  get display() {
-    this.create();
   }
 
   //^ Create the interface
@@ -46,7 +43,6 @@ export class Datas_Interface_View {
     datas_interface.anims.forEach((anim) => anim.play());
 
     //~ Call the controllers of the interface
-    datasInterfaceControllers(result, this.table);
-    // new Datas_Interface_Controllers(result, this.table).display;
+    new Datas_Interface_Controllers(result, this.table).display;
   }
 }

@@ -1,5 +1,6 @@
 "use-strict";
 
+import { Request } from "../../public/build/api/Request.js";
 import { Input } from "../classes/Input.js";
 import { Modal } from "./Modal.js";
 
@@ -11,20 +12,12 @@ export class Create extends Modal {
   constructor(table) {
     super(table);
   }
-
-  //^ Getter for create the modal
-  //^ Return this._modal
-  get modal() {
-    this.create();
-    return this._modal;
-  }
-
+  
   //^ Create the modal and append the to 'this.modal'
   async create() {
-    //~ Call this.special() for control the difference
+    //~ Call this.special() to control the difference
     let special = await this.special();
 
-    console.log("create");
     //~ Create an input HTMLElement and set it
     let name = new Input("text", null, "name");
     name.input = ["placeholder", "Name"];
@@ -40,6 +33,7 @@ export class Create extends Modal {
 
     //~ Append the HTMLElement and the fragment to 'this._modal'
     this._modal.append(name.input, special, div);
+    return this._modal;
   }
 
   //^ Control the difference between the table

@@ -17,7 +17,7 @@ export class Request {
     content = "application/json; charset=UTF-8"
   ) {
     this.method = method;
-    this.url = `http://127.0.0.1:3000/api${url}`;
+    this.url = `http://127.0.0.1:5000/api${url}`;
     this.body = body;
     this.headers = {
       "Content-Type": content,
@@ -32,6 +32,7 @@ export class Request {
   get play() {
     return this.fetch();
   }
+  
   async fetch() {
     let res;
     if (this.method != "GET" && this.method != "DELETE") {

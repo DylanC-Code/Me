@@ -4,7 +4,7 @@ import { Create } from "../components/Create.js";
 import { Delete } from "../components/Delete.js";
 import { Update } from "../components/Update.js";
 import { Datas_Interface_View } from "../views/Datas_Interface_View.view.js";
-import { Modal_Controllers } from "./Modal.controllers.js";
+import { modalControllers } from "./Modal.controllers.js";
 
 export class Datas_Interface_Controllers {
   /** Controllers for the datas interface view
@@ -37,17 +37,17 @@ export class Datas_Interface_Controllers {
         this.datas.forEach((d) => (d.id == id_click ? (data = d) : null));
 
         //~ Create an instance of delete class (extend of modal)
-        let modal = new Delete(this.table, data, id_click).modal;
-        this.section.appendChild(modal);
+        let modal = new Delete(this.table, data, id_click).create();
+        this.section.append(modal);
 
         //~ Apply controllers to the modal
-        new Modal_Controllers("DELETE", this.table, id_click).active;
+        modalControllers("DELETE", this.table, id_click);
       });
     });
   }
 
   //^ Manage click listener to update buttons
-  update() {
+  async update() {
     let updates = document.querySelectorAll(".update");
 
     //~ For each update buttons apply click listener
@@ -58,11 +58,11 @@ export class Datas_Interface_Controllers {
         this.datas.forEach((d) => (d.id == id_click ? (data = d) : null));
 
         //~ Create new modal
-        let modal = new Update(this.table, data, id_click);
-        await this.section.appendChild(modal.modal);
+        let modal = await new Update(this.table, data, id_click).create();
+        this.section.append(modal);
 
         //~ Apply controllers to the modal
-        new Modal_Controllers("UPDATE", this.table, id_click).active;
+        modalControllers("UPDATE", this.table, id_click);
       });
     });
   }
@@ -74,11 +74,11 @@ export class Datas_Interface_Controllers {
     //~ Apply click listener to the button
     add.addEventListener("click", async () => {
       //~ Create modal
-      let modal = await new Create(this.table);
-      this.section.appendChild(modal.modal);
+      let modal = await new Create(this.table).create();
+      this.section.append(modal);
 
       //~ Apply controllers to the modal
-      new Modal_Controllers("CREATE", this.table).active;
+      modalControllers("CREATE", this.table);
     });
   }
 
@@ -87,21 +87,18 @@ export class Datas_Interface_Controllers {
     let lis = document.querySelectorAll("#container li");
 
     //~ Create new interface for categories elements on click to button 0
-    lis[0].addEventListener(
-      "click",
-      () => new Datas_Interface_View("categories").display
+    lis[0].addEventListener("click", () =>
+      new Datas_Interface_View("categories").create()
     );
 
     //~ Create new interface for languages elements on click to button 1
-    lis[1].addEventListener(
-      "click",
-      () => new Datas_Interface_View("languages").display
+    lis[1].addEventListener("click", () =>
+      new Datas_Interface_View("languages").create()
     );
 
     //~ Create new interface for concepts elements on click to button 2
-    lis[2].addEventListener(
-      "click",
-      () => new Datas_Interface_View("concepts").display
+    lis[2].addEventListener("click", () =>
+      new Datas_Interface_View("concepts").create()
     );
   }
 }
