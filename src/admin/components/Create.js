@@ -43,15 +43,17 @@ export class Create extends Modal {
     let fragment = new DocumentFragment();
 
     let h1 = document.createElement("h1");
+    let error = document.createElement("p");
     let h2;
     let div;
+    error.setAttribute("id", "error");
 
     switch (this.table) {
       //~ If table is equal to categories
       case "categories":
         //~ Create h1 element and append to the fragment
         h1.innerHTML = "Add new <mark class='color_red'>category</mark>";
-        fragment.appendChild(h1);
+        fragment.append(error, h1);
         break;
       //~ If table is equal to languages
       case "languages":
@@ -59,21 +61,18 @@ export class Create extends Modal {
         let categories = await new Request("GET", "/categories").play;
 
         h1.innerHTML = "Add new <mark class='color_red'>language</mark>";
-        this._modal.appendChild(h1);
+        this._modal.append(error, h1);
 
         //~ Add input file and this label
-        let cont = document.createElement("div");
         let file = new Input("file", null, "logo").input;
         let label = document.createElement("label");
         label.setAttribute("for", "logo");
-
-        cont.append(file, label);
 
         //~ Add content and append to the fragment
         h2 = document.createElement("h2");
         h2.innerHTML = "Choose its <mark class='color_red'>category</mark>";
 
-        fragment.append(cont, h2);
+        fragment.append(file, label, h2);
 
         //~ For each category create input with its label
         div = document.createElement("div");
@@ -97,7 +96,7 @@ export class Create extends Modal {
         let languages = await new Request("GET", `/languages`).play;
 
         h1.innerHTML = "Add new <mark class='color_red'>concept</mark>";
-        this._modal.appendChild(h1);
+        this._modal.append(error, h1);
 
         //~ Add content and append to the fragment
         let value = document.createElement("h2");

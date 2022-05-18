@@ -225,6 +225,12 @@ nav > div > button:nth-child(1) {
   background: #222429;
   border: 1px solid white;
 }
+#modal #error {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #FF4B33;
+  margin-bottom: 1rem;
+}
 #modal h1,
 #modal h2 {
   text-align: center;
@@ -283,7 +289,7 @@ nav > div > button:nth-child(1) {
   display: none;
 }
 #modal div label[for=logo] {
-  background: url("../../../../images/new_logo.svg");
+  background: url("../../images/new_logo.svg");
   width: 50px;
   height: 50px;
 }

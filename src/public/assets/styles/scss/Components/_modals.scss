@@ -12,6 +12,13 @@
   background: $background-color;
   border: 1px solid white;
 
+  #error {
+    text-align: center;
+    font-size: 1.5rem;
+    color: $color-red;
+    margin-bottom: 1rem;
+  }
+
   h1,
   h2 {
     text-align: center;
@@ -62,6 +69,7 @@
         border: 1px solid $color-red;
       }
     }
+
     label {
       width: 33%;
       font-size: 1.4rem;
@@ -72,8 +80,9 @@
     input[type="file"] {
       display: none;
     }
+
     label[for="logo"] {
-      background: url("../../../../images/new_logo.svg");
+      background: url("../../images/new_logo.svg");
       width: 50px;
       height: 50px;
     }

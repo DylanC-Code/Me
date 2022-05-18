@@ -25,7 +25,7 @@ async function AddLanguage(req, res) {
   //~ Control if the language name is not exist and create them
   let result = await Language.findOrCreate({
     where: { name },
-    defaults: { name, id_category },
+    defaults: { name, id_category, logo: `${name}.svg` },
     raw: true,
   });
 

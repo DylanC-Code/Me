@@ -13,7 +13,7 @@ let dest = multer.diskStorage({
   },
   //~ Set filename
   filename: function (req, file, cb) {
-    cb(null, `${req.name}.svg`);
+    cb(null, `${req.body.name}.svg`);
   },
 });
 
