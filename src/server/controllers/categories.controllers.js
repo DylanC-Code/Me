@@ -29,7 +29,9 @@ async function CreateCategory(req, res) {
     //~ Return response to the client
     category[1]
       ? res.status(201).send({ result: `${name} as been add succesfully !` })
-      : res.status(404).send({ result: `${name} already exist !` });
+      : res
+          .status(404)
+          .send({ result: `${name} already exist !`, error: true });
   } else res.status(400).send({ result: "Error category is undefined !" });
 }
 

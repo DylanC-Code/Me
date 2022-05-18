@@ -71,6 +71,21 @@ input {
   font-weight: 800;
   src: url("/src/public/assets/fonts//jumper_3/JumperPERSONALUSEONLY-Extra-BoldItalic.ttf");
 }
+@font-face {
+  font-family: "Louis George Café";
+  font-weight: 200;
+  src: url("/src/public/assets/fonts//louis_george_cafe/Louis George Cafe Light.ttf");
+}
+@font-face {
+  font-family: "Louis George Café";
+  font-weight: 400;
+  src: url("/src/public/assets/fonts//louis_george_cafe/Louis George Cafe.ttf");
+}
+@font-face {
+  font-family: "Louis George Café";
+  font-weight: 600;
+  src: url("/src/public/assets/fonts//louis_george_cafe/Louis George Cafe Bold.ttf");
+}
 nav {
   position: relative;
   width: 100%;
@@ -235,6 +250,7 @@ nav > div > button:nth-child(1) {
   padding-left: 1rem;
   margin: 1rem auto;
   font-size: 1.4rem;
+  outline: none;
 }
 #modal div {
   display: flex;
@@ -262,6 +278,14 @@ nav > div > button:nth-child(1) {
   font-size: 1.4rem;
   cursor: pointer;
   text-align: center;
+}
+#modal div input[type=file] {
+  display: none;
+}
+#modal div label[for=logo] {
+  background: url("../../../../images/new_logo.svg");
+  width: 50px;
+  height: 50px;
 }
 #modal div input[type=radio] {
   width: 0;

@@ -12,7 +12,7 @@ export class Create extends Modal {
   constructor(table) {
     super(table);
   }
-  
+
   //^ Create the modal and append the to 'this.modal'
   async create() {
     //~ Call this.special() to control the difference
@@ -61,11 +61,19 @@ export class Create extends Modal {
         h1.innerHTML = "Add new <mark class='color_red'>language</mark>";
         this._modal.appendChild(h1);
 
+        //~ Add input file and this label
+        let cont = document.createElement("div");
+        let file = new Input("file", null, "logo").input;
+        let label = document.createElement("label");
+        label.setAttribute("for", "logo");
+
+        cont.append(file, label);
+
         //~ Add content and append to the fragment
         h2 = document.createElement("h2");
         h2.innerHTML = "Choose its <mark class='color_red'>category</mark>";
 
-        fragment.appendChild(h2);
+        fragment.append(cont, h2);
 
         //~ For each category create input with its label
         div = document.createElement("div");
