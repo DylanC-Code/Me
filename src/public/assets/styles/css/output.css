@@ -258,6 +258,16 @@ nav > div > button:nth-child(1) {
   font-size: 1.4rem;
   outline: none;
 }
+#modal input[type=file] {
+  display: none;
+}
+#modal label[for=logo] {
+  background: url("../../images/new_logo.svg");
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  cursor: pointer;
+}
 #modal div {
   display: flex;
   justify-content: space-around;
@@ -284,14 +294,6 @@ nav > div > button:nth-child(1) {
   font-size: 1.4rem;
   cursor: pointer;
   text-align: center;
-}
-#modal div input[type=file] {
-  display: none;
-}
-#modal div label[for=logo] {
-  background: url("../../images/new_logo.svg");
-  width: 50px;
-  height: 50px;
 }
 #modal div input[type=radio] {
   width: 0;

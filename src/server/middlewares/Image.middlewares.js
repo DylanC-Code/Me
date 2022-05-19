@@ -24,7 +24,7 @@ function checkTypes(file, cb) {
   let mimetype = filetype.test(file.mimetype);
 
   if (extname && mimetype) return cb(null, true);
-  else return cb("Error image extension", false);
+  else return cb("Wrong format, please change !", false);
 }
 
 //* Set the middleware with the options
