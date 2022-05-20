@@ -11,26 +11,19 @@ export class Validator {
     this.element = element;
     this.minimum = minimum;
     this.maximum = maximum;
-    this._errors = null;
   }
 
-  get errors() {
-    return this._errors;
-  }
   //^ Control if the input is empty or null
   emptyOrNull() {
     if (!this.element.value || this.element.value == "")
-      this._errors = "Input is empty please, write something !";
-    else return true;
+      return "Input is empty please, write something !";
   }
 
   //^ Control the specials caracteres
   special() {
     let valid = /^[0-9A-Za-zÜ-ü\s_-]+$/.test(this.element.value);
-    if (!valid) this._errors = "Spécial char is denied !";
-    else return true;
+    if (!valid) return "Spécial char is denied !";
   }
-
   //^ Control the length of the value
   length() {
     let min = new RegExp("^.{m,}$".replace("m", this.minimum)).test(
@@ -40,16 +33,14 @@ export class Validator {
       this.element
     );
 
-    if (!min) this._errors = `Minimum ${this.minimum} caracteres !`;
-    else if (!max) this._errors = `Maximum ${this.maximum} caracteres !`;
-    else return true;
+    if (!min) return `Minimum ${this.minimum} caracteres !`;
+    else if (!max) return `Maximum ${this.maximum} caracteres !`;
   }
 
   //^ Control the number
   number() {
     let valid = /^[0-9]+$/.test(this.element.value);
-    if (valid) this._errors = "Number is denied !";
-    else return true;
+    if (!valid) return "Please enter a number !";
   }
 
   numberValue(minimum, maximum) {
@@ -62,23 +53,17 @@ export class Validator {
     );
 
     if (!valid)
-      this._errors = [
-        this.element,
-        `Value doesn't match between ${minimum} and ${maximum} !`,
-      ];
+      return `Value doesn't match between ${minimum} and ${maximum} !`;
   }
 
   repetition() {
     let repetition = /([\s_-]{2,})+/.test(this.element.value);
-    if (repetition)
-      this._errors = "Repetition of the same caractere is denied !";
-    else return true;
+    if (repetition) return "Repetition of the same caractere is denied !";
   }
 
   space() {
     let space = /(.[\s])$/.test(this.element.value);
-    if (space) this._errors = "Please don't finish with space !";
-    else return true;
+    if (space) return "Please don't finish with space !";
   }
   //^ Special control for the input name
   name() {
@@ -86,18 +71,13 @@ export class Validator {
       this.element.value
     );
 
-    if (!name)
-      if (this.emptyOrNull())
-        if (this.special())
-          if (this.number())
-            if (this.repetition())
-              if (this.space())
-                if (this.element.value.length < 2)
-                  this._errors = `Minimum 2 caracteres !`;
-                else if (this.element.value.length > 40)
-                  this._errors = `Maximum 40 caracteres !`;
-
-    return [this.element, this._errors];
+    if (name) return;
+    if (this.emptyOrNull()) return this.emptyOrNull();
+    if (this.special()) return this.special();
+    if (this.repetition()) return this.repetition();
+    if (!this.number()) return !this.number();
+    if (this.space()) return this.space();
+    if (this.length(2, 5)) return this.length(2, 5);
   }
 
   // email() {}

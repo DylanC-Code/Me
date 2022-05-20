@@ -295,14 +295,16 @@ nav > div > button:nth-child(1) {
   cursor: pointer;
   text-align: center;
 }
-#modal div input[type=radio] {
+#modal div input[type=radio],
+#modal div input[type=checkbox] {
   width: 0;
   height: 0;
   border: none;
   background: transparent;
   display: none;
 }
-#modal div input[type=radio]:checked + label {
+#modal div input[type=radio]:checked + label,
+#modal div input[type=checkbox]:checked + label {
   color: #38C7C7;
 }
 

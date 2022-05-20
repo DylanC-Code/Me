@@ -20,28 +20,18 @@ export class Create_Controllers {
 
   //^ Getter for control the table chose
   get active() {
-    if (this.table == "categories") {
-      //~ 'this.valid' have one element to check and 'this.categories' is call
-      this.valid = [0];
-      this.categories();
-    } else if (this.table == "languages") {
-      //~ 'this.valid' have two elements to check and 'this.languages' is call
-      this.valid = [0, 0];
-      this.languages();
-    } else if (this.table == "concepts") {
-      //~ 'this.valid' have three elements to check and 'this.concepts' is call
-      this.valid = [0, 0, 0];
-      this.concepts();
-    }
+    if (this.table == "categories") this.categories();
+    else if (this.table == "languages") this.languages();
+    else if (this.table == "concepts") this.concepts();
   }
 
   //^ When its table categories
   categories() {
     //~ If 'this.checkName' return true send the request
-    if (this.checkName()) {
-      this.body.name = this.name.value;
-      this.request();
-    }
+    if (!this.checkName()) return;
+
+    this.body.name = this.name.value;
+    this.request();
   }
 
   //^ When its table languages
@@ -50,85 +40,82 @@ export class Create_Controllers {
     let cat = document.querySelector("input[type='radio']:checked");
     let file = document.getElementById("logo");
 
-    //~ If no image its choice by the client send an error
-    if (!file.files[0]) this.err.textContent = "Please select a Logo";
-    //~ If no category is choose send an error
-    else if (!cat) this.err.textContent = "Please select an associate category";
-    //~ If 'this.checkName' return true, create new Form Data and send the insert request to the server
-    else if (this.checkName()) {
-      this.body = new FormData();
-      this.body.append("name", this.name.value);
-      this.body.append("id_category", cat.id);
-      this.body.append("logo", file.files[0]);
-      //~ Send request
-      let req = await fetch("http://127.0.0.1:5000/api/languages/create", {
-        method: "POST",
-        body: this.body,
-      }).then((res) => res.json());
+    //~ Control the differents inputs and send error
+    this.checkName();
+    if (!file.files[0]) return (this.err.textContent = "Please select a Logo");
+    else if (!cat)
+      return (this.err.textContent = "Please select an associate category");
 
-      //~ If an error is return by the server display it
-      if (req.error) this.err.textContent = req.result;
-    }
+    //~ Create new Form Data and append it the elements
+    this.body = new FormData();
+    this.body.append("name", this.name.value);
+    this.body.append("id_category", cat.id);
+    this.body.append("logo", file.files[0]);
+
+    //~ Send request
+    let req = await fetch("http://127.0.0.1:4000/api/languages/create", {
+      method: "POST",
+      body: this.body,
+    }).then((res) => res.json());
+
+    //~ If an error is return by the server display it
+    if (req.error) this.err.textContent = req.result;
   }
 
   //^ When its table concepts
   concepts() {
     //~ Get the different inputs to check
     let note = document.querySelector("input[type='number']");
-    let languages = document.querySelectorAll("input[type='checkbox']:checked");
+    let languages = [
+      ...document.querySelectorAll("input[type='checkbox']:checked"),
+    ];
 
     //~ Control the validity of the input number
-    let valid = new Validator(note);
-    valid.numberValue(0, 5);
-    this.errors = valid.errors;
+    let id_languages = languages.map((language) => language.id);
+    let error = new Validator(note).numberValue(0, 5);
 
-    if (this.errors[0][1]) this.err.textContent = this.errors[0][1];
-    else if (!languages[0])
-      this.err.textContent = "Please chose minimum one language !";
-    else if (this.checkName()) {
-      //~ If no error make the body of the request
-      let id_languages = [];
-      languages.forEach((language) => id_languages.push(language));
+    //~ Control the differents inputs and send error
+    this.checkName();
+    if (error) return (this.err.textContent = error);
+    else if (!id_languages[0])
+      return (this.err.textContent = "Please chose minimum one language !");
 
-      this.body = {
-        name: this.name.value,
-        value: note.value,
-        languages: id_languages,
-      };
+    this.body = {
+      name: this.name.value,
+      value: note.value,
+      languages: id_languages,
+    };
 
-      //~ Send the request
-      this.request();
-    }
+    //~ Send the request
+    this.request();
   }
 
   //^ Request for insert new element
   async request() {
-    //~ if no error exist execute request
-    if (!this.errors[0][1]) {
-      let req = await new Request("POST", `/${this.table}/create`, this.body)
-        .play;
+    //~ Execute request
+    let req = await new Request("POST", `/${this.table}/create`, this.body)
+      .play;
 
-      //~ If the server send an error, display this to the client
-      if (req.error) this.err.textContent = req.result;
-      else {
-        //~ If no error is send remove modal and display Data_interface_view
-        document.getElementById("modal").remove();
-        new Datas_Interface_View(this.table).create();
-      }
-    }
+    //~ If the server send an error, display this to the client
+    if (req.error) return (this.err.textContent = req.result);
+
+    //~ If no error is send remove modal and display Data_interface_view
+    document.getElementById("modal").remove();
+    new Datas_Interface_View(this.table).create();
   }
 
   //^ Control the validity of the input name
   //^ Return boolean
   checkName() {
     //~ Try the validity of the input text with the Validator class
-    console.log(this.name);
-    this.errors.push(new Validator(this.name).name());
+    this.errors = new Validator(this.name).name();
+
     // //~ If an error is return display it to the client
-    if (this.errors[0][1]) {
-      this.errors[0][0].style.border = "2px solid crimson";
-      this.errors[0][0].value = "";
-      this.errors[0][0].setAttribute("placeholder", this.errors[0][1]);
-    } else return true;
+    if (!this.errors) return true;
+
+    this.name.style.border = "2px solid crimson";
+    this.name.value = "";
+    this.name.setAttribute("placeholder", this.errors);
+    return false;
   }
 }

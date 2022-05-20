@@ -89,7 +89,8 @@
       text-align: center;
     }
 
-    input[type="radio"] {
+    input[type="radio"],
+    input[type="checkbox"] {
       width: 0;
       height: 0;
       border: none;
@@ -97,7 +98,8 @@
       display: none;
     }
 
-    input[type="radio"]:checked + label {
+    input[type="radio"]:checked + label,
+    input[type="checkbox"]:checked + label {
       color: $text-blue;
     }
   }

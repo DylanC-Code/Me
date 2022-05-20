@@ -75,7 +75,7 @@ export class Datas_Interface_Controllers {
     add.addEventListener("click", async () => {
       //~ Create modal
       let modal = await new Create(this.table).create();
-      this.section.append(modal);
+      this.section.appendChild(modal);
 
       //~ Apply controllers to the modal
       modalControllers("CREATE", this.table);
