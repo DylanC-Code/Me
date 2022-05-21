@@ -109,7 +109,7 @@ async function GetAllConceptsByLanguage(req, res) {
 //* @ Get all concepts
 async function GetAllConcepts(req, res) {
   let result = await Concept.findAll({
-    attributes: ["id_concept", "name"],
+    attributes: [["id_concept", "id"], "name"],
     raw: true,
   });
 

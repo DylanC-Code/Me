@@ -6,13 +6,11 @@ export class Delete extends Modal {
   /** Create Delete modal extend to modal class
    * @param  { STRING } table The table of the element
    * @param  { OBJECT } datas Datas about the element
-   * @param  { INTEGER } id Primary key of the element
    */
-  constructor(table, datas, id) {
+  constructor(table, datas) {
     super(table);
 
     this.datas = datas;
-    this.id = id;
   }
 
   //^ Method for create the modal

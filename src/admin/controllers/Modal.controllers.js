@@ -10,8 +10,7 @@ export function modalControllers(method, table, primaryKey) {
 
   buttons[0].addEventListener("click", () => {
     //~ Verify the method about the modal
-    if (method == "DELETE") deleteController(table, primaryKey);
-    else if (method == "UPDATE") updateControllers(table, primaryKey);
+    if (method == "UPDATE") updateControllers(table, primaryKey);
     else if (method == "CREATE") new Create_Controllers(table).active;
   });
 

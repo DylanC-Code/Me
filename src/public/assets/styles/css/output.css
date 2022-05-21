@@ -174,10 +174,11 @@ nav > div > button:nth-child(1) {
 .card_category h1 {
   font: 1.4rem Jumper;
   color: #38C7C7;
-  margin: 0.5rem 0 1rem;
+  margin: 0.5rem 0 0;
   opacity: 0;
 }
 .card_category p {
+  margin-top: 1rem;
   opacity: 0;
 }
 .card_category div:nth-of-type(2) {
@@ -273,7 +274,7 @@ nav > div > button:nth-child(1) {
   justify-content: space-around;
   margin-top: 2rem;
 }
-#modal div button {
+#modal button {
   display: block;
   font: 1.5rem Jumper;
   color: #38C7C7;
@@ -284,27 +285,27 @@ nav > div > button:nth-child(1) {
   cursor: pointer;
   transition: 0.5s;
 }
-#modal div button:hover {
+#modal button:hover {
   transform: scale(1.05);
   color: #FF4B33;
   border: 1px solid #FF4B33;
 }
-#modal div label {
+#modal label {
   width: 33%;
   font-size: 1.4rem;
   cursor: pointer;
   text-align: center;
 }
-#modal div input[type=radio],
-#modal div input[type=checkbox] {
+#modal input[type=radio],
+#modal input[type=checkbox] {
   width: 0;
   height: 0;
   border: none;
   background: transparent;
   display: none;
 }
-#modal div input[type=radio]:checked + label,
-#modal div input[type=checkbox]:checked + label {
+#modal input[type=radio]:checked + label,
+#modal input[type=checkbox]:checked + label {
   color: #38C7C7;
 }
 

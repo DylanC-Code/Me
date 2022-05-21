@@ -1,7 +1,9 @@
 "use-strict";
 
 import { Request } from "../../public/build/api/Request.js";
+import { HTMLElement } from "../classes/HTMLElement.js";
 import { Input } from "../classes/Input.js";
+import { Label } from "../classes/Label.js";
 import { Modal } from "./Modal.js";
 
 export class Update extends Modal {
@@ -24,19 +26,22 @@ export class Update extends Modal {
     let special = await this.special();
 
     //~ Create many HTMLElements
-    let h1 = document.createElement("h1");
-    h1.innerHTML = `Update <mark class="text_blue">${this.datas.name}</mark>`;
+    let h1 = new HTMLElement("h1", null).inner(
+      `Update <mark class="text_blue">${this.datas.name}</mark>`
+    );
+    let name = new Input("text", "name", this.datas.name).element;
+    this._modal.append(h1, name);
 
-    let name = new Input("text", this.datas.name, "name").input;
+    if (special[1]) this._modal.appendChild(special[1]);
 
     let div = document.createElement("div");
     div.innerHTML = `
-    <button id="yes">Update</button>
-    <button id="no">Cancel</button>
-  `;
+      <button id="yes">Update</button>
+      <button id="no">Cancel</button>
+     `;
 
     //~ Append elements to this._modal
-    this._modal.append(h1, name, special, div);
+    this._modal.append(special[0], div);
     return this._modal;
   }
 
@@ -44,46 +49,32 @@ export class Update extends Modal {
   //^ Return fragment
   async special() {
     //~ Create new fragment
-    let fragment = new DocumentFragment();
+    let div = document.createElement("div");
 
-    //~ If is "languages"
-    if (this.table == "languages") {
-      //~ New request for get datas
-      let categories = await new Request("GET", "/categories").play;
+    switch (this.table) {
+      case "languages":
+        let categories = await new Request("GET", "/categories").play;
+        categories.result.forEach((cat) => {
+          let input = new Input("checkbox", cat.id, null).element;
+          let label = new Label(cat.id, null, cat.name).element;
 
-      //~ For each create label and input HTMLElement
-      categories.forEach((cat) => {
-        let label = document
-          .createElement("label")
-          .setAttribute("for", cat.id_category);
-        label.textContent = cat.name;
+          //~ Append them to the fragment
+          div.append(input, label);
+        });
+        return [div];
+      case "concepts":
+        let languages = await new Request("GET", "/languages").play;
+        let note = new Input("number", null, "0").element;
+        languages.result.forEach((language) => {
+          let input = new Input("checkbox", language.id, null).element;
+          let label = new Label(language.id, null, language.name).element;
 
-        let input = new Input("checkbox", null, cat.id_category).input;
-
-        //~ Append them to the fragment
-        fragment.append(label, input);
-      });
-
-      //~ If is "concepts"
-    } else if (this.table == "concepts") {
-      //~ New request for get datas
-      let languages = await new Request("GET", "/languages").play;
-
-      //~ For each create label and input HTMLElement
-      languages.forEach((language) => {
-        let label = document
-          .createElement("label")
-          .setAttribute("for", language.id_category);
-        label.textContent = language.name;
-
-        let input = new Input("checkbox", null, language.id_category).input;
-
-        //~ Append them to the fragment
-        fragment.append(label, input);
-      });
+          //~ Append them to the fragment
+          div.append(input, label);
+        });
+        return [div, note];
+      default:
+        return [""];
     }
-
-    //~ Return the fragment
-    return fragment;
   }
 }

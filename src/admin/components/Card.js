@@ -1,5 +1,7 @@
 "use-strict";
 
+import { HTMLElement } from "../classes/HTMLElement.js";
+
 export class Card {
   /**
    * Create card for the interface data view
@@ -9,7 +11,9 @@ export class Card {
   constructor(table, datas) {
     this.table = table;
     this.datas = datas;
-    this._card = document.createElement("article");
+    this._card = new HTMLElement("article").attributes([
+      ["class", "card_category"],
+    ]);
   }
 
   //^ The getter of this._card
@@ -25,18 +29,20 @@ export class Card {
 
     //~ Create the content for the first div
     let div = document.createElement("div");
-    let h1 = document.createElement("h1");
-    h1.textContent = this.datas.name;
-    div.append(h1, special[0]);
+    let h1 = new HTMLElement("h1", null).text(this.datas.name);
+
+    div.appendChild(h1);
+    if (special[0]) div.appendChild(special[0]);
 
     //~ Create the content for the hidden div
-    let div2 = document.createElement("div");
-    div2.setAttribute("data-category", this.datas.id);
+    let div2 = new HTMLElement("div", null).attributes([
+      ["data-category", this.datas.id],
+    ]);
     div2.innerHTML = `
       <button class="update">Update</button>
       <button class="delete">Delete</button>
     `;
-    div2.appendChild(special[1]);
+    if (special[0]) div2.appendChild(special[1]);
 
     //~ Append all of us to the this._card
     this._card.append(div, div2);
@@ -51,21 +57,20 @@ export class Card {
 
     //~ Control whose table is it
     if (this.table == "categories") {
-      this._card.className = "card_category";
       p.textContent = `${this.datas.languages} languages`;
       button.className = "languages";
       button.textContent = "See languages";
+      return [p, button];
     } else if (this.table == "languages") {
-      this._card.className = "card_language";
-      p.textContent = `${this.datas.concepts} concepts`;
+      let logo = new HTMLElement("img", "logo").attributes([
+        ["src", "../admin/static/Sexe.svg"],
+      ]);
       button.className = "concepts";
       button.textContent = "See concepts";
-    } else {
-      this._card.className = "card_concept";
-      p = "";
+      return [logo, button];
     }
+    return "";
 
     //~ Return the paragraphe and the button
-    return [p, button];
   }
 }

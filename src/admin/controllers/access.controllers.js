@@ -2,8 +2,7 @@
 
 import { connectView } from "../views/connect.view.js";
 
-//^^ Control to display connect Page
-//^^ Return nothin
+//^ Control to display connect Page
 export function accessAdmin() {
   let code = [17, 16, 67];
 

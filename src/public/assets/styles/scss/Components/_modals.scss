@@ -63,44 +63,43 @@
     display: flex;
     justify-content: space-around;
     margin-top: 2rem;
+  }
+  button {
+    display: block;
+    font: 1.5rem $font-title;
+    color: $text-blue;
+    background: transparent;
+    border: 1px solid white;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.5s;
 
-    button {
-      display: block;
-      font: 1.5rem $font-title;
-      color: $text-blue;
-      background: transparent;
-      border: 1px solid white;
-      width: 200px;
-      height: 50px;
-      cursor: pointer;
-      transition: 0.5s;
-
-      &:hover {
-        transform: scale(1.05);
-        color: $color-red;
-        border: 1px solid $color-red;
-      }
+    &:hover {
+      transform: scale(1.05);
+      color: $color-red;
+      border: 1px solid $color-red;
     }
+  }
 
-    label {
-      width: 33%;
-      font-size: 1.4rem;
-      cursor: pointer;
-      text-align: center;
-    }
+  label {
+    width: 33%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    text-align: center;
+  }
 
-    input[type="radio"],
-    input[type="checkbox"] {
-      width: 0;
-      height: 0;
-      border: none;
-      background: transparent;
-      display: none;
-    }
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: 0;
+    height: 0;
+    border: none;
+    background: transparent;
+    display: none;
+  }
 
-    input[type="radio"]:checked + label,
-    input[type="checkbox"]:checked + label {
-      color: $text-blue;
-    }
+  input[type="radio"]:checked + label,
+  input[type="checkbox"]:checked + label {
+    color: $text-blue;
   }
 }

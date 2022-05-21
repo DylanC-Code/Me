@@ -4,6 +4,7 @@ import { Create } from "../components/Create.js";
 import { Delete } from "../components/Delete.js";
 import { Update } from "../components/Update.js";
 import { Datas_Interface_View } from "../views/Datas_Interface_View.view.js";
+import { deleteController } from "./delete.controllers.js";
 import { modalControllers } from "./Modal.controllers.js";
 
 export class Datas_Interface_Controllers {
@@ -37,11 +38,11 @@ export class Datas_Interface_Controllers {
         this.datas.forEach((d) => (d.id == id_click ? (data = d) : null));
 
         //~ Create an instance of delete class (extend of modal)
-        let modal = new Delete(this.table, data, id_click).create();
+        let modal = new Delete(this.table, data).create();
         this.section.append(modal);
 
         //~ Apply controllers to the modal
-        modalControllers("DELETE", this.table, id_click);
+        deleteController(this.table, id_click);
       });
     });
   }
