@@ -262,7 +262,7 @@ nav > div > button:nth-child(1) {
 #modal input[type=file] {
   display: none;
 }
-#modal label[for=logo] {
+#modal label[for=file] {
   background: url("../../images/new_logo.svg");
   width: 50px;
   height: 50px;

@@ -64,9 +64,9 @@ export class Create extends Modal {
         let categories = await new Request("GET", "/categories").play;
 
         //~ Create and set the HTMLElements
-        let file = new Input("file", "logo", null).element;
+        let file = new Input("file", "file", null).element;
         let label = new HTMLElement("label", null).attributes([
-          ["for", "logo"],
+          ["for", "file"],
         ]);
         h1 = new HTMLElement("h1", null).inner(
           ContentsAdmin.create.languages.h1

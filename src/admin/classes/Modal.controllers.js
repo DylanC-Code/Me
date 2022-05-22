@@ -11,7 +11,13 @@ export class Modal_Controllers {
     this.table = table;
     this.name = document.getElementById("name");
     this.err = document.getElementById("error");
-    this.err.textContent = "";
+    this.file = document.getElementById("file");
+    this.cat = document.querySelector("input[type='radio']:checked");
+    this.note = document.querySelector("input[type='number']");
+    this._languages = [
+      ...document.querySelectorAll("input[type='checkbox']:checked"),
+    ];
+    this.err ? (this.err.textContent = "") : null;
     this.body = {};
     this.req = null;
   }

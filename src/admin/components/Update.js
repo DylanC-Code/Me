@@ -54,12 +54,15 @@ export class Update extends Modal {
 
     switch (this.table) {
       case "languages":
+        let file = new Input("file", "file").element;
+        let logo = new Label("file", null, null).element;
+
         let categories = await new Request("GET", "/categories").play;
         categories.result.forEach((cat) => {
-          let input = new Input("checkbox", cat.id, null).element;
+          let input = new Input("radio", cat.id, null).attributes([
+            ["name", "category"],
+          ]);
           let label = new Label(cat.id, null, cat.name).element;
-          let file = new HTMLElement("file", "logo").element;
-          let logo = new Label("logo", null, null).element;
 
           //~ Append them
           this._modal.append(file, logo);

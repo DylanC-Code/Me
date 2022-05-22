@@ -63,7 +63,7 @@ export class Card {
       return [p, button];
     } else if (this.table == "languages") {
       let logo = new HTMLElement("img", "logo").attributes([
-        ["src", "../admin/static/Sexe.svg"],
+        ["src", `../admin/static/${this.datas.name}.svg`],
       ]);
       button.className = "concepts";
       button.textContent = "See concepts";
@@ -72,6 +72,5 @@ export class Card {
       p.textContent = `${this.datas.value} / 5`;
       return [p];
     }
-
   }
 }

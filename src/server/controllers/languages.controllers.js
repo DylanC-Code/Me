@@ -2,6 +2,7 @@
 
 import Category from "../models/Category.model.js";
 import Language from "../models/Language.model.js";
+import Note from "../models/Note.model.js";
 
 //^ Different association between the tables
 
@@ -13,6 +14,11 @@ Language.belongsTo(Category, {
   foreignKey: "id_category",
   onDelete: "CASCADE",
 });
+Language.hasMany(Note, {
+  foreignKey: { name: "id_language" },
+  onDelete: "CASCADE",
+});
+Note.belongsTo(Language, { foreignKey: "id_language", onDelete: "CASCADE" });
 
 //# CONTROLLERS
 //#############
@@ -63,7 +69,7 @@ async function UpdateLanguage(req, res) {
 
   //~ Find language with the primaryKey and update it
   let result = await Language.update(
-    { name, id_category },
+    { name, id_category, logo: `${name}.svg` },
     { where: { id_language: pk } }
   );
 
