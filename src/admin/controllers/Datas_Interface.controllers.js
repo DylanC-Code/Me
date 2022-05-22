@@ -1,11 +1,10 @@
 "use-strict";
 
+import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
+import { chooseControllers } from "../tools/chooseController.js";
 import { Create } from "../components/Create.js";
 import { Delete } from "../components/Delete.js";
 import { Update } from "../components/Update.js";
-import { Datas_Interface_View } from "../views/Datas_Interface_View.view.js";
-import { deleteController } from "./delete.controllers.js";
-import { modalControllers } from "./Modal.controllers.js";
 
 export class Datas_Interface_Controllers {
   /** Controllers for the datas interface view
@@ -42,7 +41,7 @@ export class Datas_Interface_Controllers {
         this.section.append(modal);
 
         //~ Apply controllers to the modal
-        deleteController(this.table, id_click);
+        chooseControllers("DELETE", this.table, id_click);
       });
     });
   }
@@ -63,7 +62,7 @@ export class Datas_Interface_Controllers {
         this.section.append(modal);
 
         //~ Apply controllers to the modal
-        modalControllers("UPDATE", this.table, id_click);
+        chooseControllers("UPDATE", this.table, id_click);
       });
     });
   }
@@ -79,7 +78,7 @@ export class Datas_Interface_Controllers {
       this.section.appendChild(modal);
 
       //~ Apply controllers to the modal
-      modalControllers("CREATE", this.table);
+      chooseControllers("CREATE", this.table);
     });
   }
 

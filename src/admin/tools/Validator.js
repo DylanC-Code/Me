@@ -65,7 +65,6 @@ export class Validator {
     let space = /(.[\s])$/.test(this.element.value);
     if (space) return "Please don't finish with space !";
   }
-  //^ Special control for the input name
   name() {
     let name = /^[A-Za-zÜ-ü]{2,20}([\s_-][A-Za-zÜ-ü]{2,20})?$/.test(
       this.element.value

@@ -5,8 +5,7 @@ import { Datas } from "../classes/Datas.js";
 import { categoriesDataAnims } from "../animations/categoriesData.animations.js";
 import { headerInterfaceAnims } from "../animations/headerInterface.animations.js";
 import { datasInterfaceAnims } from "../animations/datasInterface.animations.js";
-// import { datasInterfaceControllers } from "../controllers/datasInterface.controllers.js";
-import { Datas_Interface } from "../classes/Datas_Interface.js";
+import { Datas_Interface } from "../components/Datas_Interface.js";
 import { Datas_Interface_Controllers } from "../controllers/Datas_Interface.controllers.js";
 
 export class Datas_Interface_View {

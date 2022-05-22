@@ -1,7 +1,7 @@
 "use-strict";
 
 import { projectsSkillsAnimations } from "../animations/projects&Skills.animations.js";
-import { Datas_Interface_View } from "../views/Datas_Interface_View.view.js";
+import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
 import { interfaceProjectView } from "../views/interfaceProject.view.js";
 
 //^ Control events on thoses buttons, launch anims and display views

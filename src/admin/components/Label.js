@@ -1,6 +1,6 @@
 "use-strict";
 
-import { HTMLElement } from "./HTMLElement.js";
+import { HTMLElement } from "../classes/HTMLElement.js";
 
 export class Label extends HTMLElement {
   /** Create, set and remove differents label
@@ -13,6 +13,5 @@ export class Label extends HTMLElement {
 
     this._element.textContent = text;
     pour ? this._element.setAttribute("for", pour) : null;
-    id ? this._element.setAttribute("id", id) : null;
   }
 }

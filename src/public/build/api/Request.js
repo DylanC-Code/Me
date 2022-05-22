@@ -18,7 +18,7 @@ export class Request {
   ) {
     this.method = method;
     this.url = `http://127.0.0.1:4000/api${url}`;
-    this.body = body;
+    this._body = body;
     this.headers = {
       "Content-Type": content,
       Connection: "keep-alive",
@@ -32,15 +32,21 @@ export class Request {
   get play() {
     return this.fetch();
   }
+  get body() {
+    return this._body;
+  }
+  set body(value) {
+    this._body = value;
+  }
 
   async fetch() {
     let res;
     if (this.method != "GET" && this.method != "DELETE") {
-      this.init.body = JSON.stringify(this.body);
+      this.init.body = JSON.stringify(this._body);
       res = await fetch(`${this.url}`, this.init);
       return res.json();
-    } else if (this.method === "GET" && this.body != null) {
-      res = await fetch(`${this.url}/${this.body}`, this.init);
+    } else if (this.method === "GET" && this._body != null) {
+      res = await fetch(`${this.url}/${this._body}`, this.init);
       return res.json();
     } else {
       res = await fetch(`${this.url}/`, this.init);

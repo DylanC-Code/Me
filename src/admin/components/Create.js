@@ -3,9 +3,9 @@
 import { Request } from "../../public/build/api/Request.js";
 import { ContentsAdmin } from "../../public/build/contents/admin.contents.js";
 import { HTMLElement } from "../classes/HTMLElement.js";
-import { Input } from "../classes/Input.js";
-import { Label } from "../classes/Label.js";
-import { Modal } from "./Modal.js";
+import { Modal } from "../classes/Modal.js";
+import { Input } from "../components/Input.js";
+import { Label } from "../components/Label.js";
 
 export class Create extends Modal {
   /**
@@ -22,7 +22,7 @@ export class Create extends Modal {
     let special = await this.special();
 
     //~ Create and set the global HTMLElements
-    let name = new Input("text", null, null).attributes([
+    let name = new Input("text", "name", null).attributes([
       ["placeholder", "Name"],
     ]);
     let div = document.createElement("div");
@@ -133,10 +133,8 @@ export class Create extends Modal {
         //~ For each concept create input with its label
         if (languages.result[0]) {
           languages.result.forEach((language) => {
-            let input = new Input("checkbox", language.id_language, null)
-              .element;
-            let label = new Label(language.id_language, null, language.name)
-              .element;
+            let input = new Input("checkbox", language.id, null).element;
+            let label = new Label(language.id, null, language.name).element;
 
             //~ Append them to the fragment
             div.append(input, label);

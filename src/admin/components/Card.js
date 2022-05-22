@@ -42,7 +42,7 @@ export class Card {
       <button class="update">Update</button>
       <button class="delete">Delete</button>
     `;
-    if (special[0]) div2.appendChild(special[1]);
+    if (special[1]) div2.appendChild(special[1]);
 
     //~ Append all of us to the this._card
     this._card.append(div, div2);
@@ -68,9 +68,10 @@ export class Card {
       button.className = "concepts";
       button.textContent = "See concepts";
       return [logo, button];
+    } else if (this.table == "concepts") {
+      p.textContent = `${this.datas.value} / 5`;
+      return [p];
     }
-    return "";
 
-    //~ Return the paragraphe and the button
   }
 }

@@ -1,36 +1,27 @@
 "use-strict";
 
-import { Request } from "../../public/build/api/Request.js";
+import { checkName } from "../tools/checkName.js";
 import { Validator } from "../tools/Validator.js";
-import { Datas_Interface_View } from "../views/Datas_Interface_View.view.js";
+import { Modal_Controllers } from "../classes/Modal.controllers.js";
+import { Request } from "../../public/build/api/Request.js";
 
-export class Create_Controllers {
+export class Create_Controllers extends Modal_Controllers {
   /**
    * Create controllers for check the inputs in the create modal
-   * @param  { STRING } table
+   * @param  { STRING } table The name of the table
    */
   constructor(table) {
-    this.table = table;
-    this.name = document.querySelector("#modal input[type='text']");
-    this.err = document.getElementById("error");
-    this.err.textContent = "";
-    this.errors = [];
-    this.body = {};
-  }
-
-  //^ Getter for control the table chose
-  get active() {
-    if (this.table == "categories") this.categories();
-    else if (this.table == "languages") this.languages();
-    else if (this.table == "concepts") this.concepts();
+    super(table);
+    this.req = new Request("POST", `/${this.table}/create`);
   }
 
   //^ When its table categories
   categories() {
-    //~ If 'this.checkName' return true send the request
-    if (!this.checkName()) return;
+    //~ If checkName return true send the request
+    if (!checkName()) return;
 
     this.body.name = this.name.value;
+    this.req.body = this.body;
     this.request();
   }
 
@@ -41,8 +32,8 @@ export class Create_Controllers {
     let file = document.getElementById("logo");
 
     //~ Control the differents inputs and send error
-    this.checkName();
-    if (!file.files[0]) return (this.err.textContent = "Please select a Logo");
+    checkName();
+    if (!file.files) return (this.err.textContent = "Please select a Logo");
     else if (!cat)
       return (this.err.textContent = "Please select an associate category");
 
@@ -70,12 +61,12 @@ export class Create_Controllers {
       ...document.querySelectorAll("input[type='checkbox']:checked"),
     ];
 
-    //~ Control the validity of the input number
+    //~ Control the validity of the input number and get all id_language
     let id_languages = languages.map((language) => language.id);
     let error = new Validator(note).numberValue(0, 5);
 
     //~ Control the differents inputs and send error
-    this.checkName();
+    checkName();
     if (error) return (this.err.textContent = error);
     else if (!id_languages[0])
       return (this.err.textContent = "Please chose minimum one language !");
@@ -87,35 +78,7 @@ export class Create_Controllers {
     };
 
     //~ Send the request
+    this.req.body = this.body;
     this.request();
-  }
-
-  //^ Request for insert new element
-  async request() {
-    //~ Execute request
-    let req = await new Request("POST", `/${this.table}/create`, this.body)
-      .play;
-
-    //~ If the server send an error, display this to the client
-    if (req.error) return (this.err.textContent = req.result);
-
-    //~ If no error is send remove modal and display Data_interface_view
-    document.getElementById("modal").remove();
-    new Datas_Interface_View(this.table).create();
-  }
-
-  //^ Control the validity of the input name
-  //^ Return boolean
-  checkName() {
-    //~ Try the validity of the input text with the Validator class
-    this.errors = new Validator(this.name).name();
-
-    // //~ If an error is return display it to the client
-    if (!this.errors) return true;
-
-    this.name.style.border = "2px solid crimson";
-    this.name.value = "";
-    this.name.setAttribute("placeholder", this.errors);
-    return false;
   }
 }

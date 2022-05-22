@@ -2,9 +2,9 @@
 
 import { Request } from "../../public/build/api/Request.js";
 import { HTMLElement } from "../classes/HTMLElement.js";
-import { Input } from "../classes/Input.js";
-import { Label } from "../classes/Label.js";
-import { Modal } from "./Modal.js";
+import { Modal } from "../classes/Modal.js";
+import { Input } from "../components/Input.js";
+import { Label } from "../components/Label.js";
 
 export class Update extends Modal {
   /**
@@ -26,11 +26,12 @@ export class Update extends Modal {
     let special = await this.special();
 
     //~ Create many HTMLElements
+    let p = new HTMLElement("p", "error").element;
     let h1 = new HTMLElement("h1", null).inner(
       `Update <mark class="text_blue">${this.datas.name}</mark>`
     );
     let name = new Input("text", "name", this.datas.name).element;
-    this._modal.append(h1, name);
+    this._modal.append(p, h1, name);
 
     if (special[1]) this._modal.appendChild(special[1]);
 
@@ -57,14 +58,17 @@ export class Update extends Modal {
         categories.result.forEach((cat) => {
           let input = new Input("checkbox", cat.id, null).element;
           let label = new Label(cat.id, null, cat.name).element;
+          let file = new HTMLElement("file", "logo").element;
+          let logo = new Label("logo", null, null).element;
 
-          //~ Append them to the fragment
+          //~ Append them
+          this._modal.append(file, logo);
           div.append(input, label);
         });
         return [div];
       case "concepts":
         let languages = await new Request("GET", "/languages").play;
-        let note = new Input("number", null, "0").element;
+        let note = new Input("number", null, this.datas.value).element;
         languages.result.forEach((language) => {
           let input = new Input("checkbox", language.id, null).element;
           let label = new Label(language.id, null, language.name).element;

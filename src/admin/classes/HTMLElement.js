@@ -6,7 +6,7 @@ export class HTMLElement {
    * @param  { SRTING } name Specifie type of the element
    * @param  { STRING } id The id of the element, default null (facultatif)
    */
-  constructor(name, id = null) {
+  constructor(name, id) {
     this._element = document.createElement(`${name}`);
     id ? this._element.setAttribute("id", id) : null;
   }

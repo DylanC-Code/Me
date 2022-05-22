@@ -2,6 +2,7 @@
 
 import { Container } from "../../public/build/components/Containers.js";
 import { ContentsAdmin } from "../../public/build/contents/admin.contents.js";
+import { HTMLElement } from "../classes/HTMLElement.js";
 
 export class Datas_Interface {
   /**
@@ -37,8 +38,7 @@ export class Datas_Interface {
 
     //~ For each element create li, add text and append to ul
     ContentsAdmin.interfaceData.nav.forEach((cat) => {
-      let li = document.createElement("li");
-      li.textContent = cat;
+      let li = new HTMLElement("li", cat).text(cat);
       ul.appendChild(li);
     });
 

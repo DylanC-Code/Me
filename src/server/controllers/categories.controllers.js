@@ -56,8 +56,8 @@ async function DeleteCategory(req, res) {
     : res.status(404).send({ result: `Category '${pk}' hasn't been found !` });
 }
 
-//* @ GET /api/categories
-//* @ Get all categories
+//* @ PUT /api/categories/update
+//* @ Update a category
 async function UpdateCategory(req, res) {
   //~ Find the category with it primaryKey and update it
   let { pk, name } = req.body;

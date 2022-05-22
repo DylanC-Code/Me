@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Modal } from "./Modal.js";
+import { Modal } from "../classes/Modal.js";
 
 export class Delete extends Modal {
   /** Create Delete modal extend to modal class
