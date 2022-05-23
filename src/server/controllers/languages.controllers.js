@@ -104,6 +104,7 @@ async function GetAllLanguagesByCategory(req, res) {
 async function GetAllLanguages(req, res) {
   //~ Find languages with the primaryKey category
   let result = await Language.findAll({
+    // order: [["id_language", "ASC"]],
     attributes: [["id_language", "id"], "name"],
     raw: true,
   });

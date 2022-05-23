@@ -1,6 +1,6 @@
 "use-strict";
 
-import { sessionCheck } from "../../../private/tools/session.js";
+import { sessionCheck } from "../../private/tools/session.js";
 import { TypeWriter } from "../animations/TypeWriter.js";
 import { ContentsAdmin } from "../contents/admin.contents.js";
 import { Contents } from "../contents/global.contents.js";

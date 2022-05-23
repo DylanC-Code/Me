@@ -1,7 +1,7 @@
 "use-strict";
 
 import { removeChild } from "../../global/utils/removeChilds.js";
-import { Request } from "../../public/build/api/Request.js";
+import { Request } from "../../public/api/Request.js";
 import { categoriesDataAnims } from "../animations/categoriesData.animations.js";
 import { buttonsControllers } from "../controllers/buttons.controllers.js";
 import { mainDatasInterfaceControllers } from "../controllers/mainDatasInterface.controllers.js";
@@ -34,6 +34,6 @@ export async function mainDatasInterface(table, datas, index = 0) {
   categoriesDataAnims().forEach((anim) => anim.play());
 
   //~ Controllers
-  mainDatasInterfaceControllers(datas);
+  mainDatasInterfaceControllers(table, datas);
   buttonsControllers(datas);
 }

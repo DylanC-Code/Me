@@ -1,9 +1,9 @@
 "use-strict";
 
-import { subNavBtnsAnimations } from "../animations/subNavBtns.animations.js";
+import { subNavBtnsAnimations } from "../animations/subNavBtns.animations.js.js";
 
-import { skillsView } from "../views/skills.views.js";
-import { bioView } from "../views/bio.view.js";
+import { skillsView } from "../views/skills.views.js.js";
+import { bioView } from "../views/bio.view.js.js";
 
 export function aboutControllers() {
   let buttons = document.querySelectorAll("#container > button");

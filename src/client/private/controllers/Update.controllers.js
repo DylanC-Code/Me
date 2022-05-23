@@ -3,7 +3,7 @@
 import { checkName } from "../tools/checkName.js";
 import { Validator } from "../tools/Validator.js";
 import { Modal_Controllers } from "./Modal.controllers.js";
-import { Request } from "../../public/build/api/Request.js";
+import { Request } from "../../public/api/Request.js";
 
 export class Update_Controllers extends Modal_Controllers {
   constructor(table, primaryKey) {

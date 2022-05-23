@@ -215,6 +215,11 @@ nav > div > button:nth-child(1) {
   display: block;
   background: rgba(34, 36, 41, 0.8);
 }
+.card_category .logos {
+  margin-top: 1rem;
+  width: 35px;
+  height: 35px;
+}
 
 #modal {
   position: absolute;

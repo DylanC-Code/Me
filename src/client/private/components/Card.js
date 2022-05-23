@@ -62,8 +62,9 @@ export class Card {
       button.textContent = "See languages";
       return [p, button];
     } else if (this.table == "languages") {
-      let logo = new HTMLElement("img", "logo").attributes([
-        ["src", `../admin/static/${this.datas.name}.svg`],
+      let logo = new HTMLElement("img", null).attributes([
+        ["src", `./private/static/${this.datas.name}.svg`],
+        ["class", "logos"],
       ]);
       button.className = "concepts";
       button.textContent = "See concepts";

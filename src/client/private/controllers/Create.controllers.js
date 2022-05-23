@@ -3,7 +3,8 @@
 import { checkName } from "../tools/checkName.js";
 import { Validator } from "../tools/Validator.js";
 import { Modal_Controllers } from "./Modal.controllers.js";
-import { Request } from "../../public/build/api/Request.js";
+import { Request } from "../../public/api/Request.js";
+import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
 
 export class Create_Controllers extends Modal_Controllers {
   /**
@@ -47,7 +48,9 @@ export class Create_Controllers extends Modal_Controllers {
     }).then((res) => res.json());
 
     //~ If an error is return by the server display it
-    if (req.error) this.err.textContent = req.result;
+    if (req.error) return (this.err.textContent = req.result);
+    document.getElementById("modal").remove();
+    new Datas_Interface_View(this.table).create();
   }
 
   //^ When its table concepts
@@ -62,6 +65,7 @@ export class Create_Controllers extends Modal_Controllers {
     else if (!id_languages[0])
       return (this.err.textContent = "Please chose minimum one language !");
 
+    //~ Make the body
     this.body = {
       name: this.name.value,
       value: this.note.value,

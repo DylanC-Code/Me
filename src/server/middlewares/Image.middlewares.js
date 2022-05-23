@@ -9,7 +9,7 @@ import path from "path";
 let dest = multer.diskStorage({
   //~ Set destination
   destination: function (req, file, cb) {
-    cb(null, "./src/admin/static");
+    cb(null, "./src/client/private/static");
   },
   //~ Set filename
   filename: function (req, file, cb) {

@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Request } from "../../public/build/api/Request.js";
+import { Request } from "../../public/api/Request.js";
 import { Modal_Controllers } from "./Modal.controllers.js";
 
 /** Controller for the delete modal

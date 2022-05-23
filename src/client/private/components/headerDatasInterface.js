@@ -1,6 +1,6 @@
 "use-strict";
 
-import { ContentsAdmin } from "../../public/build/contents/admin.contents.js";
+import { ContentsAdmin } from "../../public/contents/admin.contents.js";
 import { headerInterfaceAnims } from "../animations/headerInterface.animations.js";
 import { addBtn, nextPreviousBtn } from "../components/Buttons.js";
 import { headerDatasInterfaceControllers } from "../controllers/headerDatasInterface.controllers.js";

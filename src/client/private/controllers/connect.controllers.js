@@ -1,8 +1,8 @@
 "use-strict";
 
 import { closeConnectAnims } from "../animations/connect.animations.js";
-import { Request } from "../../public/build/api/Request.js";
-import { homeView } from "../../public/build/views/home.view.js";
+import { Request } from "../../public/api/Request.js";
+import { homeView } from "../../public/views/home.view.js";
 import { projectsSkillsControllers } from "./projects&Skills.controllers.js";
 
 //^ Controllers for the admin connect interface
@@ -16,19 +16,19 @@ export async function connectControllers() {
       "input[type=password]:nth-of-type(2)"
     );
 
-    if (e.keyCode == 13) {
-      //~ Request to the api
-      let body = { username: username.value, password: password.value };
-      // let result = await new Request("POST", "/users/login", body).play;
+    if (e.keyCode !== 13) return;
+    //~ Send the request
+    let body = { username: username.value, password: password.value };
+    // let result = await new Request("POST", "/users/login", body).play;
 
-      //~ If the result of the request is true
-      // if (result) {
-      //~ Create sessionStorage
-      sessionStorage.setItem("admin", "true");
-      //~ Launch the anims
-      closeConnectAnims();
-      projectsSkillsControllers();
-      // setTimeout(() => homeView(), 3500);
-    }
+    //~ If the result is false return
+    // if (!result) return;
+
+    //~ Create sessionStorage
+    // sessionStorage.setItem("admin", "true");
+    //~ Launch the anims
+    closeConnectAnims();
+    projectsSkillsControllers();
+    // setTimeout(() => homeView(), 3500);
   });
 }
