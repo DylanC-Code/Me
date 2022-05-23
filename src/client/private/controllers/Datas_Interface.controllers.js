@@ -7,15 +7,16 @@ import { Delete } from "../components/Delete.js";
 import { Update } from "../components/Update.js";
 import { Request } from "../../public/build/api/Request.js";
 import { Datas } from "../components/-Datas.js";
+import { mainDatasInterface } from "../components/mainDatasInterface.js";
 
 export class Datas_Interface_Controllers {
   /** Controllers for the datas interface view
-   * @param  { OBJECT } datas The datas of the about table
    * @param  { STRING } table The table of the content to control
+   * @param  { OBJECT } datas The datas of the about table
    */
-  constructor(table) {
+  constructor(table, datas) {
     this.table = table;
-    this._datas;
+    this._datas = datas;
     this.section = document.getElementById("subContainer");
   }
 
@@ -25,14 +26,10 @@ export class Datas_Interface_Controllers {
   }
 
   async datas() {
-    this._datas = await new Request("GET", `/${this.table}`).play;
-    this._datas = this._datas.result;
     this.delete();
     this.update();
     this.create();
     this.categories();
-    this.next();
-    this.previous();
   }
 
   //^ Manage click listener to delete buttons
@@ -92,38 +89,37 @@ export class Datas_Interface_Controllers {
     });
   }
 
-  next() {
-    let next = document.getElementById("next");
-    if (!next) return;
-    next.addEventListener("click", () => {
-      // let last =
-      //   document.querySelectorAll("[data-category]")[3].dataset.category;
+  // next() {
+  //   let next = document.getElementById("next");
+  //   if (!next) return;
+  //   next.addEventListener("click", () => {
+  //     let last =
+  //       document.querySelectorAll("[data-category]")[3].dataset.category;
 
-      // let newDatas = this._datas.filter((d) => d.id > last);
-      // new Datas_Interface_View(this.table, this._datas).create();
-      new Datas(this.table, this._datas).create();
-    });
-  }
+  //     let newDatas = this._datas.filter((d) => d.id > last);
+  //     mainDatasInterface(this.table, newDatas);
+  //   });
+  // }
 
-  previous() {
-    let previous = document.getElementById("previous");
-    if (!previous) return;
-    previous.addEventListener("click", () => {
-      let first = document.querySelector("[data-category]").dataset.category;
+  // previous() {
+  //   let previous = document.getElementById("previous");
+  //   if (!previous) return;
+  //   previous.addEventListener("click", () => {
+  //     let first = document.querySelector("[data-category]").dataset.category;
 
-      function ideal(d) {
-        let e = parseInt(d.id);
-        if (e >= first) return;
-        if (e < first - 4) return;
-        return d;
-      }
+  //     function ideal(d) {
+  //       let e = parseInt(d.id);
+  //       if (e >= first) return;
+  //       if (e < first - 4) return;
+  //       return d;
+  //     }
 
-      let newDatas = this._datas.filter(ideal);
+  //     let newDatas = this._datas.filter(ideal);
 
-      // new Datas_Interface_View(this.table, newDatas).create();
-      new Datas(this.table, newDatas).create();
-    });
-  }
+  //     // new Datas_Interface_View(this.table, newDatas).create();
+  //     new Datas(this.table, newDatas).create();
+  //   });
+  // }
 
   //^ Apply click listener to tab categories
   categories() {

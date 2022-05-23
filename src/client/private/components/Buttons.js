@@ -19,8 +19,8 @@ function addBtn() {
 
 //^ Next or Previous button component
 //^ Return article
-function nextPreviousBtn(datas) {
-  let article = new HTMLElement("article", null).element;
+function nextPreviousBtn() {
+  let article = new HTMLElement("article", "add_previous").element;
   let previous = `
         <svg width="9" height="13" viewBox="0 0 9 13" fill="none" xmlns="http://www.w3.org/2000/svg" id="previous">
           <path d="M2.4375 0.25L0.96875 1.71875L5.73959 6.5L0.96875 11.2812L2.4375 12.75L8.6875 6.5L2.4375 0.25Z"
@@ -34,32 +34,13 @@ function nextPreviousBtn(datas) {
               fill="#38C7C7"/>
           </svg>
         `;
+  h1 = new HTMLElement("h1", null).text("Next");
+  article.innerHTML = previous;
+  article.appendChild(h1);
+  article.innerHTML += next;
 
-  switch (datas) {
-    //~ If more datas is display
-    case 1:
-      h1 = new HTMLElement("h1", null).text("Next");
-      article.appendChild(h1);
-      article.innerHTML += next;
-      break;
-    //~ If less datas is display
-    case 2:
-      h1 = new HTMLElement("h1", null).text("Previous");
-      article.innerHTML = previous;
-      article.appendChild(h1);
-      break;
-    //~ If more and less datas is display
-    case 3:
-      h1 = new HTMLElement("h1", null).text("Next");
-      article.innerHTML = previous;
-      article.appendChild(h1);
-      article.innerHTML += next;
-      break;
-    //~ If not less or more
-    default:
-      return "";
-  }
   return article;
 }
+
 
 export { addBtn, nextPreviousBtn };
