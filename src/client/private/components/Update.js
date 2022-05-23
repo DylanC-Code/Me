@@ -1,10 +1,10 @@
 "use-strict";
 
-import { Request } from "../../client/public/build/api/Request.js";
-import { HTMLElement } from "../classes/HTMLElement.js";
-import { Modal } from "../classes/Modal.js";
-import { Input } from "../classes/Input.js";
-import { Label } from "../classes/Label.js";
+import { Request } from "../../public/build/api/Request.js";
+import { HTMLElement } from "../../global/classes/HTMLElement.js";
+import { Modal } from "../../global/classes/Modal.js";
+import { Input } from "../../global/classes/Input.js";
+import { Label } from "../../global/classes/Label.js";
 
 export class Update extends Modal {
   /**

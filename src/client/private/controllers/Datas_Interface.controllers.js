@@ -5,8 +5,8 @@ import { chooseControllers } from "../tools/chooseController.js";
 import { Create } from "../components/Create.js";
 import { Delete } from "../components/Delete.js";
 import { Update } from "../components/Update.js";
-import { Request } from "../../client/public/build/api/Request.js";
-import { Datas } from "../components/Datas.js";
+import { Request } from "../../public/build/api/Request.js";
+import { Datas } from "../components/-Datas.js";
 
 export class Datas_Interface_Controllers {
   /** Controllers for the datas interface view
