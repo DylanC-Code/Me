@@ -1,5 +1,7 @@
 "use-strict";
 
+//^ Play Sub navbar Animations of about view
+//^ Return play anim
 export function subNavbarAnims() {
   return document.getElementById("container").animate(
     [

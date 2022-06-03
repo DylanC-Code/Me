@@ -3,19 +3,28 @@
 import { Graph } from "../components/Graph.js";
 import { NavGraph } from "../components/NavGraph.js";
 import { Skill } from "../components/Skill.js";
+import { bioSkillsContainer } from "../containers/bioSkills.container.js";
+import { SVGElement } from "../../global/classes/SVGElement.js";
+import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
+import { Request } from "../api/Request.js";
 
-export function skillsView() {
-  let subContainer = document.getElementById("subContainer");
-  subContainer.style.margin = "3rem 0";
-  subContainer.innerHTML = `
-      <svg width='100%' height='100%'></svg>
-    `;
+//^ Display Skills View
+export async function skillsView() {
+  //~ Make the container of view
+  let subContainer = bioSkillsContainer();
+  let { result } = await new Request("GET", "/notes").fetch()
+  let spider = chibrery.Graph("spider")
 
-  let svg = document.querySelector("#subContainer >svg");
-  svg.innerHTML += new Graph(svg, 20, 80, 10, 95, 2018).display;
-  svg.innerHTML += NavGraph(svg);
-  let skills = document.getElementById("skills");
-  skills.innerHTML += new Skill("HTML", 2019, 100).display;
-  skills.innerHTML += new Skill("CSS", 2021, 100).display;
-  skills.innerHTML += new Skill("SCSS", 2021, 72).display;
+  const params = {
+    target: subContainer,
+    datas: result,
+    multi: true,
+    styles: {
+      text: { color: "white" },
+      note: { stroke: "#FF4B33", fill: "transparent" },
+      polygon: { anim: "rotate", stroke: "#38C7C7", fill: "transparent" },
+      square: { anim: "synchronous", stroke: "#38C7C7" }
+    }
+  }
+  spider(params)
 }

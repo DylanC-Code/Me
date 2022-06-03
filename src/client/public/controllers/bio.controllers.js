@@ -3,6 +3,7 @@
 import { TypeWriter } from "../animations/TypeWriter.js";
 import { Contents } from "../contents/global.contents.js";
 
+// ####
 export function bioControllers(){
   let h1 = document.querySelector("#subContainer > h1");
   let p = document.querySelector("#subContainer > p");

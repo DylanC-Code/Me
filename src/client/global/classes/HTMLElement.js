@@ -7,7 +7,7 @@ export class HTMLElement {
    * @param  { STRING } id The id of the element, default null (facultatif)
    */
   constructor(name, id) {
-    this._element = document.createElement(`${name}`);
+    this._element = name ? document.createElement(`${name}`) : null;
     id ? this._element.setAttribute("id", id) : null;
   }
 
@@ -26,7 +26,7 @@ export class HTMLElement {
     this._element.textContent = txt;
     return this.element;
   }
-  
+
   inner(content) {
     this._element.innerHTML = content;
     return this._element;

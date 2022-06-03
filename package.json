@@ -21,6 +21,7 @@
   "homepage": "https://github.com/DylanC-Code/Me#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "chibrery": "file:../Chibrery",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express-session": "^1.17.2",

@@ -3,21 +3,24 @@
 import { subNavbarAnims } from "../animations/subNavbar.animations.js";
 
 import { aboutControllers } from "../controllers/about.controllers.js";
-import { Container } from "../components/Containers.js";
-import { SubNavbar } from "../components/SubNavbar.js";
 import { bioView } from "./bio.view.js";
+import { aboutContainer } from "../containers/about.container.js";
+import { HTMLElement } from "../../global/classes/HTMLElement.js";
 
+//^ About view
 export function aboutView() {
-  let main = document.getElementById("main");
-  main.className = "main_about";
+  //~ Call containers view
+  let containers = aboutContainer();
 
-  let container = Container.Base();
-  container.classList.add("sub_navbar");
-  container.innerHTML = SubNavbar();
+  //~ Create HTMLElements and append them to its container
+  let btn1 = new HTMLElement("button").text("Skills");
+  let btn2 = new HTMLElement("button").text("Bio");
+  containers[0].append(btn1, btn2);
 
-  Container.SubContainer();
+  //~ Call sub view about
   bioView();
 
+  // ##
   subNavbarAnims();
   aboutControllers();
 }

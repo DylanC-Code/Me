@@ -4,6 +4,7 @@ import Language from "../models/Language.model.js";
 import Note from "../models/Note.model.js";
 import Concept from "../models/Concept.model.js";
 import Language_Concept from "../models/Language_Concept.model.js";
+import Category from "../models/Category.model.js";
 
 //* @ DELETE /api/notes/delete/:pk
 //* @ Delete a concept with primaryKey
@@ -15,8 +16,8 @@ async function DeleteNote(req, res) {
   //~ Send response to the client
   index
     ? res
-        .status(200)
-        .send({ index: `Note '${pk}' has been delete succesfully !` })
+      .status(200)
+      .send({ index: `Note '${pk}' has been delete succesfully !` })
     : res.status(404).send({ index: `Note '${pk}' hasn't been find !` });
 }
 
@@ -30,22 +31,26 @@ async function UpdateConcept(req, res) {
   //~ Send response to the client
   index[0]
     ? res
-        .status(200)
-        .send({ index: `Note '${pk}' has been update succesfully !` })
+      .status(200)
+      .send({ index: `Note '${pk}' has been update succesfully !` })
     : res.status(404).send({ index: `Note '${pk}' hasn't been find !` });
 }
 
 //* @ GET /api/notes/
 //* @ Get the average for each category
 async function GetAllCategories(req, res) {
+  let categories = await Category.findAll({ raw: true })
+
+  //~ Create a map object
+  let notes = new Map();
+  categories.forEach((v) => { notes.set(v.id_category, { name: v.name, note: [] }) });
+
   //~ Get all the languages by category, return languages primary_Key and id cat
   let languages = await Language.findAll({
     attributes: ["id_language", "id_category"],
     raw: true,
   });
 
-  //~ Create a map object
-  let notes = new Map();
   //~ Fill the object with id-cat as key and the associated notes
   for (const l of languages) {
     let id_category = l.id_category;
@@ -63,24 +68,37 @@ async function GetAllCategories(req, res) {
 
     //~ Regroup notes by category
     if (index && note) {
-      index.push(note.percentage);
+      index.note.push(note.percentage);
       notes.delete(id_category);
       notes.set(id_category, index);
     } //~ If id_cat doesnt match an index, a new index is created with it's note
     else if (note) notes.set(id_category, [note.percentage]);
   }
 
+
   let result = [];
   //~ Calcul the average value of each category
   for (let [k, v] of notes) {
     let average = 0;
-    for (const n of v) average += n;
-    average /= v.length;
+    for (const n of v.note) n ? average += n : 0;
+    v.note.length ? average /= v.note.length : 0
 
     result.push([k, average]);
   }
+
+
+  for (let [k, v] of result) {
+    let note = notes.get(k)
+    notes.delete(k)
+    note.note = v
+    note.id = k
+    notes.set(k, note)
+  }
+
+  result = Array.from(notes.values())
+
   //~ Send the response to the client
-  result[0]
+  result
     ? res.status(200).send({ result })
     : res.status(404).send({ result: `Data hasn't been find !` });
 }
@@ -141,8 +159,8 @@ async function GetConceptsOfLanguage(req, res) {
   result[0]
     ? res.status(200).send({ result })
     : res.status(404).send({
-        result: `Concepts for language '${id_language}' hasn't been find !`,
-      });
+      result: `Concepts for language '${id_language}' hasn't been find !`,
+    });
 }
 
 //~Export all the function created in this present file to whatever other file would ask for.
