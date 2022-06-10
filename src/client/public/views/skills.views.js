@@ -1,12 +1,9 @@
 "use-strict";
 
-import { Graph } from "../components/Graph.js";
-import { NavGraph } from "../components/NavGraph.js";
-import { Skill } from "../components/Skill.js";
 import { bioSkillsContainer } from "../containers/bioSkills.container.js";
-import { SVGElement } from "../../global/classes/SVGElement.js";
 import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
 import { Request } from "../api/Request.js";
+import { skillsControllers } from "../controllers/skills.controllers.js";
 
 //^ Display Skills View
 export async function skillsView() {
@@ -17,6 +14,7 @@ export async function skillsView() {
 
   const params = {
     target: subContainer,
+    id: "spider",
     datas: result,
     multi: true,
     styles: {
@@ -27,4 +25,6 @@ export async function skillsView() {
     }
   }
   spider(params)
+
+  skillsControllers()
 }

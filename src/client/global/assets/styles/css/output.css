@@ -464,6 +464,12 @@ canvas {
   border: 1px solid #38C7C7;
   color: #38C7C7;
 }
+.sub_navbar .container_skills {
+  margin: 3rem 0;
+}
+.sub_navbar .container_bio {
+  margin: 3rem;
+}
 
 .main_contact {
   display: grid;
@@ -546,40 +552,6 @@ canvas {
   font: 1.8rem Handlee;
 }
 
-#graph line {
-  stroke-dasharray: 3px;
-  stroke: white;
-}
-#graph text {
-  fill: white;
-  opacity: 0;
-  animation: textGraph 2s 2s 1 forwards;
-}
-
-#skills > g > path {
-  stroke-width: 3px;
-  fill: none;
-  opacity: 0;
-}
-#skills > g text {
-  opacity: 0;
-  font-weight: 900;
-  letter-spacing: 1px;
-  stroke-linecap: round;
-}
-
-#nav_graph > text:nth-of-type(3), #nav_graph > text:nth-of-type(4) {
-  font-size: 1rem;
-  letter-spacing: 1px;
-  fill: white;
-  text-transform: uppercase;
-}
-
-@keyframes textGraph {
-  to {
-    opacity: 0.7;
-  }
-}
 .main_connect {
   display: grid;
   grid-template: 14vh 64vh/80%;

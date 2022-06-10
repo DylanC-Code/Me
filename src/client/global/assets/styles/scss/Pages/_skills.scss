@@ -1,40 +1,40 @@
-#graph {
-  & line {
-    stroke-dasharray: 3px;
-    stroke: white;
-  }
-  & text {
-    fill: white;
-    opacity: 0;
-    animation: textGraph 2s 2s 1 forwards;
-  }
-}
-#skills {
-  & > g {
-    & > path {
-      stroke-width: 3px;
-      fill: none;
-      opacity: 0;
-    }
-    & text {
-      opacity: 0;
-      font-weight: 900;
-      letter-spacing: 1px;
-      stroke-linecap: round;
-    }
-  }
-}
-#nav_graph {
-  & > text:nth-of-type(3),
-  & > text:nth-of-type(4) {
-    font-size: 1rem;
-    letter-spacing: 1px;
-    fill: white;
-    text-transform: uppercase;
-  }
-}
-@keyframes textGraph {
-  to {
-    opacity: 0.7;
-  }
-}
+// #graph {
+//   & line {
+//     stroke-dasharray: 3px;
+//     stroke: white;
+//   }
+//   & text {
+//     fill: white;
+//     opacity: 0;
+//     animation: textGraph 2s 2s 1 forwards;
+//   }
+// }
+// #skills {
+//   & > g {
+//     & > path {
+//       stroke-width: 3px;
+//       fill: none;
+//       opacity: 0;
+//     }
+//     & text {
+//       opacity: 0;
+//       font-weight: 900;
+//       letter-spacing: 1px;
+//       stroke-linecap: round;
+//     }
+//   }
+// }
+// #nav_graph {
+//   & > text:nth-of-type(3),
+//   & > text:nth-of-type(4) {
+//     font-size: 1rem;
+//     letter-spacing: 1px;
+//     fill: white;
+//     text-transform: uppercase;
+//   }
+// }
+// @keyframes textGraph {
+//   to {
+//     opacity: 0.7;
+//   }
+// }

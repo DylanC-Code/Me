@@ -116,16 +116,16 @@ async function GetLanguagesOfCategory(req, res) {
 
   let result = [];
 
-  //~ Get notes, dates for each languages push them in an array [key=>value]
+  // //~ Get notes, dates for each languages push them in an array [key=>value]
   for (const v of languages) {
-    let id_language = v.id_language;
-    let notes = await Note.findAll({
-      where: { id_language },
-      attributes: ["percentage", "date"],
-      raw: true,
-    });
+    let { id_language } = v
+    let request = await Note.findAll({
+      where: { id_language }, attributes: ["percentage", "date"], raw: true,
+    })
+    let notes = request.map(v => v.percentage)
+    let dates = request.map(v => v.date)
 
-    result.push([v.name, notes]);
+    result.push({ name: v.name, notes, dates })
   }
 
   //~ Send the response to the client

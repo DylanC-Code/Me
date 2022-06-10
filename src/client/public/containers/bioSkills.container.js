@@ -10,7 +10,7 @@ export function bioSkillsContainer(view) {
   removeChild(subContainer);
 
   //~ Conditional structure for apply style to container
-  subContainer.style.margin = view == "bio" ? "3rem" : "3rem 0";
+  subContainer.className = view == "bio" ? "container_bio" : "container_skills";
 
   //~ Return container
   return subContainer;
