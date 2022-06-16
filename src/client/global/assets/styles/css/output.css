@@ -131,6 +131,11 @@ nav > div > button {
   cursor: pointer;
   margin: 1rem;
 }
+@media (max-width: 1406px) {
+  nav > div > button {
+    margin: 1rem 1rem;
+  }
+}
 nav > div > button:nth-child(1) {
   border-bottom: 2px solid #38C7C7;
 }
@@ -326,11 +331,15 @@ body {
   color: #F5F5F5;
   position: relative;
 }
-
 header {
   display: grid;
   grid-template: 15vh 7vh/20vw 50vw 30vw;
   place-items: center;
+}
+@media (max-width: 1406px) {
+  header {
+    grid-template: 15vh 7vh/20vw 75vw 15vw;
+  }
 }
 header > figure {
   width: 100%;
@@ -432,6 +441,12 @@ canvas {
 .main_about p > span {
   font: 2.25rem "Louis George Café";
 }
+.main_about .container_skills {
+  margin: 3rem 0;
+}
+.main_about .container_bio {
+  margin: 3rem;
+}
 
 .sub_navbar {
   width: 0%;
@@ -463,12 +478,6 @@ canvas {
 .sub_navbar:nth-child(2) {
   border: 1px solid #38C7C7;
   color: #38C7C7;
-}
-.sub_navbar .container_skills {
-  margin: 3rem 0;
-}
-.sub_navbar .container_bio {
-  margin: 3rem;
 }
 
 .main_contact {

@@ -13,6 +13,12 @@
   & p > span {
     font: 2.25rem $font-text;
   }
+  .container_skills{
+    margin: 3rem 0;
+  }
+  .container_bio{
+    margin: 3rem;
+  }
 }
 
 .sub_navbar {
@@ -48,10 +54,5 @@
     border: 1px solid $text-blue;
     color: $text-blue;
   }
-  .container_skills{
-    margin: 3rem 0;
-  }
-  .container_bio{
-    margin: 3rem;
-  }
+  
 }

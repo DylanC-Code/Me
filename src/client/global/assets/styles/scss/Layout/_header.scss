@@ -3,6 +3,9 @@ header {
   grid-template: 15vh 7vh/ 20vw 50vw 30vw;
   place-items: center;
 
+  @media (max-width:"1406px") {
+    grid-template: 15vh 7vh/ 20vw 75vw 15vw;
+  }
   & > figure {
     width: 100%;
     height: 100%;

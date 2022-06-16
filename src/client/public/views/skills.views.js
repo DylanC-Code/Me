@@ -8,7 +8,10 @@ import { skillsControllers } from "../controllers/skills.controllers.js";
 //^ Display Skills View
 export async function skillsView() {
   //~ Make the container of view
+
   let subContainer = bioSkillsContainer();
+  subContainer.style.height = "90%"
+
   let { result } = await new Request("GET", "/notes").fetch()
   let spider = chibrery.Graph("spider")
 

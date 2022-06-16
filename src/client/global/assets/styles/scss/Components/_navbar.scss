@@ -13,7 +13,7 @@ nav {
   top: -0.1%;
 
   //~ Deploy nav buttons (container svg)
-  & > figure {
+  > figure {
     width: 60px;
     height: 60px;
     position: absolute;
@@ -27,19 +27,19 @@ nav {
     border-left: 1px dashed;
 
     //~ SVG path
-    & > svg > path {
+    > svg > path {
       //# Blue pulse animation
       animation: pulse infinite 2.5s;
     }
   }
 
-  & > div {
+  > div {
     border-top: 1px dashed;
     position: absolute;
     left: -100%;
 
     //~ Buttons nav
-    & > button {
+    > button {
       font: 1.6rem $font-title;
       color: $text-blue;
       background: transparent;
@@ -47,6 +47,10 @@ nav {
       cursor: pointer;
       margin: 1rem;
 
+      @media (max-width:"1406px") {
+        // font-size: 1.5rem;
+        margin: 1rem 1rem;
+      }
       &:nth-child(1) {
         border-bottom: 2px solid $text-blue;
       }

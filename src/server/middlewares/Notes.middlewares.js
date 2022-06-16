@@ -35,7 +35,7 @@ export async function getDate() {
 //* @params (date) = la date à comparer
 export function checkDate(date) {
   //~ Define 3 months milliseconds and get the date of the day
-  let three_months = 7889400000;
+  let months = 2629800000;
   let today = new Date().toISOString().split("T")[0];
 
   today = new Date(today);
@@ -45,7 +45,7 @@ export function checkDate(date) {
   date = today.getTime() - date.getTime();
 
   //~ If the date is superior than 3 months return false
-  return date > three_months ? false : true;
+  return date > months ? false : true;
 }
 
 //* Calcul the average of all concepts values of the language
@@ -71,12 +71,12 @@ async function calculNotes(pk) {
     }
 
     //~ Calcul average of values
-    let average = 0;
-    for (const v of values) average += v;
-    average = (average / values.length) * 10;
+    let averages = [];
+    for (const v of values) averages.push(v * 100 / 5)
+    averages = averages.reduce((a, b) => a + b, 0) / averages.length
 
     //~ Create new instance with the average and the primaryKey
-    Note.create({ percentage: average, id_language: pk });
+    Note.create({ percentage: averages, id_language: pk });
   }
 }
 

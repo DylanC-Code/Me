@@ -5,6 +5,7 @@ import Note from "../models/Note.model.js";
 import Concept from "../models/Concept.model.js";
 import Language_Concept from "../models/Language_Concept.model.js";
 import Category from "../models/Category.model.js";
+import { Op } from "sequelize";
 
 //* @ DELETE /api/notes/delete/:pk
 //* @ Delete a concept with primaryKey
@@ -104,7 +105,7 @@ async function GetAllCategories(req, res) {
 }
 
 //* @ GET /api/notes/category/:pk
-//* @ Get langyages and their notes by category
+//* @ Get languages and their notes by category
 async function GetLanguagesOfCategory(req, res) {
   //~ Get all the languages with id_category
   let { id_category } = req.params;
@@ -120,12 +121,28 @@ async function GetLanguagesOfCategory(req, res) {
   for (const v of languages) {
     let { id_language } = v
     let request = await Note.findAll({
-      where: { id_language }, attributes: ["percentage", "date"], raw: true,
+      where: { id_language }, attributes: ["percentage", "date", ["id_language", "id"]], raw: true,
     })
-    let notes = request.map(v => v.percentage)
-    let dates = request.map(v => v.date)
 
-    result.push({ name: v.name, notes, dates })
+    // !
+    let month = new Date().getMonth()
+
+    let notes = request.filter(v => {
+      let m = v.date.split("-")[1]
+      let ok = false
+      for (let i = 1; i < 4; i++) {
+        let tolerance = 12 - i
+        if (month - i < 1 && m > tolerance) ok = true
+        if (m >= month - i && m <= month) ok = true
+      }
+      if (ok) return v
+    })
+    // !
+
+    let dates = notes.map(v => parseDate(v.date))
+    notes = notes.map(v => v.percentage)
+
+    result.push({ name: v.name, notes, dates, id: id_language })
   }
 
   //~ Send the response to the client
@@ -161,6 +178,25 @@ async function GetConceptsOfLanguage(req, res) {
     : res.status(404).send({
       result: `Concepts for language '${id_language}' hasn't been find !`,
     });
+}
+
+/**
+ * Parse date in format (Month:"long" ,Year:"numeric")
+ * Return date
+ * ## Upgrade performance with this
+ * ## https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
+ * @param  { Number } date 
+ */
+
+function parseDate(date) {
+  let d = Date.parse(date)
+  d = new Date(d)
+  let options = {
+    month: "long",
+    year: "numeric",
+  }
+  d = d.toLocaleDateString("en-EN", options)
+  return d
 }
 
 //~Export all the function created in this present file to whatever other file would ask for.
