@@ -15,7 +15,7 @@ export function contactView() {
   let h1 = new HTMLElement("h1").element;
   let p = new HTMLElement("p").element;
   let svg = new SVGElement("svg").element;
-  svg.innerHTML = Contact();
+  svg.appendChild(Contact())
   container.append(h1, p, svg);
 
   // document.createElement("");

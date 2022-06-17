@@ -2,15 +2,15 @@
   display: grid;
   grid-template: 14vh 64vh / 80%;
 
-  & h1 {
+  h1 {
     margin-bottom: 4rem;
-    & > span {
+    > span {
       font: 3rem $font-title;
       text-transform: uppercase;
     }
   }
 
-  & p > span {
+  p > span {
     font: 2.25rem $font-text;
   }
   .container_skills{
@@ -30,10 +30,10 @@
   justify-content: flex-end;
   overflow: hidden;
 
-  & > button {
+  > button {
     position: relative;
     transform: translateY(1px);
-    width: 80px;
+    width: 100px;
     margin-left: 1rem;
     background: transparent;
     border: 1px dashed white;

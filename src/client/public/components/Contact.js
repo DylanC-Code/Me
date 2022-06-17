@@ -1,15 +1,14 @@
 "use-strict";
 
-import { emailSVG } from "./svg/email.svg.js";
-import { objectSVG } from "./svg/object.svg.js";
-import { textBoxSVG } from "./svg/textBox.svg.js";
-import { submitSVG } from "./svg/submit.svg.js";
+import EmailInput from "./svg/email.js";
+import ObjectInput from "./svg/object.js";
+import TextBoxInput from "./svg/textBox.js";
+import SubmitInput from "./svg/submit.js";
 
 export function Contact() {
-  return `
-    ${emailSVG}
-    ${objectSVG}
-    ${textBoxSVG}
-    ${submitSVG}
-  `;
+  let fragment = new DocumentFragment()
+
+  fragment.append(EmailInput(), ObjectInput(), TextBoxInput(), SubmitInput())
+
+  return fragment
 }

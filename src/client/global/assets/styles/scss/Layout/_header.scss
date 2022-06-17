@@ -2,6 +2,14 @@ header {
   display: grid;
   grid-template: minmax(90px, 15vh) 7vh/ 20vw 50vw 30vw;
   place-items: center;
+  
+  @media (width < 1400px) {
+    grid-template: minmax(90px, 15vh) 7vh/ 20vw 60vw 20vw;
+  }
+
+  @media (width < 1080px) {
+    grid-template: minmax(90px, 15vh) 7vh/ 20vw 80vw;
+  }
 
   & > figure {
     width: 100%;

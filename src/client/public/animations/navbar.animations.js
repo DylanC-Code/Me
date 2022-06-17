@@ -47,7 +47,7 @@ function responsiveKE1(keyframe) {
   function leftValue() {
     let w = Utils.getWidth()
     if (w <= 1406) return "12%"
-    else return "20%"
+    return "20%"
   }
 
   window.addEventListener('resize', () => {
@@ -62,7 +62,10 @@ function responsiveKE1(keyframe) {
 function responsiveKE2(keyframe) {
   function widthValue() {
     let w = Utils.getWidth()
-    let ratio = w * 10.416666666666666 / 100
+    let ratio
+    
+    if (w > 1406||w < 1080) ratio = w * 10.416666666666666 / 100
+    else ratio = w * 7 / 100
     return `${ratio}px`
   }
 

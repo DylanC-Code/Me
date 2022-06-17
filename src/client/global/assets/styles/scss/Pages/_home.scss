@@ -1,6 +1,12 @@
 #main {
-  & > p {
+  > p {
     font: 2.05rem $font-text;
     text-align: center;
+    width: 80%;
+
+    @media (width < 1180px) {
+      margin: 0 auto;
+      width: 70%;
+    }
   }
 }

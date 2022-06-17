@@ -2,7 +2,7 @@ main {
   grid-area: 2/1/2/3;
   height: 78vh;
   display: grid;
-  grid-template-columns: 20vw 80vw;
+  grid-template:78vh/ 20vw 80vw;
   align-items: center;
 
   & > div:first-of-type {
@@ -42,10 +42,7 @@ main {
     padding-top: 0.5rem;
     border-left: 1px dashed;
     border-bottom: 1px dashed;
-
-    @media (width < 1150px) {
-      display: none;
-    }
+ 
   }
   &::after {
     content: "";
