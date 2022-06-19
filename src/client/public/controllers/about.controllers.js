@@ -1,7 +1,7 @@
 "use-strict";
 
 import { subNavBtnsAnimations } from "../animations/subNavBtns.animations.js";
-import { skillsView } from "../views/skills.views.js";
+import skillsView from "../views/skills.views.js";
 import { bioView } from "../views/bio.view.js";
 
 //^ Controllers For About View (sub navbar)
