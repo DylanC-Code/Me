@@ -6,7 +6,7 @@ import { SVGElement } from "../../../global/classes/SVGElement.js";
 
 export default function SubmitInput() {
   let g = new SVGElement("g").element
-  let rect = new SVGElement("rect").attributes([["x", "33%"], ["y", "80%"], ["height", "45px"], ["width", "35%"], ["fill", "#FF4B33"]])
+  let rect = new SVGElement("rect").attributes([["x", "33%"], ["y", "80%"], ["height", "10%"], ["width", "35%"], ["fill", "#FF4B33"]])
   let line1 = new SVGElement('line').attributes([["stroke", "white"], ["y1", "80%"], ["y2", "80%"], ["x1", "33%"], ["x2", "33%"]])
   let line2 = new SVGElement('line').attributes([["stroke", "white"], ["y1", "90%"], ["y2", "90%"], ["x1", "33%"], ["x2", "33%"]])
   let line3 = new SVGElement('line').attributes([["stroke", "white"], ["y1", "90%"], ["y2", "90%"], ["x1", "68%"], ["x2", "68%"]])

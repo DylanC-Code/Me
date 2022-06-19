@@ -2,6 +2,10 @@
   display: grid;
   grid-template: 14vh 64vh / 80%;
 
+  @media (width < 1340px) {
+    grid-template: 14vh 64vh / 100%
+  }
+
   h1 {
     margin-bottom: 4rem;
     > span {
@@ -13,9 +17,9 @@
   p > span {
     font: 2.25rem $font-text;
   }
-  .container_skills{
-    margin: 3rem 0;
-  }
+  // .container_skills{
+  //   // margin: 3rem 0;
+  // }
   .container_bio{
     margin: 3rem;
   }

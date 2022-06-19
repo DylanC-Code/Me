@@ -8,7 +8,7 @@ export default async function skillsView() {
   //~ Make the container of view
 
   let subContainer = bioSkillsContainer();
-  subContainer.style.height = "90%"
+  // subContainer.style.height = "90%"
 
   await SpiderGraph()
 }

@@ -4,6 +4,7 @@
 body {
   color: $text-white;
   position: relative;
+  overflow: hidden;
 
   @media (max-width:"1000px") {
     // transform: rotate(90deg);
