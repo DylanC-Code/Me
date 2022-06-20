@@ -45,6 +45,7 @@
     margin: 1rem auto;
     font-size: 1.4rem;
     outline: none;
+    display: block;
   }
   input[type="file"] {
     display: none;
@@ -100,5 +101,12 @@
   input[type="radio"]:checked + label,
   input[type="checkbox"]:checked + label {
     color: $text-blue;
+  }
+
+  #update_project{
+    display: block; 
+    div{
+      display: flex;
+    }
   }
 }

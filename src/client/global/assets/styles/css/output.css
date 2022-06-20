@@ -269,6 +269,7 @@ nav > div > button:nth-child(1) {
   margin: 1rem auto;
   font-size: 1.4rem;
   outline: none;
+  display: block;
 }
 #modal input[type=file] {
   display: none;
@@ -318,6 +319,12 @@ nav > div > button:nth-child(1) {
 #modal input[type=radio]:checked + label,
 #modal input[type=checkbox]:checked + label {
   color: #38C7C7;
+}
+#modal #update_project {
+  display: block;
+}
+#modal #update_project div {
+  display: flex;
 }
 
 * {
@@ -676,7 +683,12 @@ canvas {
   display: grid;
   grid-template: 14vh 64vh/80%;
 }
-.main_interface #container {
+
+.main_interface_project #subContainer {
+  border: 1px dashed white;
+}
+
+.main_interface_project #container, .main_interface #container {
   border-bottom: 1px dashed white;
   height: 100%;
   width: 0;
@@ -684,7 +696,7 @@ canvas {
   align-items: flex-end;
   padding-left: 10%;
 }
-.main_interface #container ul {
+.main_interface_project #container ul, .main_interface #container ul {
   position: relative;
   bottom: -1px;
   height: 0;
@@ -694,7 +706,7 @@ canvas {
   justify-content: space-between;
   cursor: pointer;
 }
-.main_interface #container ul li {
+.main_interface_project #container ul li, .main_interface #container ul li {
   border-top: 1px dashed white;
   border-left: 1px dashed white;
   border-right: 1px dashed white;
@@ -703,11 +715,11 @@ canvas {
   padding-top: 0.15rem;
   font: 1.1rem "Louis George Café";
 }
-.main_interface #container ul li:nth-child(1) {
+.main_interface_project #container ul li:nth-child(1), .main_interface #container ul li:nth-child(1) {
   border: 1px solid #38C7C7;
   color: #38C7C7;
 }
-.main_interface #subContainer {
+.main_interface_project #subContainer, .main_interface #subContainer {
   width: 70%;
   height: 0;
   margin-left: 10%;
@@ -715,13 +727,13 @@ canvas {
   border-left: 1px dashed white;
   border-right: 1px dashed white;
 }
-.main_interface #subContainer header {
+.main_interface_project #subContainer header, .main_interface #subContainer header {
   display: grid;
   height: 33%;
   grid-template: 50% 50%/70% 30%;
   overflow: hidden;
 }
-.main_interface #subContainer header p {
+.main_interface_project #subContainer header p, .main_interface #subContainer header p {
   grid-area: 1/1/3/1;
   text-align: center;
   line-height: 30px;
@@ -729,7 +741,7 @@ canvas {
   font-size: 1.3rem;
   opacity: 0;
 }
-.main_interface #subContainer header article {
+.main_interface_project #subContainer header article, .main_interface #subContainer header article {
   display: flex;
   width: 0;
   height: 0;
@@ -741,21 +753,34 @@ canvas {
   color: transparent;
   cursor: pointer;
 }
-.main_interface #subContainer header article h1 {
+.main_interface_project #subContainer header article h1, .main_interface #subContainer header article h1 {
   padding-top: 0.4rem;
   font: 1.2rem Jumper;
 }
-.main_interface #subContainer header article svg {
+.main_interface_project #subContainer header article svg, .main_interface #subContainer header article svg {
   transition: 5s;
 }
-.main_interface #subContainer header article:hover > svg {
+.main_interface_project #subContainer header article:hover > svg, .main_interface #subContainer header article:hover > svg {
   transform: rotate(25turn) scale(1.5);
 }
-.main_interface #subContainer section {
+.main_interface_project #subContainer section, .main_interface #subContainer section {
   height: 66%;
   display: grid;
   grid-template: 50% 50%/50% 50%;
   place-items: center;
+}
+
+.main_interface_project {
+  display: block;
+  height: 100%;
+  width: 80%;
+  padding-top: 5%;
+}
+.main_interface_project #container {
+  border: 1px dashed white;
+  width: 0;
+  height: 0;
+  margin: auto;
 }
 
 /*# sourceMappingURL=output.css.map */

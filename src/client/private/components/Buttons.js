@@ -27,14 +27,14 @@ function nextPreviousBtn() {
             fill="#38C7C7"/>
         </svg>
       `;
-  let h1;
+  let h1 = new HTMLElement("h1", null).text("Next");
   let next = `
           <svg width="9" height="13" viewBox="0 0 9 13" fill="none" xmlns="http://www.w3.org/2000/svg" id="next">
             <path d="M2.4375 0.25L0.96875 1.71875L5.73959 6.5L0.96875 11.2812L2.4375 12.75L8.6875 6.5L2.4375 0.25Z"
               fill="#38C7C7"/>
           </svg>
         `;
-  h1 = new HTMLElement("h1", null).text("Next");
+  // h1 = new HTMLElement("h1", null).text("Next");
   article.innerHTML = previous;
   article.appendChild(h1);
   article.innerHTML += next;

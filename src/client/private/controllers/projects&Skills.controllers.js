@@ -2,7 +2,7 @@
 
 import { projectsSkillsAnimations } from "../animations/projects&Skills.animations.js";
 import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
-import { interfaceProjectView } from "../views/interfaceProject.view.js";
+import projectInterfaceView from "../views/projectsInterface.view.js";
 
 //^ Control events on thoses buttons, launch anims and display views
 export function projectsSkillsControllers() {
@@ -37,5 +37,5 @@ export function projectsSkillsControllers() {
   buttons[0].addEventListener("click", () =>
     new Datas_Interface_View("categories").create()
   );
-  buttons[1].addEventListener("click", interfaceProjectView);
+  buttons[1].addEventListener("click", () => projectInterfaceView());
 }

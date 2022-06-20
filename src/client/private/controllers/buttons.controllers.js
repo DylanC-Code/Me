@@ -2,20 +2,20 @@
 
 //^ Controllers for the button with next and previous options
 export function buttonsControllers(datas) {
-  //~ Get first an last cards elements on the main
-  let first = document.querySelector("[data-category]");
-  let last = document.querySelectorAll("[data-category]")[3];
+  //~ Get first and last cards elements on the main
+  let first = document.querySelector("[data-category]") ? document.querySelector("[data-category]") : document.querySelector("[data-project]")
+  let last = document.querySelectorAll("[data-category]")[3] ? document.querySelectorAll("[data-category]")[3] : document.querySelectorAll("[data-project]")[3]
 
   let plus = [];
   let less = [];
 
   // //~ Control if datas have more or less elements to display
   if (last) {
-    last = datas.findIndex((d) => d.id == last.dataset.category);
+    last = datas.findIndex((d) => d.id == last.dataset.category || d.id == last.dataset.project);
     plus = datas.filter((d) => datas.indexOf(d) > last);
   }
   if (first) {
-    first = datas.findIndex((d) => d.id == first.dataset.category);
+    first = datas.findIndex((d) => d.id == first.dataset.category || d.id == first.dataset.project);
     less = datas.filter((d) => datas.indexOf(d) < first);
   }
 

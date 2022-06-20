@@ -32,8 +32,8 @@ async function DeleteProject(req, res) {
   //~ Send response to the client
   result
     ? res.status(200).send({
-        result: `Project ${pk} has been delete succesfully !`,
-      })
+      result: `Project ${pk} has been delete succesfully !`,
+    })
     : res.status(404).send({ result: `Project ${pk} hasn't been found  !` });
 }
 
@@ -53,8 +53,8 @@ async function UpdateProject(req, res) {
     //~ Send response to the client
     result[0]
       ? res.status(200).send({
-          result: `Project ${name} has been update succesfully !`,
-        })
+        result: `Project ${name} has been update succesfully !`,
+      })
       : res.status(404).send({ result: `Project ${pk} hasn't been found  !` });
   } else res.status(404).send({ result: `You are not authorized !` });
 }
@@ -72,4 +72,12 @@ async function GetProject(req, res) {
     : res.status(404).send({ result: `Project ${pk} hasn't been found  !` });
 }
 
-export { AddProject, DeleteProject, UpdateProject, GetProject };
+async function GetAllProject(req, res) {
+  let result = await Project.findAll({ attributes: [["id_project", "id"], "name", "url", "text", "image", "date", "collaborators"], raw: true })
+
+  result
+    ? res.status(200).send({ result })
+    : res.status(404).send({ result: `Project ${pk} hasn't been found  !` });
+}
+
+export { AddProject, DeleteProject, UpdateProject, GetProject, GetAllProject };
