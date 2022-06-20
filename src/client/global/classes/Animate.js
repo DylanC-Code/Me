@@ -1,6 +1,6 @@
 "use-strict";
 
-import { SVGElement } from "./SVGElement.js";
+import SVGElement from "./SVGElement.js";
 
 export default class Animate extends SVGElement {
   constructor(attribute, from, to, duration, begin, fill, id, keyTimes) {

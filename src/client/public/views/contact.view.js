@@ -4,7 +4,7 @@ import { contactControllers } from "../controllers/contact.controllers.js";
 import { Contact } from "../components/Contact.js";
 import { contactContainer } from "../containers/contact.container.js";
 import { HTMLElement } from "../../global/classes/HTMLElement.js";
-import { SVGElement } from "../../global/classes/SVGElement.js";
+import SVGElement from "../../global/classes/SVGElement.js";
 
 //^ Display Contact View
 export function contactView() {

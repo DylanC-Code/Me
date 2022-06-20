@@ -1,15 +1,15 @@
 "use-strict";
 
 import { Container } from "../components/Containers.js";
+import projects from "../components/Projects.js";
+import { projectBoxAnims } from "../components/svg/projectsBox.js";
+import projectsContainer from "../containers/projects.container.js";
 
 export function projectsView() {
   let main = document.getElementById("main");
-  main.className = "main_projects";
+  let svg = projectsContainer()
+  svg.append(projects())
+  main.appendChild(svg)
 
-  let container = Container.Base();
-  container.innerHTML = `
-    <h2>Project 1/10</h2>
-    <h1>Lemon's Quizz</h1>
-    <svg id="projects" width="50vw" height="50vh"></svg>
-  `;
+  projectBoxAnims().play()
 }
