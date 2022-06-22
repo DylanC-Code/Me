@@ -1,0 +1,13 @@
+.main_interface_project{
+  display: block;
+  height: 100%;
+  width: 80%;
+  padding-top: 5%;
+
+  #container{
+    border: 1px dashed white;
+    width: 0;
+    height: 0;
+    margin: auto;
+  }
+}
