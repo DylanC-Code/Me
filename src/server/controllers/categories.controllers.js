@@ -23,7 +23,7 @@ Language.belongsTo(Category, {
 async function CreateCategory(req, res) {
   let { name } = req.body;
 
-  // Control the validity of the category name
+  // Control the category name
   if (!Validator.name(name)) return res.status(400).send({ error: "Error the name isn't valid !" });
 
   //~ Find or create new category
@@ -40,7 +40,7 @@ async function CreateCategory(req, res) {
 async function DeleteCategory(req, res) {
   let { pk } = req.params;
 
-  // Control if the primaryKey is a number
+  // Control the primaryKey
   if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
 
   //~ Delete the category with it primaryKey
@@ -54,16 +54,18 @@ async function DeleteCategory(req, res) {
 //* @ PUT /api/categories/update
 //* @ Update a category
 async function UpdateCategory(req, res) {
-  //~ Find the category with it primaryKey and update it
   let { pk, name } = req.body;
+
+  // Control name and primaryKey 
+  if (!Validator.name(name)) return res.status(400).send({ error: "Error the name isn't valid !" });
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
+
+  //~ Find the category with it primaryKey and update it
   let result = await Category.update({ name }, { where: { id_category: pk } });
 
   //~ Send the response to the client
-  result[0]
-    ? res
-      .status(200)
-      .send({ result: `Category '${name}' has been update succesfully !` })
-    : res.status(404).send({ result: `Category '${pk}' hasn't been found !` });
+  if (result[0]) res.status(200).send({ result: `Category '${name}' has been update succesfully !` })
+  else res.status(404).send({ error: `Category '${pk}' hasn't been found !` });
 }
 
 //* @ GET /api/categories
