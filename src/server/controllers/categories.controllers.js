@@ -24,7 +24,7 @@ async function CreateCategory(req, res) {
   let { name } = req.body;
 
   // Control the validity of the category name
-  if (!Validator.name(name)) return res.status(400).send({ error: "Error category is undefined !" });
+  if (!Validator.name(name)) return res.status(400).send({ error: "Error the name isn't valid !" });
 
   //~ Find or create new category
   let category = await Category.findOrCreate({ where: { name }, defaults: { name }, raw: true, });
@@ -36,24 +36,19 @@ async function CreateCategory(req, res) {
 }
 
 //* @ DELETE /api/categories/delete/:pk
-//* @ Delete category
+//* @ Delete a category
 async function DeleteCategory(req, res) {
-  //~ Find the name of category with it primaryKey
   let { pk } = req.params;
-  let name = await Category.findByPk(pk, {
-    attributes: ["name"],
-    raw: true,
-  });
+
+  // Control if the primaryKey is a number
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
 
   //~ Delete the category with it primaryKey
   let result = await Category.destroy({ where: { id_category: pk } });
 
   //~ Send response to the client
-  result
-    ? res
-      .status(200)
-      .send({ result: `Category '${name.name}' has been delete !` })
-    : res.status(404).send({ result: `Category '${pk}' hasn't been found !` });
+  if (result) res.status(200).send({ result: `Category '${pk}' has been delete succesfully !` })
+  else res.status(404).send({ error: `Category '${pk}' hasn't been found !` });
 }
 
 //* @ PUT /api/categories/update
