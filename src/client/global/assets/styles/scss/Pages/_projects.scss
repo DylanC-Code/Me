@@ -3,10 +3,47 @@
   width: 70%;
   height: 80%;
 
-  #box{
+  .projects_container{
+    height: 100%;
+    display: grid;
+    grid-template: 20% 60% 20%/ 20% repeat(2,30%) 20%;
+  }
+  
+  #subContainer{
+    grid-area: 2/2/3/4;
+    display: grid;
+    place-items: center;
     width: 0;
     height: 0;
-    margin: 0 auto;
-    border: 1px solid red;
+    border: 1px dashed white;
+    transition: .3s;
+    position: relative; 
+
+    *{
+      transition: 0.3s;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding-top: 2rem;
+      color: white;
+    }
+
+    &:hover *{
+      background: rgba(0, 0, 0, 0.801);
+      opacity: 1;
+    }
   }
+  #next{
+    cursor: pointer;
+    grid-area: 3/3/4/4;
+    justify-self: end;
+    margin-top: 1rem;
+  }
+  #previous{
+    cursor: pointer;
+    grid-area: 3/2/4/3;
+    margin-top: 1rem;
+  }
+
 }

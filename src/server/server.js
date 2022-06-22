@@ -8,14 +8,14 @@ import session from "express-session";
 dotenv.config({ path: "src/server/configs/.env" });
 const app = Express();
 
-//# Middlewares
+//* Middlewares
 import UpdateOrAddDates from "./middlewares/Notes.middlewares.js";
 
 app.use(cors());
 app.use(Express.json());
 app.use(UpdateOrAddDates);
 
-//^ Routes
+//* Routes
 import { ProjectsRoutes } from "./routes/projects.routes.js";
 import { CategoriesRoutes } from "./routes/categories.routes.js";
 import { LanguagesRoutes } from "./routes/languages.routes.js";

@@ -5,12 +5,12 @@ import Project from "../models/Project.model.js";
 //* @ POST /api/projects/create
 //* @ Create new project
 async function AddProject(req, res) {
-  let { name, url, text, image, date, collaborators } = req.body;
+  let { name, url, text, date, collaborators } = req.body;
 
   //~ Find or create a new project
   let result = await Project.findOrCreate({
     where: { name },
-    defaults: { name, url, text, image, date, collaborators },
+    defaults: { name, url, text, image: `${name}.svg`, date, collaborators },
     raw: true,
   });
 

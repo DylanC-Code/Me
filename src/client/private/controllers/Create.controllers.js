@@ -39,7 +39,7 @@ export class Create_Controllers extends Modal_Controllers {
     this.body = new FormData();
     this.body.set("name", this.name.value);
     this.body.set("id_category", this.cat.id);
-    this.body.set("logo", this.file.files[0]);
+    this.body.set("image", this.file.files[0]);
 
     //~ Send request
     let req = await fetch("http://127.0.0.1:4000/api/languages/create", {

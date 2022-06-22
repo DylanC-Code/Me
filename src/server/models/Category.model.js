@@ -1,6 +1,7 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/database.js";
 
+// The model of the categories table
 const Category = sequelize.define(
   "Category",
   {

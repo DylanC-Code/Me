@@ -2,37 +2,37 @@
 
 import Category from "../models/Category.model.js";
 import Language from "../models/Language.model.js";
+import { Validator } from "../utils/Validator.js";
 
+
+// Define the relation between Categories and Languages tables
+//* A category has many languages
 Category.hasMany(Language, {
   foreignKey: { name: "id_category", allowNull: false },
   onDelete: "CASCADE",
 });
+
+//* A language belongs to category
 Language.belongsTo(Category, {
   foreignKey: "id_category",
   onDelete: "CASCADE",
 });
 
 //* @ POST /api/categories/create
-//* @ Create new category
+//* @ Add new category
 async function CreateCategory(req, res) {
   let { name } = req.body;
 
-  //~ Control name is not undefined
-  if (name) {
-    //~ Find or create new instance
-    let category = await Category.findOrCreate({
-      where: { name },
-      defaults: { name },
-      raw: true,
-    });
+  // Control the validity of the category name
+  if (!Validator.name(name)) return res.status(400).send({ error: "Error category is undefined !" });
 
-    //~ Return response to the client
-    category[1]
-      ? res.status(201).send({ result: `${name} as been add succesfully !` })
-      : res
-          .status(404)
-          .send({ result: `${name} already exist !`, error: true });
-  } else res.status(400).send({ result: "Error category is undefined !" });
+  //~ Find or create new category
+  let category = await Category.findOrCreate({ where: { name }, defaults: { name }, raw: true, });
+
+  // Return a response after create the category
+  if (category[1]) res.status(201).send({ result: `${name} as been add succesfully !` })
+  else res.status(404).send({ error: `${name} already exist !`, error: true });
+
 }
 
 //* @ DELETE /api/categories/delete/:pk
@@ -51,8 +51,8 @@ async function DeleteCategory(req, res) {
   //~ Send response to the client
   result
     ? res
-        .status(200)
-        .send({ result: `Category '${name.name}' has been delete !` })
+      .status(200)
+      .send({ result: `Category '${name.name}' has been delete !` })
     : res.status(404).send({ result: `Category '${pk}' hasn't been found !` });
 }
 
@@ -66,8 +66,8 @@ async function UpdateCategory(req, res) {
   //~ Send the response to the client
   result[0]
     ? res
-        .status(200)
-        .send({ result: `Category '${name}' has been update succesfully !` })
+      .status(200)
+      .send({ result: `Category '${name}' has been update succesfully !` })
     : res.status(404).send({ result: `Category '${pk}' hasn't been found !` });
 }
 

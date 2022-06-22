@@ -34,7 +34,7 @@ let uploadSingleImage = multer({
   fileFilter: function (req, file, cb) {
     checkTypes(file, cb);
   },
-}).single("logo");
+}).single("image");
 
 //* Send the response to the client
 export function upload(req, res, next) {

@@ -3,6 +3,7 @@
 import Express from "express";
 import * as Controllers from "../controllers/categories.controllers.js";
 
+// Import router from Express
 const router = Express.Router();
 
 router.post("/create", Controllers.CreateCategory);
