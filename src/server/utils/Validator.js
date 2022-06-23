@@ -10,22 +10,22 @@ export const Validator = {
 
   name: (name) => {
     if (!name || typeof name != "string") return false
-    return /^[^'][\w#+~&|_-]{2,20}$/.test(name)
+    return /^[^'][\w#+~&|_-\s]{2,20}$/.test(name)
   },
 
   /**
-   * Control if the input is an integer
+   * Control if the input is a integer
    * Return Boolean
    * @param  { Integer } num The input to control
    */
 
   num: (num) => {
-    if (typeof parseInt(num) != "number") return false
+    if (typeof num != "number" && !parseInt(num)) return false
     return true
   },
 
   /**
-   * Control if the input is an valid text
+   * Control if the input is a valid text
    * Return Boolean
    * @param  { String } text The input to control
    */
@@ -36,7 +36,7 @@ export const Validator = {
   },
 
   /**
-   * Control if the input is an valid date
+   * Control if the input is a valid date
    * Return Boolean
    * @param  { String } date The input to control
    */
@@ -44,5 +44,31 @@ export const Validator = {
   date: (date) => {
     if (typeof url != "string") return false
     return /^([\d]{2,4}[\/]){1,2}([\d]{2,4})$/.test(date)
+  },
+
+  /**
+   * Control if the input is a valid note between 0-5
+   * Return boolean
+   * @param  { Integer } note The input to control
+   */
+
+  note: (note) => {
+    if (!parseInt(note)) return false
+    return /^[0-5]$/.test(note)
+  },
+
+  /**
+   * Control if the languages is an array and if each elements is an integer
+   * Return boolean
+   * @param  { Array } languages The array to control
+   */
+
+  languages: (languages) => {
+    if (!Array.isArray(languages)) return false
+    let invalid = languages.filter(v => { if (!Validator.num(v)) return v })[0]
+
+    if (invalid) return false
+    return true
   }
 }
+

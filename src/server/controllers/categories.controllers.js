@@ -6,7 +6,7 @@ import { Validator } from "../utils/Validator.js";
 
 //¨ Associations
 
-// Define the relation between Categories and Languages tables
+//* Define the relation between Categories and Languages tables
 // A category has many languages
 Category.hasMany(Language, { foreignKey: { name: "id_category", allowNull: false }, onDelete: "CASCADE", });
 

@@ -22,7 +22,7 @@ async function AddProject(req, res) {
 
   // Send the response to the client
   if (result[1]) res.status(201).send({ result: result[0] })
-  else res.status(400).send({ error: `Project ${name} already exist !` });
+  else res.status(400).send({ error: `Project '${name}' already exist !` });
 }
 
 //* @ DELETE /api/projects/delete/:pk
@@ -36,8 +36,8 @@ async function DeleteProject(req, res) {
   let result = await Project.destroy({ where: { id_project: pk } });
 
   // Send response to the client
-  if (result) res.status(200).send({ result: `Project ${pk} has been delete succesfully !`, })
-  else res.status(404).send({ error: `Project ${pk} hasn't been found  !` });
+  if (result) res.status(200).send({ result: `Project '${pk}' has been delete succesfully !`, })
+  else res.status(404).send({ error: `Project '${pk}' hasn't been found  !` });
 }
 
 //* @ PUT /api/projects/update/
@@ -58,8 +58,8 @@ async function UpdateProject(req, res) {
   let result = await Project.update({ name, url, text, image: `${name}.svg`, date, collaborators }, { where: { id_project: pk } });
 
   // Send response to the client
-  if (result[0]) res.status(200).send({ result: `Project ${name} has been update succesfully !` })
-  else res.status(404).send({ error: `Project ${name} hasn't been found  !` });
+  if (result[0]) res.status(200).send({ result: `Project '${name}' has been update succesfully !` })
+  else res.status(404).send({ error: `Project '${name}' hasn't been found  !` });
 }
 
 //* @ GET /api/projects/:pk
@@ -74,7 +74,7 @@ async function GetProject(req, res) {
 
   // Send response to the client
   if (result) res.status(200).send({ result })
-  else res.status(404).send({ result: `Project ${pk} hasn't been found  !` });
+  else res.status(404).send({ result: `Project '${pk}' hasn't been found  !` });
 }
 
 //* @ GET /api/projects/
@@ -85,7 +85,7 @@ async function GetAllProject(req, res) {
 
   // Send response to the client
   if (result) res.status(200).send({ result })
-  else res.status(404).send({ result: `Project ${pk} hasn't been found  !` });
+  else res.status(404).send({ result: `Project '${pk}' hasn't been found  !` });
 }
 
 export { AddProject, DeleteProject, UpdateProject, GetProject, GetAllProject };
