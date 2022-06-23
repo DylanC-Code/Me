@@ -75,23 +75,19 @@ async function UpdateLanguage(req, res) {
 }
 
 //* @ GET /api/languages/:pk
-//* @ Get all languages of the primaryKey category
+//* @ Get all languages of a category
 async function GetAllLanguagesByCategory(req, res) {
   let { pk } = req.params;
 
+  // Control primaryKey
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
+
   //~ Find languages with the primaryKey category
-  let result = await Language.findAll({
-    where: { id_category: pk },
-    attributes: ["id_language", "name"],
-    raw: true,
-  });
+  let result = await Language.findAll({ where: { id_category: pk }, attributes: ["id_language", "name"], raw: true, });
 
   //~ Send response to the client
-  result[0]
-    ? res.status(200).send({ result })
-    : res.status(404).send({
-      result: `Category '${pk}' hasn't been found or do not contain languages !`,
-    });
+  if (result[0]) res.status(200).send({ result })
+  else res.status(404).send({ error: `Category '${pk}' hasn't been found or do not contain languages !` });
 }
 
 //* @ GET /api/languages/
