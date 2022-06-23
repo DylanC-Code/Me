@@ -93,19 +93,12 @@ async function GetAllLanguagesByCategory(req, res) {
 //* @ GET /api/languages/
 //* @ Get all languages
 async function GetAllLanguages(req, res) {
-  //~ Find languages with the primaryKey category
-  let result = await Language.findAll({
-    // order: [["id_language", "ASC"]],
-    attributes: [["id_language", "id"], "name"],
-    raw: true,
-  });
+  //~ Find all languages
+  let result = await Language.findAll({ attributes: [["id_language", "id"], "name"], raw: true, });
 
   //~ Send response to the client
-  result[0]
-    ? res.status(200).send({ result })
-    : res.status(404).send({
-      result: `Error languages hasn't been find ! `,
-    });
+  if (result[0]) res.status(200).send({ result })
+  else res.status(404).send({ result: `Error languages hasn't been find ! ` });
 }
 
 export {
