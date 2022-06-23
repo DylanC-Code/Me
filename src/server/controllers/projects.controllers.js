@@ -1,23 +1,28 @@
 "use-strict";
 
 import Project from "../models/Project.model.js";
+import { Validator } from "../utils/Validator.js";
+
+//¨ Controllers 
 
 //* @ POST /api/projects/create
-//* @ Create new project
+//* @ Add new project
 async function AddProject(req, res) {
   let { name, url, text, date, collaborators } = req.body;
 
+  // Control name, url, text, date and collaborators
+  if (!Validator.name(name)) return res.status(400).send({ error: "Error the name isn't valid !" });
+  if (typeof url != "string") return res.status(400).send({ error: "Error the url isn't valid !" });
+  if (!Validator.text(text)) return res.status(400).send({ error: "Error the text isn't valid !" });
+  if (!Validator.date(date)) return res.status(400).send({ error: "Error the date isn't valid !" });
+  if (!Validator.text(collaborators)) return res.status(400).send({ error: "Error the collaborators isn't valid !" });
+
   //~ Find or create a new project
-  let result = await Project.findOrCreate({
-    where: { name },
-    defaults: { name, url, text, image: `${name}.svg`, date, collaborators },
-    raw: true,
-  });
+  let result = await Project.findOrCreate({ where: { name }, defaults: { name, url, text, image: `${name}.svg`, date, collaborators }, raw: true, });
 
   //~ Send the response to the client
-  result[1]
-    ? res.status(201).send({ result: result[0] })
-    : res.status(400).send({ result: `Project ${name} already exist !` });
+  if (result[1]) res.status(201).send({ result: result[0] })
+  else res.status(400).send({ error: `Project ${name} already exist !` });
 }
 
 //* @ DELETE /api/projects/delete/:pk
