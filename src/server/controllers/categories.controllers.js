@@ -4,18 +4,16 @@ import Category from "../models/Category.model.js";
 import Language from "../models/Language.model.js";
 import { Validator } from "../utils/Validator.js";
 
-// Define the relation between Categories and Languages tables
-//* A category has many languages
-Category.hasMany(Language, {
-  foreignKey: { name: "id_category", allowNull: false },
-  onDelete: "CASCADE",
-});
+//¨ Associations
 
-//* A language belongs to category
-Language.belongsTo(Category, {
-  foreignKey: "id_category",
-  onDelete: "CASCADE",
-});
+// Define the relation between Categories and Languages tables
+// A category has many languages
+Category.hasMany(Language, { foreignKey: { name: "id_category", allowNull: false }, onDelete: "CASCADE", });
+
+// A language belongs to category
+Language.belongsTo(Category, { foreignKey: "id_category", onDelete: "CASCADE", });
+
+//¨ Controllers
 
 //* @ POST /api/categories/create
 //* @ Add new category

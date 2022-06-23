@@ -37,7 +37,7 @@ let uploadSingleImage = multer({
 }).single("image");
 
 //* Send the response to the client
-export function upload(req, res, next) {
+export default function upload(req, res, next) {
   uploadSingleImage(req, res, function (err) {
     if (err) res.status(404).send({ result: err, error: true });
     else {

@@ -1,8 +1,8 @@
 "use-strict";
 
 import Express from "express";
+import upload from "../middlewares/Image.middlewares.js";
 import * as Controllers from "../controllers/projects.controllers.js";
-import { upload } from "../middlewares/Image.middlewares.js";
 
 const router = Express.Router();
 

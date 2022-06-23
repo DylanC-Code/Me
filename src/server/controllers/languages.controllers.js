@@ -3,42 +3,41 @@
 import Category from "../models/Category.model.js";
 import Language from "../models/Language.model.js";
 import Note from "../models/Note.model.js";
+import { Validator } from "../utils/Validator.js";
 
-//^ Different association between the tables
+//¨ Associations
 
-Category.hasMany(Language, {
-  foreignKey: { name: "id_category", allowNull: false },
-  onDelete: "CASCADE",
-});
-Language.belongsTo(Category, {
-  foreignKey: "id_category",
-  onDelete: "CASCADE",
-});
-Language.hasMany(Note, {
-  foreignKey: { name: "id_language" },
-  onDelete: "CASCADE",
-});
+//* Define the relation between Categories and Languages tables
+// A category has many languages
+Category.hasMany(Language, { foreignKey: { name: "id_category", allowNull: false }, onDelete: "CASCADE", });
+
+// A language belongs to category
+Language.belongsTo(Category, { foreignKey: "id_category", onDelete: "CASCADE", });
+
+//* Define the relation between Languages and Notes tables
+// A language has many notes
+Language.hasMany(Note, { foreignKey: { name: "id_language" }, onDelete: "CASCADE", });
+
+// A note belongs to language
 Note.belongsTo(Language, { foreignKey: "id_language", onDelete: "CASCADE" });
 
-//# CONTROLLERS
-//#############
+//¨ Controllers
 
 //* @ POST /api/languages/create
 //* @ Add new language in database
 async function AddLanguage(req, res) {
   let { name, id_category } = req.body;
 
-  //~ Control if the language name is not exist and create them
-  let result = await Language.findOrCreate({
-    where: { name },
-    defaults: { name, id_category, logo: `${name}.svg` },
-    raw: true,
-  });
+  // Control name 
+  if (!Validator.name(name)) return res.status(400).send({ error: "Error the name isn't valid !" });
+  if (!Validator.num(id_category)) return res.status(400).send({ error: `The id_category '${id_category}' isn't a number !` })
 
-  //~ Send response to the client
-  result[1]
-    ? res.status(201).send({ result: result[0] })
-    : res.status(400).send({ result: `${name} already save in database !` });
+  // Find language with the name or create it
+  let result = await Language.findOrCreate({ where: { name }, defaults: { name, id_category, logo: `${name}.svg` }, raw: true, });
+
+  // Send response to the client
+  if (result[1]) res.status(201).send({ result: result[0] })
+  else res.status(400).send({ error: `${name} already save in database !` });
 }
 
 //* @ DELETE /api/languages/delete/:pk
@@ -57,8 +56,8 @@ async function DeleteLanguage(req, res) {
   //~ Send response to the client
   result
     ? res
-        .status(200)
-        .send({ result: `Language : '${name}' has been delete succesfully !` })
+      .status(200)
+      .send({ result: `Language : '${name}' has been delete succesfully !` })
     : res.status(404).send({ result: `Language ${pk} has not found !` });
 }
 
@@ -95,8 +94,8 @@ async function GetAllLanguagesByCategory(req, res) {
   result[0]
     ? res.status(200).send({ result })
     : res.status(404).send({
-        result: `Category '${pk}' hasn't been found or do not contain languages !`,
-      });
+      result: `Category '${pk}' hasn't been found or do not contain languages !`,
+    });
 }
 
 //* @ GET /api/languages/
@@ -113,8 +112,8 @@ async function GetAllLanguages(req, res) {
   result[0]
     ? res.status(200).send({ result })
     : res.status(404).send({
-        result: `Error languages hasn't been find ! `,
-      });
+      result: `Error languages hasn't been find ! `,
+    });
 }
 
 export {
