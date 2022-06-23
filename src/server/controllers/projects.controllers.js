@@ -28,18 +28,16 @@ async function AddProject(req, res) {
 //* @ DELETE /api/projects/delete/:pk
 //* @ Delete a project
 async function DeleteProject(req, res) {
-  //~ Delete project with it primaryKey
   let { pk } = req.params;
-  let result = await Project.destroy({
-    where: { id_project: pk },
-  });
+
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
+
+  //~ Delete project with primaryKey
+  let result = await Project.destroy({ where: { id_project: pk } });
 
   //~ Send response to the client
-  result
-    ? res.status(200).send({
-      result: `Project ${pk} has been delete succesfully !`,
-    })
-    : res.status(404).send({ result: `Project ${pk} hasn't been found  !` });
+  if (result) res.status(200).send({ result: `Project ${pk} has been delete succesfully !`, })
+  else res.status(404).send({ error: `Project ${pk} hasn't been found  !` });
 }
 
 //* @ PUT /api/projects/update/
