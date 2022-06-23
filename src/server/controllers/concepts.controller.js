@@ -1,6 +1,5 @@
 "use-strict";
 
-import { Op } from "sequelize";
 import Concept from "../models/Concept.model.js";
 import Language from "../models/Language.model.js";
 import Language_Concept from "../models/Language_Concept.model.js";
@@ -49,74 +48,67 @@ async function AddConcept(req, res) {
 //* @ DELETE /api/concepts/delete/:pk
 //* @ Remove a concept
 async function DeleteConcept(req, res) {
-  // Delete the concept with it primaryKey
   let { pk } = req.params;
+
+  // Control primaryKey
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
+
+  // Delete the concept with it primaryKey
   let result = await Concept.destroy({ where: { id_concept: pk } });
 
   // Send the response to the client
-  result
-    ? res
-      .status(200)
-      .send({ result: `Concept '${pk}' has been deleted succesfully !` })
-    : res.status(404).send({ result: `Concept '${pk}' hasn't been find !` });
+  if (result) res.status(200).send({ result: `Concept '${pk}' has been deleted succesfully !` })
+  else res.status(404).send({ result: `Concept '${pk}' hasn't been find !` });
 }
 
 //* @ PUT /api/concepts/update
 //* @ Update a concept
 async function UpdateConcept(req, res) {
-  // Update the concept with it primaryKey
   let { pk, name, value } = req.body;
 
-  let result = await Concept.update(
-    { name, value },
-    { where: { id_concept: pk } }
-  );
+  // Control primaryKey, name and note
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
+  if (!Validator.name(name)) return res.status(400).send({ error: "Error the name isn't valid !" });
+  if (!Validator.note(value)) return res.status(400).send({ error: "Error the note isn't valid !" });
+
+  // Update the concept with it primaryKey
+  let result = await Concept.update({ name, value }, { where: { id_concept: pk } });
 
   // Send the response to the client
-  result[0]
-    ? res
-      .status(200)
-      .send({ result: `Concept '${pk}' has been update succesfully !` })
-    : res.status(404).send({ result: `Concept '${pk}' hasn't been find !` });
+  if (result[0]) res.status(200).send({ result: `Concept '${pk}' has been update succesfully !` })
+  else res.status(404).send({ result: `Concept '${pk}' hasn't been find !` });
 }
 
 //* @ GET /api/concepts/:pk
 //* @ Get all concepts of a language with it primaryKey
 async function GetAllConceptsByLanguage(req, res) {
-  // Find all concepts related to a language using the primaryKey
   let { pk } = req.params;
-  let result = await Language_Concept.findAll({
-    where: { id_language: pk },
-    attributes: ["id_concept"],
-    raw: true,
-  });
 
-  // Controll if the language exist or has concepts
-  if (result[0]) {
-    let concept = [];
-    for (let c in result)
-      concept.push(await Concept.findByPk(result[c].id_concept, { raw: true }));
+  // Control primaryKey
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
 
-    // Send response to the client
-    res.status(200).send({ result: concept });
-  } else
-    res.status(404).send({
-      result: `Language '${pk}' hasn't been find or doesn't have concepts !`,
-    });
+  // Find all concepts related to a language using the primaryKey
+  let result = await Language_Concept.findAll({ where: { id_language: pk }, attributes: ["id_concept"], raw: true });
+  result = result.map(v => v.id_concept)
+
+  // Control if the language exist or has concepts
+  if (!result[0]) res.status(404).send({ error: `Language '${pk}' hasn't been find or doesn't have concepts !` });
+
+  // Find all concepts with id
+  let concepts = await Concept.findAll({ where: { id_concept: result }, raw: true })
+
+  // Send response to the client
+  res.status(200).send({ result: concepts });
 }
 
 //* @ GET /api/concepts/
 //* @ Get all concepts
 async function GetAllConcepts(req, res) {
-  let result = await Concept.findAll({
-    attributes: [["id_concept", "id"], "name", "value"],
-    raw: true,
-  });
+  let result = await Concept.findAll({ attributes: [["id_concept", "id"], "name", "value"], raw: true, });
 
   // Send response to the client
-  result[0]
-    ? res.status(200).send({ result })
-    : res.status(404).send({ result: `Error concept hasn't been find !` });
+  if (result[0]) res.status(200).send({ result })
+  else res.status(404).send({ result: `Error concept hasn't been find !` });
 }
 
 export {
