@@ -71,7 +71,7 @@ async function GetAllCategories(req, res) {
   let result = await Category.findAll({ raw: true, attributes: [["id_category", "id"], "name"] });
 
   // Add for each category the number of associated languages
-  result.forEach(v => v.languages = await Language.count({ where: { id_category: v.id }, }))
+  result.forEach(async v => v.languages = await Language.count({ where: { id_category: v.id }, }))
 
   // Send the response to the client
   if (result[0]) res.status(200).send({ result })

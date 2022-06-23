@@ -43,22 +43,17 @@ async function AddLanguage(req, res) {
 //* @ DELETE /api/languages/delete/:pk
 //* @ Delete a language
 async function DeleteLanguage(req, res) {
-  //~ Find language and get the name with primaryKey
   let { pk } = req.params;
-  let { name } = await Language.findByPk(pk, {
-    attributes: ["name"],
-    raw: true,
-  });
 
-  //~ Delete it with primaryKey
+  // Control primaryKey
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The id_category '${pk}' isn't a number !` })
+
+  //~ Delete language with primaryKey
   let result = await Language.destroy({ where: { id_language: pk } });
 
   //~ Send response to the client
-  result
-    ? res
-      .status(200)
-      .send({ result: `Language : '${name}' has been delete succesfully !` })
-    : res.status(404).send({ result: `Language ${pk} has not found !` });
+  if (result) res.status(200).send({ result: `The language has been delete succesfully !` })
+  else res.status(404).send({ result: `Language ${pk} hasn't found !` });
 }
 
 //* @ PUT /api/languages/update/

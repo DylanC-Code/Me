@@ -17,7 +17,7 @@ export const Validator = {
    * @param  { Integer } num The input to control
    */
   num: (num) => {
-    if (!parseInt(num) || typeof num != "number") return false
+    if (typeof parseInt(num) != "number") return false
     return true
   }
 }
