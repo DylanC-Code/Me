@@ -59,18 +59,19 @@ async function DeleteLanguage(req, res) {
 //* @ PUT /api/languages/update/
 //* @ Update a language
 async function UpdateLanguage(req, res) {
-  let { pk, name, id_category } = req.body;
+  let { pk, id_category, name } = req.body;
 
-  //~ Find language with the primaryKey and update it
-  let result = await Language.update(
-    { name, id_category, logo: `${name}.svg` },
-    { where: { id_language: pk } }
-  );
+  // Control primaryKey, id_category and name
+  if (!Validator.num(pk)) return res.status(400).send({ error: `The primaryKey '${pk}' isn't a number !` })
+  if (!Validator.num(id_category)) return res.status(400).send({ error: `The id_category '${id_category}' isn't a number !` })
+  if (!Validator.name(name)) return res.status(400).send({ error: `The name '${name}' isn't a valid name !` })
 
-  //~ Send response to the client
-  result[0]
-    ? res.status(200).send({ result: `${name} has been update succesfully !` })
-    : res.status(404).send({ result: `Language ${pk} hasn't been found !` });
+  // Update the language with the primaryKey
+  let result = await Language.update({ name, id_category, logo: `${name}.svg` }, { where: { id_language: pk } });
+
+  // Send response to the client
+  if (result[0]) res.status(200).send({ result: `${name} has been update succesfully !` })
+  else res.status(404).send({ error: `Language ${pk} hasn't been found !` });
 }
 
 //* @ GET /api/languages/:pk
