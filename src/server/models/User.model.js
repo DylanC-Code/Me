@@ -24,7 +24,12 @@ const User = sequelize.define(
         user.password = bcript.hashSync(user.password, salt);
       },
     },
+
   }
 );
+
+User.prototype.validPassword = async (password, hash) => {
+  return bcript.compareSync(password, hash);
+}
 
 export default User;

@@ -69,6 +69,28 @@ export const Validator = {
 
     if (invalid) return false
     return true
+  },
+
+
+  /**
+   * Control if the input is an integer between 0-100
+   * Return Boolean
+   * @param  { Integer } number The input to control
+   */
+
+  percentage: (number) => {
+    if (!Validator.num(number)) return false
+    return /^([0]?[0-9]?[0-9]|(100))$/.test(number)
+  },
+
+  /**
+   * Control if the input is an username valid
+   * Return Boolean
+   * @param  { String } username The input to control
+   */
+
+  username: (username) => {
+    if (typeof username != "string") return false
+    return /^[\w\sÜü_-]{2,60}$/.test(username)
   }
 }
-
