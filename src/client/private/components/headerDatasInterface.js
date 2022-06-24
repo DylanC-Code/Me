@@ -2,7 +2,7 @@
 
 import Tools from "../../global/utils/Tools.js";
 import { ContentsAdmin } from "../../public/contents/admin.contents.js";
-import HeaderInterfaceAnims, { headerInterfaceAnims } from "../animations/HeaderInterface.animations.js";
+import HeaderInterfaceAnims from "../animations/HeaderInterface.animations.js";
 import { addBtn, nextPreviousBtn } from "../components/Buttons.js";
 import { headerDatasInterfaceControllers } from "../controllers/headerDatasInterface.controllers.js";
 
@@ -11,7 +11,7 @@ export function headerDatasInterface(table, datas) {
   let header = document.querySelector("#subContainer header");
   Tools.removeChilds(header);
 
-  //~ Create paragraphe with difference
+  // Create paragraphe with difference
   let p = document.createElement("p");
   if (table == "categories")
     p.textContent = ContentsAdmin.interfaceData.categories.p;
@@ -23,24 +23,26 @@ export function headerDatasInterface(table, datas) {
   let add = addBtn();
   let nextPrevious = nextPreviousBtn(datas);
 
-  //~ Append all of us to header
+  // Append all of us to header
   header.append(p, add, nextPrevious);
 
-  //! anims
   HeaderInterfaceAnims.play
-  // headerInterfaceAnims().forEach((anim) => anim.play());
   headerDatasInterfaceControllers(table, datas);
 }
+
 export default class HeaderDatasInterface {
+  #table
+  #datas
   constructor(table, datas) {
-    this.table = table;
-    this.datas = datas;
+    this.#table = table;
+    this.#datas = datas;
   }
 
   get display() {
     this.#create()
     this.#animsAndControllers()
   }
+
   //* Create The Elements Of The Header
   #create() {
     // Remove childs of the the header
@@ -49,21 +51,25 @@ export default class HeaderDatasInterface {
 
     // Create and add content to the paragraphe
     let p = document.createElement("p");
-    if (table == "categories")
+    if (this.#table == "categories")
       p.textContent = ContentsAdmin.interfaceData.categories.p;
-    else if (table == "languages")
+    else if (this.#table == "languages")
       p.textContent = ContentsAdmin.interfaceData.categories.p;
-    else if (table == "concepts")
+    else if (this.#table == "concepts")
       p.textContent = ContentsAdmin.interfaceData.categories.p;
 
+    // Call buttons of the header
     let add = addBtn();
-    let nextPrevious = nextPreviousBtn(this.datas);
+    let nextPrevious = nextPreviousBtn(this.#datas);
 
     // Append all of us to header
     header.append(p, add, nextPrevious);
   }
 
   #animsAndControllers() {
-
+    HeaderInterfaceAnims.play
+    // TODO
+    headerDatasInterfaceControllers(this.#table, this.#datas)
+    // TODO
   }
 }

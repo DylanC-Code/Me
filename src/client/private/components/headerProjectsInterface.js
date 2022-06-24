@@ -1,7 +1,7 @@
 "use-strict"
 
 import Tools from "../../global/utils/Tools.js";
-import { headerInterfaceAnims } from "../animations/headerInterface.animations.js";
+import HeaderInterfaceAnims from "../animations/HeaderInterface.animations.js";
 import { addBtn, nextPreviousBtn } from "../components/Buttons.js";
 import { headerProjectsInterfaceControllers } from "../controllers/headerProjectsInterface.controllers.js";
 
