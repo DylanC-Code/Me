@@ -1,6 +1,6 @@
 "use-strict";
 
-import { HTMLElement } from "../../global/classes/HTMLElement.js";
+import HTMLElement from "../../global/classes/HTMLElement.js";
 
 export class Card {
   /**

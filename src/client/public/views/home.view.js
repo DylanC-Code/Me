@@ -1,6 +1,6 @@
 "use-strict";
 
-import { HTMLElement } from "../../global/classes/HTMLElement.js";
+import HTMLElement from "../../global/classes/HTMLElement.js";
 import { removeChild } from "../../global/utils/removeChilds.js";
 import { sessionCheck } from "../../private/tools/session.js";
 import { TypeWriter } from "../animations/TypeWriter.js";

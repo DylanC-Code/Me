@@ -41,6 +41,7 @@ async function DeleteUser(req, res) {
 
 //* @ PUT /api/user/update/
 //* @ Update an user
+// Todo Refacto
 async function UpdateUser(req, res) {
   let { username, new_user, password } = req.body;
 
@@ -63,6 +64,7 @@ async function UpdateUser(req, res) {
 
 //* @ POST /api/user/login/
 //* @ Log the admin user
+// Todo Refacto
 async function Login(req, res) {
   let { username, password } = req.body;
 

@@ -1,19 +1,16 @@
 "use-strict";
 
 import { connectAnims } from "../animations/connect.animations.js";
-import { Connect } from "../components/Connect.js";
 import { Container } from "../../public/components/Containers.js";
 import { connectControllers } from "../controllers/connect.controllers.js";
+import Connect from "../../public/components/svg/Connect.js";
 
-export function connectView() {
+export default function connectView() {
   let main = document.getElementById("main");
   main.className = "main_connect";
 
-  //~ Create the connect page with a complete svg
   let container = Container.Base();
-  container.innerHTML = `<svg width="100%" height="100%">
-  ${Connect()}
-  </svg>`;
+  container.innerHTML = Connect()
 
   //~ Play animations
   connectAnims();

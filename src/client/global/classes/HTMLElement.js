@@ -1,6 +1,6 @@
 "use-strict";
 
-export class HTMLElement {
+export default class HTMLElement {
   /**
    * Create an HTMLElement
    * @param  { SRTING } name Specifie type of the element

@@ -1,7 +1,7 @@
 "use-strict";
 
 import Animate from "../../../global/classes/Animate.js";
-import { HTMLElement } from "../../../global/classes/HTMLElement.js";
+import HTMLElement from "../../../global/classes/HTMLElement.js";
 import SVGElement from "../../../global/classes/SVGElement.js";
 
 export default function SubmitInput() {

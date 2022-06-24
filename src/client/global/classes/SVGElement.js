@@ -1,6 +1,6 @@
 "use-strict";
 
-import { HTMLElement } from "./HTMLElement.js";
+import HTMLElement from "./HTMLElement.js";
 
 export default class SVGElement extends HTMLElement {
   /** Create an SVGElement

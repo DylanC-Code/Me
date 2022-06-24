@@ -1,6 +1,6 @@
 "use-strict";
 
-import { HTMLElement } from "./HTMLElement.js";
+import HTMLElement from "./HTMLElement.js";
 
 export class Label extends HTMLElement {
   /** Create, set and remove differents label

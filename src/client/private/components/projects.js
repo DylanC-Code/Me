@@ -1,6 +1,6 @@
 "use-strict"
 
-import { HTMLElement } from "../../global/classes/HTMLElement.js"
+import HTMLElement from "../../global/classes/HTMLElement.js"
 import { Input } from "../../global/classes/Input.js"
 import { Modal } from "../../global/classes/Modal.js"
 

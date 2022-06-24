@@ -1,6 +1,6 @@
 "use-strict";
 ;
-import { HTMLElement } from "../../global/classes/HTMLElement.js";
+import HTMLElement from "../../global/classes/HTMLElement.js";
 import { removeChild } from "../../global/utils/removeChilds.js";
 import projectAnims from "../animations/projects.animations.js";
 import { Request } from "../api/Request.js";

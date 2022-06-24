@@ -1,6 +1,6 @@
 "use-strict";
 
-import { HTMLElement } from "./HTMLElement.js";
+import HTMLElement from "./HTMLElement.js";
 
 export class Input extends HTMLElement {
   /** Create, set and remove differents input

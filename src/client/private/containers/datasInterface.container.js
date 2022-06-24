@@ -2,7 +2,7 @@
 
 import { Container, SubContainer } from "../../global/classes/Container.js";
 import { ContentsAdmin } from "../../public/contents/admin.contents.js";
-import { HTMLElement } from "../../global/classes/HTMLElement.js";
+import HTMLElement from "../../global/classes/HTMLElement.js";
 import { datasInterfaceAnims } from "../animations/datasInterface.animations.js";
 import { removeChild } from "../../global/utils/removeChilds.js";
 import { Datas_Interface_View } from "../views/Datas_Interface.view.js";

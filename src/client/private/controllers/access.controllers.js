@@ -1,6 +1,6 @@
 "use-strict";
 
-import { connectView } from "../views/connect.view.js";
+import connectView from "../views/connect.view.js";
 
 //^ Display connect Page
 export function accessAdmin() {
