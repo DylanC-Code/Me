@@ -4,6 +4,7 @@ import Request from "../../public/api/Request.js";
 import datasInterfaceContainer from "../containers/datasInterface.container.js";
 import { headerDatasInterface } from "../components/headerDatasInterface.js";
 import { mainDatasInterface } from "../components/mainDatasInterface.js";
+import subNavbarInterfaceControllers from "../controllers/subNavbarInterface.controllers.js";
 
 export default class DatasInterfaceView {
   /**
@@ -27,6 +28,7 @@ export default class DatasInterfaceView {
 
     // Call the container of the view if not exist already
     if (!subMenu) datasInterfaceContainer();
+    subNavbarInterfaceControllers()
 
     // Call the header and the section of the view
     headerDatasInterface(this.table, this.datas);

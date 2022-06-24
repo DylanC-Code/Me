@@ -3,9 +3,8 @@
 import Tools from "../../global/utils/Tools.js";
 import Container from "../../global/classes/Container.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import DatasInterfaceView from "../views/DatasInterface.view.js";
 import { ContentsAdmin } from "../../public/contents/admin.contents.js";
-import DatasInterfaceAnims from "../animations/datasInterface.animations.js";
+import DatasInterfaceAnims from "../animations/DatasInterface.animations.js";
 
 //* Create The Container Of DatasInterfaceView
 export default function datasInterfaceContainer() {
@@ -33,35 +32,5 @@ export default function datasInterfaceContainer() {
 
   // Play animations for container, subNavbar and subContainer 
   DatasInterfaceAnims.play
-  controllers();
 }
 
-//^ Controllers for the datas interface container
-function controllers() {
-  // Change categories of datas
-  let buttons = document.querySelectorAll("#container li");
-  buttons[0].addEventListener("click", () =>
-    new DatasInterfaceView("categories").create()
-  );
-
-  buttons[1].addEventListener("click", () =>
-    new DatasInterfaceView("languages").create()
-  );
-
-  buttons[2].addEventListener("click", () =>
-    new DatasInterfaceView("concepts").create()
-  );
-
-  // Remove colors and add to the category clicked
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      buttons.forEach((b) => {
-        b.style.border = "1px dashed white";
-        b.style.color = "white";
-      });
-
-      btn.style.border = "1px solid #38C7C7";
-      btn.style.color = "#38C7C7";
-    });
-  });
-}
