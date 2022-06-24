@@ -5,8 +5,7 @@ import Container from "../../global/classes/Container.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
 import DatasInterfaceView from "../views/DatasInterface.view.js";
 import { ContentsAdmin } from "../../public/contents/admin.contents.js";
-// import DatasInterfaceAnims from "../animations/datasInterface.animations.js";
-import datasInterfaceAnims from "../animations/datasInterface.animations.js";
+import DatasInterfaceAnims from "../animations/datasInterface.animations.js";
 
 //* Create The Container Of DatasInterfaceView
 export default function datasInterfaceContainer() {
@@ -32,9 +31,8 @@ export default function datasInterfaceContainer() {
   subContainer.append(header, section);
   main.appendChild(subContainer);
 
-  //!! anims
-  // DatasInterfaceAnims.play
-  datasInterfaceAnims().forEach((anim) => anim.play()); //! anims
+  // Play animations for container, subNavbar and subContainer 
+  DatasInterfaceAnims.play
   controllers();
 }
 
