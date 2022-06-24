@@ -28,6 +28,8 @@ export default class DatasInterfaceView {
 
     // Call the container of the view if not exist already
     if (!subMenu) datasInterfaceContainer();
+
+    // Call the controllers for the subNavbar
     subNavbarInterfaceControllers()
 
     // Call the header and the section of the view

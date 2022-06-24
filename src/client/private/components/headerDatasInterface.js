@@ -2,11 +2,11 @@
 
 import Tools from "../../global/utils/Tools.js";
 import { ContentsAdmin } from "../../public/contents/admin.contents.js";
-import { headerInterfaceAnims } from "../animations/headerInterface.animations.js";
+import HeaderInterfaceAnims, { headerInterfaceAnims } from "../animations/HeaderInterface.animations.js";
 import { addBtn, nextPreviousBtn } from "../components/Buttons.js";
 import { headerDatasInterfaceControllers } from "../controllers/headerDatasInterface.controllers.js";
 
-//^ Components for display header of datas interface
+//* Components For Display Header Of DatasInterfaceView
 export function headerDatasInterface(table, datas) {
   let header = document.querySelector("#subContainer header");
   Tools.removeChilds(header);
@@ -27,6 +27,43 @@ export function headerDatasInterface(table, datas) {
   header.append(p, add, nextPrevious);
 
   //! anims
-  headerInterfaceAnims().forEach((anim) => anim.play());
+  HeaderInterfaceAnims.play
+  // headerInterfaceAnims().forEach((anim) => anim.play());
   headerDatasInterfaceControllers(table, datas);
+}
+export default class HeaderDatasInterface {
+  constructor(table, datas) {
+    this.table = table;
+    this.datas = datas;
+  }
+
+  get display() {
+    this.#create()
+    this.#animsAndControllers()
+  }
+  //* Create The Elements Of The Header
+  #create() {
+    // Remove childs of the the header
+    let header = document.querySelector("#subContainer header");
+    Tools.removeChilds(header);
+
+    // Create and add content to the paragraphe
+    let p = document.createElement("p");
+    if (table == "categories")
+      p.textContent = ContentsAdmin.interfaceData.categories.p;
+    else if (table == "languages")
+      p.textContent = ContentsAdmin.interfaceData.categories.p;
+    else if (table == "concepts")
+      p.textContent = ContentsAdmin.interfaceData.categories.p;
+
+    let add = addBtn();
+    let nextPrevious = nextPreviousBtn(this.datas);
+
+    // Append all of us to header
+    header.append(p, add, nextPrevious);
+  }
+
+  #animsAndControllers() {
+
+  }
 }
