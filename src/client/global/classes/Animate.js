@@ -14,10 +14,6 @@ export default class Animate extends SVGElement {
     if (keyTimes) this._element.setAttribute("keyTimes", keyTimes);
   }
 
-  keyTimes(values) {
-
-  }
-
   values(values) {
     this._element.setAttribute('values', values)
   }

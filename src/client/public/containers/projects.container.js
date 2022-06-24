@@ -1,6 +1,6 @@
 "use-strict"
 
-import { Container, SubContainer } from "../../global/classes/Container.js";
+import Container from "../../global/classes/Container.js";
 import { removeChild } from "../../global/utils/removeChilds.js";
 
 
@@ -9,8 +9,8 @@ export default function projectsContainer() {
   main.className = "main_projects"
   removeChild(main)
 
-  let container = new Container("projects_container").element
-  let subContainer = new SubContainer().element
+  let container = new Container("container", "projects_container").element
+  let subContainer = new Container("subContainer").element
   container.appendChild(subContainer)
 
   return container

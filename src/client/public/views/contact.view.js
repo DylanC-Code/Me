@@ -2,14 +2,17 @@
 
 import { contactControllers } from "../controllers/contact.controllers.js";
 import { Contact } from "../components/Contact.js";
-import { contactContainer } from "../containers/contact.container.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
 import SVGElement from "../../global/classes/SVGElement.js";
+import Container from "../../global/classes/Container.js";
 
 //^ Display Contact View
 export function contactView() {
-  //~ Create container
-  let container = contactContainer();
+  let main = document.getElementById("main");
+  main.className = "main_contact";
+  removeChild(main);
+
+  let container = new Container("container").element
 
   //~ Create HTML, SVG elements and append them
   let h1 = new HTMLElement("h1").element;

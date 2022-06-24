@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Container, SubContainer } from "../../global/classes/Container.js";
+import Container from "../../global/classes/Container.js";
 import { removeChild } from "../../global/utils/removeChilds.js";
 
 //^ Container for about view
@@ -12,8 +12,8 @@ export function aboutContainer() {
   removeChild(main);
 
   //~ Create containers with its attribute
-  let container = new Container("sub_navbar").element;
-  let subContainer = new SubContainer().element;
+  let container = new Container("container", "sub_navbar").element;
+  let subContainer = new Container("subContainer").element;
 
   //~ Append to the main and return containers
   main.append(container, subContainer);

@@ -1,7 +1,7 @@
 "use-strict";
 
 import Animate from "../../../global/classes/Animate.js";
-import { Input } from "../../../global/classes/Input.js";
+import Input from "../../../global/classes/Input.js";
 import SVGElement from "../../../global/classes/SVGElement.js";
 
 export default function ObjectInput() {

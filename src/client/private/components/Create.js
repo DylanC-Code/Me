@@ -1,11 +1,11 @@
 "use-strict";
 
 import Request from "../../public/api/Request.js";
-import { ContentsAdmin } from "../../public/contents/admin.contents.js";
+import Modal from "../../global/classes/Modal.js";
+import Input from "../../global/classes/Input.js";
+import Label from "../../global/classes/Label.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import { Modal } from "../../global/classes/Modal.js";
-import { Input } from "../../global/classes/Input.js";
-import { Label } from "../../global/classes/Label.js";
+import { ContentsAdmin } from "../../public/contents/admin.contents.js";
 
 export class Create extends Modal {
   /**

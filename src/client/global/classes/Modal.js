@@ -1,12 +1,13 @@
 "use-strict";
 
-export class Modal {
+import HTMLElement from "./HTMLElement.js";
+
+export default class Modal extends HTMLElement {
   /** Create type of modal for update or delete an element
    * @param  { STRING } table The table of category
    */
   constructor(table) {
-    this._modal = document.createElement("div");
-    this._modal.setAttribute("id", "modal");
+    super("div", "modal")
 
     this.table = table;
   }

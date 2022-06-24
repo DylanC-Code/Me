@@ -1,8 +1,8 @@
 "use-strict"
 
 import HTMLElement from "../../global/classes/HTMLElement.js"
-import { Input } from "../../global/classes/Input.js"
-import { Modal } from "../../global/classes/Modal.js"
+import Input from "../../global/classes/Input.js"
+import Modal from "../../global/classes/Modal.js"
 
 function removeProject(data) {
   let modal = new Modal()._modal

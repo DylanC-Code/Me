@@ -2,9 +2,9 @@
 
 import Request from "../../public/api/Request.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import { Modal } from "../../global/classes/Modal.js";
-import { Input } from "../../global/classes/Input.js";
-import { Label } from "../../global/classes/Label.js";
+import Modal from "../../global/classes/Modal.js";
+import Input from "../../global/classes/Input.js";
+import Label from "../../global/classes/Label.js";
 
 export class Update extends Modal {
   /**

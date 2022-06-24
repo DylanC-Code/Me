@@ -1,7 +1,7 @@
 "use-strict";
 
 import SVGElement from "../../../global/classes/SVGElement.js";
-import { Input } from "../../../global/classes/Input.js";
+import Input from "../../../global/classes/Input.js";
 import Animate from "../../../global/classes/Animate.js";
 
 export default function EmailInput() {

@@ -1,9 +1,9 @@
 "use-strict";
 
 import Connect from "../components/Connect.js";
-import { Container } from "../../public/components/Containers.js";
-import { connectAnims } from "../animations/connect.animations.js";
+import Container from "../../global/classes/Container.js";
 import connectControllers from "../controllers/connect.controllers.js";
+import { connectAnims } from "../animations/connect.animations.js";
 
 //* Create Connect View And Play Anims
 export default function connectView() {
@@ -11,7 +11,7 @@ export default function connectView() {
   main.className = "main_connect";
 
   // Create components
-  let container = Container.Base();
+  let container = new Container("container").element
   container.innerHTML = Connect()
 
   // Play animations

@@ -2,7 +2,7 @@
 
 import HTMLElement from "./HTMLElement.js";
 
-export class Label extends HTMLElement {
+export default class Label extends HTMLElement {
   /** Create, set and remove differents label
    * @param  { STRING } pour The id of the linked input (facultatif)
    * @param  { STRING } value The value of the content text (facultatif)
