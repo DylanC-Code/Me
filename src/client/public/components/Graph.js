@@ -1,9 +1,9 @@
 "use-strict";
 
-import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
-import { removeChild } from "../../global/utils/removeChilds.js";
+import Tools from "../../global/utils/Tools.js";
 import Request from "../api/Request.js";
 import graphsControllers from "../controllers/graphs.controllers.js";
+import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
 
 async function SpiderGraph() {
   let { result } = await new Request("GET", "/notes").fetch()
@@ -29,7 +29,7 @@ async function SpiderGraph() {
 function CurvesGraph(datas) {
   let graph = chibrery.Graph("curves")
   let subContainer = document.getElementById("subContainer")
-  removeChild(subContainer)
+  Tools.removeChilds(subContainer)
 
   function getDates() {
     let dates = []
@@ -63,7 +63,7 @@ function CurvesGraph(datas) {
 function LinesGraph(datas) {
   let lines = chibrery.Graph('lines')
   let subContainer = document.getElementById("subContainer")
-  removeChild(subContainer)
+  Tools.removeChilds(subContainer)
 
   const params = {
     target: subContainer,

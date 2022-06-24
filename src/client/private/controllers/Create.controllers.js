@@ -1,9 +1,9 @@
 "use-strict";
 
-import { checkName } from "../tools/checkName.js";
-import { Validator } from "../tools/Validator.js";
-import { Modal_Controllers } from "./Modal.controllers.js";
+import checkName from "../tools/checkName.js";
+import Validator from "../../global/utils/Validator.js";
 import Request from "../../public/api/Request.js";
+import { Modal_Controllers } from "./Modal.controllers.js";
 import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
 
 export class Create_Controllers extends Modal_Controllers {

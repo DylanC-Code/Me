@@ -1,15 +1,14 @@
 "use-strict"
 
+import Tools from "../../global/utils/Tools.js";
 import { headerInterfaceAnims } from "../animations/headerInterface.animations.js";
 import { addBtn, nextPreviousBtn } from "../components/Buttons.js";
-import { removeChild } from "../../global/utils/removeChilds.js";
 import { headerProjectsInterfaceControllers } from "../controllers/headerProjectsInterface.controllers.js";
-import { buttonsControllers } from "../controllers/buttons.controllers.js";
 
 //^ Components for display header of datas interface
 export default function headerProjectsInterface(datas) {
   let header = document.querySelector("#subContainer header");
-  removeChild(header);
+  Tools.removeChilds(header);
 
   //~ Create paragraphe with difference
   let p = document.createElement("p");

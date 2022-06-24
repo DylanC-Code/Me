@@ -1,7 +1,7 @@
 "use-strict"
 
 import Request from "../../public/api/Request.js";
-import { checkName } from "../tools/checkName.js";
+import checkName from "../tools/checkName.js";
 
 class ModalProjectsControllers {
   /**Parent class for differents projects modal

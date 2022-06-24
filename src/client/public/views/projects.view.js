@@ -1,7 +1,7 @@
 "use-strict";
-;
+
+import Tools from "../../global/utils/Tools.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import { removeChild } from "../../global/utils/removeChilds.js";
 import projectAnims from "../animations/projects.animations.js";
 import Request from "../api/Request.js";
 import projectsContainer from "../containers/projects.container.js";
@@ -18,7 +18,7 @@ export async function projectsView() {
 
 function displayProject(project) {
   let subContainer = document.getElementById('subContainer')
-  removeChild(subContainer)
+  Tools.removeChilds(subContainer)
 
   let arrows = document.querySelectorAll('#container img')
   arrows.forEach(a => a.remove())

@@ -1,7 +1,7 @@
 "use-strict"
 
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import { removeChild } from "../../global/utils/removeChilds.js";
+import Tools from "../../global/utils/Tools.js";
 import { categoriesDataAnims } from "../animations/categoriesData.animations.js";
 import { buttonsControllers } from "../controllers/buttons.controllers.js";
 import { mainProjectsInterfaceControllers } from "../controllers/mainProjectsInterface.controllers.js";
@@ -9,7 +9,7 @@ import { mainProjectsInterfaceControllers } from "../controllers/mainProjectsInt
 export default function mainProjectsInterface(datas, index = 0) {
   //~ Remove child of the main
   let main = document.querySelector("#subContainer section");
-  removeChild(main);
+  Tools.removeChilds(main);
 
   //~ Create maximum four cards
   for (const d of datas) {

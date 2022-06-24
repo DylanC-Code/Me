@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Utils } from "../../global/utils/utils.js";
+import Tools from "../../global/utils/Tools.js";
 
 //^ All Animations For The Navbar
 //^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -45,7 +45,7 @@ export function navbarAnims() {
 
 function responsiveKE1(keyframe) {
   function leftValue() {
-    let w = Utils.getWidth()
+    let w = Tools.getWidth()
     if (w <= 1406) return "12%"
     return "20%"
   }
@@ -61,10 +61,10 @@ function responsiveKE1(keyframe) {
 
 function responsiveKE2(keyframe) {
   function widthValue() {
-    let w = Utils.getWidth()
+    let w = Tools.getWidth()
     let ratio
-    
-    if (w > 1406||w < 1080) ratio = w * 10.416666666666666 / 100
+
+    if (w > 1406 || w < 1080) ratio = w * 10.416666666666666 / 100
     else ratio = w * 7 / 100
     return `${ratio}px`
   }

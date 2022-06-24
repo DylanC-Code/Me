@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Utils } from "../../global/utils/utils.js";
+import Tools from "../../global/utils/Tools.js";
 
 //^ Play Sub navbar Animations of about view
 export function subNavbarAnims() {
@@ -29,8 +29,8 @@ function controlKeyframes(target) {
       { width: "50%", height: 0, overflow: "hidden" },
       { width: "50%", height: "30px", overflow: "visible" },
     ];
-    
-    let w = Utils.getWidth()
+
+    let w = Tools.getWidth()
     if (w > 1400) return kE1
     else return kE2
   }

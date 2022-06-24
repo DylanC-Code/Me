@@ -1,17 +1,17 @@
 "use-strict";
 
+import Tools from "../../global/utils/Tools.js";
 import Container from "../../global/classes/Container.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
 import { ContentsAdmin } from "../../public/contents/admin.contents.js";
 import { datasInterfaceAnims } from "../animations/datasInterface.animations.js";
-import { removeChild } from "../../global/utils/removeChilds.js";
 import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
 
 //^ Create the container of the datas interface view
 export function datasInterfaceContainer() {
   //~ Remove childs of main
   let main = document.getElementById("main");
-  removeChild(main);
+  Tools.removeChilds(main);
 
   //~ Create containers
   let container = new Container("container").element;

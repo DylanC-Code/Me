@@ -1,8 +1,7 @@
 "use-strict";
 
+import Tools from "../../global/utils/Tools.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import { removeChild } from "../../global/utils/removeChilds.js";
-import { sessionCheck } from "../../private/tools/session.js";
 import { TypeWriter } from "../animations/TypeWriter.js";
 import { ContentsAdmin } from "../contents/admin.contents.js";
 import { Contents } from "../contents/global.contents.js";
@@ -10,10 +9,11 @@ import { Contents } from "../contents/global.contents.js";
 export function homeView() {
   let p = new HTMLElement("p").element;
   let main = document.getElementById("main");
-  removeChild(main)
+  Tools.removeChilds(main)
   main.removeAttribute("class");
   main.appendChild(p);
-  let session = sessionCheck();
+  
+  let session = Tools.checkSession();
 
   session
     ? new TypeWriter(p, ContentsAdmin.home.p).play()

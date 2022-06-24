@@ -1,6 +1,6 @@
 "use-strict";
 
-import { closeConnectAnims } from "../animations/connect.animations.js";
+import ConnectAnims from "../animations/connect.animations.js";
 import Request from "../../public/api/Request.js";
 import projectsSkillsControllers from "./projects&Skills.controllers.js";
 
@@ -26,7 +26,7 @@ export default async function connectControllers() {
     sessionStorage.setItem("admin", "true");
 
     // Launch the anims
-    closeConnectAnims();
+    ConnectAnims.end
     projectsSkillsControllers();
   });
 }

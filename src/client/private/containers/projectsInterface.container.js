@@ -1,13 +1,13 @@
 "use-strict"
 
+import Tools from "../../global/utils/Tools.js";
 import Container from "../../global/classes/Container.js"
-import { removeChild } from "../../global/utils/removeChilds.js"
 import projectsInterfaceAnims from "../animations/projectsInteface.animations.js"
 
 export default function projectsInterfaceContainer() {
   let main = document.getElementById('main')
   main.className = "main_interface_project"
-  removeChild(main)
+  Tools.removeChilds(main)
 
   let container = new Container("container").element
 
