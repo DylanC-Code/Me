@@ -3,8 +3,8 @@
 import checkName from "../tools/checkName.js";
 import Validator from "../../global/utils/Validator.js";
 import Request from "../../public/api/Request.js";
+import DatasInterfaceView from "../views/DatasInterface.view.js";
 import { Modal_Controllers } from "./Modal.controllers.js";
-import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
 
 export class Create_Controllers extends Modal_Controllers {
   /**
@@ -50,7 +50,7 @@ export class Create_Controllers extends Modal_Controllers {
     //~ If an error is return by the server display it
     if (req.error) return (this.err.textContent = req.result);
     document.getElementById("modal").remove();
-    new Datas_Interface_View(this.table).create();
+    new DatasInterfaceView(this.table).create();
   }
 
   //^ When its table concepts

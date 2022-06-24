@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
+import DatasInterfaceView from "../views/DatasInterface.view.js";
 
 export class Modal_Controllers {
   /**
@@ -39,6 +39,6 @@ export class Modal_Controllers {
 
     //~ If no error is send remove modal and display Data_interface_view
     document.getElementById("modal").remove();
-    new Datas_Interface_View(this.table).create();
+    new DatasInterfaceView(this.table).create();
   }
 }
