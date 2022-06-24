@@ -3,7 +3,7 @@
 import { datasInterfaceContainer } from "../containers/datasInterface.container.js";
 import { headerDatasInterface } from "../components/headerDatasInterface.js";
 import { mainDatasInterface } from "../components/mainDatasInterface.js";
-import { Request } from "../../public/api/Request.js";
+import Request from "../../public/api/Request.js";
 
 export class Datas_Interface_View {
   /**

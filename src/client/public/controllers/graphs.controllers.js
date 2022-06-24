@@ -1,6 +1,6 @@
 "use-strict"
 
-import { Request } from "../api/Request.js"
+import Request from "../api/Request.js"
 import { CurvesGraph, LinesGraph } from "../components/Graph.js"
 
 export default function graphsControllers() {

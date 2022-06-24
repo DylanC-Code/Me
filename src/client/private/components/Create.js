@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Request } from "../../public/api/Request.js";
+import Request from "../../public/api/Request.js";
 import { ContentsAdmin } from "../../public/contents/admin.contents.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
 import { Modal } from "../../global/classes/Modal.js";

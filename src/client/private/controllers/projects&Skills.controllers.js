@@ -5,7 +5,7 @@ import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
 import projectInterfaceView from "../views/projectsInterface.view.js";
 
 //^ Control events on thoses buttons, launch anims and display views
-export function projectsSkillsControllers() {
+export default function projectsSkillsControllers() {
   //~ Get skill and project buttons
   let buttons = document.querySelectorAll("#socials > svg");
   //~ Play the start project, skill animations at the succesfully connect

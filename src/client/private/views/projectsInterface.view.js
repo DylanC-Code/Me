@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Request } from "../../public/api/Request.js";
+import Request from "../../public/api/Request.js";
 import headerProjectsInterface from "../components/headerProjectsInterface.js";
 import mainProjectsInterface from "../components/mainProjectsInterface.js";
 import projectsInterfaceContainer from "../containers/projectsInterface.container.js";

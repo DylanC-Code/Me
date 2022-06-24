@@ -1,6 +1,6 @@
 "use-strict"
 
-import { Request } from "../../public/api/Request.js";
+import Request from "../../public/api/Request.js";
 import { checkName } from "../tools/checkName.js";
 
 class ModalProjectsControllers {

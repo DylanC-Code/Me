@@ -1,8 +1,8 @@
 "use-strict";
 
-import { Container, SubContainer } from "../../global/classes/Container.js";
-import { ContentsAdmin } from "../../public/contents/admin.contents.js";
+import Container from "../../global/classes/Container.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
+import { ContentsAdmin } from "../../public/contents/admin.contents.js";
 import { datasInterfaceAnims } from "../animations/datasInterface.animations.js";
 import { removeChild } from "../../global/utils/removeChilds.js";
 import { Datas_Interface_View } from "../views/Datas_Interface.view.js";
@@ -14,8 +14,8 @@ export function datasInterfaceContainer() {
   removeChild(main);
 
   //~ Create containers
-  let container = new Container().element;
-  let subContainer = new SubContainer().element;
+  let container = new Container("container").element;
+  let subContainer = new Container("subContainer").element;
 
   //~ Create HTMLElement and his content
   let ul = document.createElement("ul");

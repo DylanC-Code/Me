@@ -69,19 +69,19 @@ async function Login(req, res) {
   let { username, password } = req.body;
 
   // Control username and password
-  if (!Validator.username(username)) return res.status(400).send({ error: `The username '${username} isn't valid !'` })
-  if (typeof password != "string") return res.status(400).send({ error: `The password isn't valid` })
+  if (!Validator.username(username)) return res.status(404).send(false)
+  if (typeof password != "string") return res.status(404).send(false)
 
   // Find user with its username
   let user = await User.findOne({ where: { username }, attributes: ["password"] });
 
   // If the request return an user, test his password
-  if (!user) return res.status(404).send({ error: `The username '${username} hasn't been found !'` })
+  if (!user) return res.status(404).send(false)
   user = user.validPassword(password, user.password)
 
   // Send response to the client
-  if (user) res.status(200).send({ result })
-  else res.status(400).send({ error: "Password incorrect !" });
+  if (user) res.status(200).send(true)
+  else res.status(404).send(false);
 }
 
 export { CreateUser, DeleteUser, UpdateUser, Login };

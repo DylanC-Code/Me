@@ -1,7 +1,7 @@
 "use-strict";
 
 import { removeChild } from "../../global/utils/removeChilds.js";
-import { Request } from "../../public/api/Request.js";
+import Request from "../../public/api/Request.js";
 import { categoriesDataAnims } from "../animations/categoriesData.animations.js";
 import { buttonsControllers } from "../controllers/buttons.controllers.js";
 import { mainDatasInterfaceControllers } from "../controllers/mainDatasInterface.controllers.js";

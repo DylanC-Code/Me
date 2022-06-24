@@ -3,21 +3,15 @@
 export function connectAnims() {
   let password = document.querySelector("input[type=password]:nth-of-type(1)");
   let username = document.querySelector("input[type=password]:nth-of-type(2)");
-  let text = document.querySelector("text");
 
   //~ Create the keyframes effects
-  let keyframes = [
-    { width: "0px", height: "0px" },
-    { width: "300px", height: "0px" },
-    { width: "300px", height: "40px" },
-  ];
+  let keyframes = {
+    width: ["0px", "300px", "300px"],
+    height: ["0px", "0px", "40px"]
+  }
 
   //~ Create the options of the animations
-  let options = {
-    duration: 1500,
-    easing: "ease-out",
-    fill: "forwards",
-  };
+  let options = { duration: 1500, easing: "ease-out", fill: "forwards" };
 
   //^ New instance of KeyframeEffect
   let kE1 = new KeyframeEffect(password, keyframes, options);
@@ -33,19 +27,15 @@ export function closeConnectAnims() {
   let username = document.querySelector("input[type=password]:nth-of-type(2)");
 
   //~ Create the keyframes effects
-  let keyframes = [
-    { width: "300px", height: "40px" },
-    { width: "300px", height: "0px" },
-    { width: "0px", height: "0px" },
-    { border: "none", width: "0px", height: "0px", boxShadow: "none" },
-  ];
+  let keyframes = {
+    width: ["300px", "300px", "0px", "0px"],
+    height: ["40px", "0px", "0px", "0px"],
+    border: "none",
+    boxShadow: "none"
+  }
 
   //~ Create the options of the animations
-  let options = {
-    duration: 1500,
-    easing: "ease-out",
-    fill: "forwards",
-  };
+  let options = { duration: 1500, easing: "ease-out", fill: "forwards", };
 
   //^ New instance of KeyframeEffect
   let kE1 = new KeyframeEffect(password, keyframes, options);

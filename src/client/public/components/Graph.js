@@ -2,7 +2,7 @@
 
 import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
 import { removeChild } from "../../global/utils/removeChilds.js";
-import { Request } from "../api/Request.js";
+import Request from "../api/Request.js";
 import graphsControllers from "../controllers/graphs.controllers.js";
 
 async function SpiderGraph() {

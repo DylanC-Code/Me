@@ -1,6 +1,6 @@
 "use-strict"
 
-import { SubContainer } from "../../global/classes/Container.js"
+import Container from "../../global/classes/Container.js"
 import { removeChild } from "../../global/utils/removeChilds.js"
 import projectsInterfaceAnims from "../animations/projectsInteface.animations.js"
 
@@ -9,7 +9,7 @@ export default function projectsInterfaceContainer() {
   main.className = "main_interface_project"
   removeChild(main)
 
-  let container = new SubContainer().element
+  let container = new Container("container").element
 
   let header = document.createElement("header");
   let section = document.createElement("section");

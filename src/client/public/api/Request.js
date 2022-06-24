@@ -1,7 +1,7 @@
 "use-strict";
 
 //! Ameliorer
-export class Request {
+export default class Request {
   /**
    *^ Create new instance for request in asynchronus
    *^ Return the result of the request
