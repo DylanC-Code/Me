@@ -3,7 +3,7 @@
 import HTMLElement from "../../global/classes/HTMLElement.js";
 import Tools from "../../global/utils/Tools.js";
 import CategoriesDatasAnims from "../animations/categoriesData.animations.js";
-import { ButtonsControllers } from "../controllers/buttons.controllers.js";
+import ButtonsControllers from "../controllers/Buttons.controllers.js";
 import { mainProjectsInterfaceControllers } from "../controllers/mainProjectsInterface.controllers.js";
 
 export default function mainProjectsInterface(datas, index = 0) {
