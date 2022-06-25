@@ -2,7 +2,7 @@
 
 import DatasInterfaceView from "../views/DatasInterface.view.js";
 
-export class Modal_Controllers {
+export default class ModalControllers {
   /**
    * The body class for modals controllers
    * @param  { STRING } table The name of the about table

@@ -4,9 +4,9 @@ import checkName from "../tools/checkName.js";
 import Validator from "../../global/utils/Validator.js";
 import Request from "../../public/api/Request.js";
 import DatasInterfaceView from "../views/DatasInterface.view.js";
-import { Modal_Controllers } from "./Modal.controllers.js";
+import ModalControllers from "./Modal.controllers.js";
 
-export class Create_Controllers extends Modal_Controllers {
+export default class CreateControllers extends ModalControllers {
   /**
    * Create controllers for check the inputs in the create modal
    * @param  { STRING } table The name of the table
