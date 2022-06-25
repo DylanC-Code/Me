@@ -31,9 +31,9 @@ export class Create extends Modal {
 
     //~ Append them
     div.append(btn1, btn2);
-    this._modal.append(name, special, div);
+    this.element.append(name, special, div);
 
-    return this._modal;
+    return this.element;
   }
 
   //^ Control the difference between the table
@@ -44,7 +44,7 @@ export class Create extends Modal {
 
     let h1, h2, div;
     let error = new HTMLElement("p", "error").element;
-    this._modal.appendChild(error);
+    this.element.appendChild(error);
 
     switch (this.table) {
       // ###############################################################
@@ -77,7 +77,7 @@ export class Create extends Modal {
         div = document.createElement("div");
 
         //~ Append them
-        this._modal.appendChild(h1);
+        this.element.appendChild(h1);
         fragment.append(file, label, h2);
 
         //~ For each category create input with its label
@@ -99,7 +99,7 @@ export class Create extends Modal {
           h1 = new HTMLElement("h1", null).inner(
             ContentsAdmin.create.errors.parents
           );
-          this._modal.innerHTML = h1;
+          this.element.innerHTML = h1;
         }
 
       // ###############################################################
@@ -127,7 +127,7 @@ export class Create extends Modal {
         div = document.createElement("div");
 
         //~ Append them
-        this._modal.appendChild(h1);
+        this.element.appendChild(h1);
         fragment.append(lvl, value);
 
         //~ For each concept create input with its label
@@ -147,7 +147,7 @@ export class Create extends Modal {
           h1 = new HTMLElement("h1", null).inner(
             ContentsAdmin.create.errors.parents
           );
-          this._modal.innerHTML = h1;
+          this.element.innerHTML = h1;
         }
     }
   }

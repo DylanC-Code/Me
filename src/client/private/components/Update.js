@@ -31,9 +31,9 @@ export class Update extends Modal {
       `Update <mark class="text_blue">${this.datas.name}</mark>`
     );
     let name = new Input("text", "name", this.datas.name).element;
-    this._modal.append(p, h1, name);
+    this.element.append(p, h1, name);
 
-    if (special[1]) this._modal.appendChild(special[1]);
+    if (special[1]) this.element.appendChild(special[1]);
 
     let div = document.createElement("div");
     div.innerHTML = `
@@ -41,9 +41,9 @@ export class Update extends Modal {
       <button id="no">Cancel</button>
      `;
 
-    //~ Append elements to this._modal
-    this._modal.append(special[0], div);
-    return this._modal;
+    //~ Append elements to this.element
+    this.element.append(special[0], div);
+    return this.element;
   }
 
   //^ Create fragment with the difference between the table
@@ -65,7 +65,7 @@ export class Update extends Modal {
           let label = new Label(cat.id, null, cat.name).element;
 
           //~ Append them
-          this._modal.append(file, logo);
+          this.element.append(file, logo);
           div.append(input, label);
         });
         return [div];

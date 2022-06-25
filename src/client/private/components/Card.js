@@ -2,7 +2,8 @@
 
 import HTMLElement from "../../global/classes/HTMLElement.js";
 
-export class Card {
+// TODO
+export default class Card {
   /**
    * Create card for the interface data view
    * @param  { STRING } table The name of the table
