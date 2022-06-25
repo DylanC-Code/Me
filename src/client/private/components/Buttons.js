@@ -39,6 +39,7 @@ export default class Buttons {
   }
 }
 
+// ! REMOVE
 // //^ Add button component
 // //^ Return article
 // function addBtn() {

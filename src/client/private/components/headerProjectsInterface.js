@@ -2,7 +2,7 @@
 
 import Tools from "../../global/utils/Tools.js";
 import HeaderInterfaceAnims from "../animations/HeaderInterface.animations.js";
-import { addBtn, nextPreviousBtn } from "../components/Buttons.js";
+import Buttons from "../components/Buttons.js";
 import { headerProjectsInterfaceControllers } from "../controllers/headerProjectsInterface.controllers.js";
 
 //^ Components for display header of datas interface
@@ -14,11 +14,12 @@ export default function headerProjectsInterface(datas) {
   let p = document.createElement("p");
   p.textContent = "loremmmm"
 
-  let add = addBtn();
-  let nextPrevious = nextPreviousBtn(datas);
+  // !Remove
+  // let add = addBtn();
+  // let nextPrevious = nextPreviousBtn(datas);
 
   //~ Append all of us to header
-  header.append(p, add, nextPrevious);
+  header.append(p, Buttons.add, Buttons.switch);
 
   //! anims
   HeaderInterfaceAnims.play
