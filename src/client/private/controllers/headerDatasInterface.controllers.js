@@ -1,7 +1,7 @@
 "use-strict";
 
 import HeaderDatasInterface from "../components/HeaderDatasInterface.js";
-import MainDatasInterface, { mainDatasInterface } from "../components/mainDatasInterface.js";
+import MainDatasInterface from "../components/MainDatasInterface.js";
 
 //* Controllers For Add And NextPrevious Buttons In The HeaderDatasInterface
 export default function headerDatasInterfaceControllers(table, datas) {
@@ -12,8 +12,8 @@ export default function headerDatasInterfaceControllers(table, datas) {
 
     // Reload the interface with new datas
     new HeaderDatasInterface(table, datas).display
-    // new MainDatasInterface(table, datas, last).display
-    mainDatasInterface(table, datas, last);
+    new MainDatasInterface(table, datas, last).display
+    // mainDatasInterface(table, datas, last); //! to delete
   });
 
   // Listener on previous button element
@@ -23,7 +23,7 @@ export default function headerDatasInterfaceControllers(table, datas) {
 
     // Reload the interface with new datas
     new HeaderDatasInterface(table, datas).display
-    // new MainDatasInterface(table, datas, first).display
-    mainDatasInterface(table, datas, first);
+    new MainDatasInterface(table, datas, first).display
+    // mainDatasInterface(table, datas, first); //! to delete
   });
 }

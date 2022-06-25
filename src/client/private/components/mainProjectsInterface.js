@@ -2,8 +2,8 @@
 
 import HTMLElement from "../../global/classes/HTMLElement.js";
 import Tools from "../../global/utils/Tools.js";
-import { categoriesDataAnims } from "../animations/categoriesData.animations.js";
-import { buttonsControllers } from "../controllers/buttons.controllers.js";
+import CategoriesDatasAnims from "../animations/categoriesData.animations.js";
+import { ButtonsControllers } from "../controllers/buttons.controllers.js";
 import { mainProjectsInterfaceControllers } from "../controllers/mainProjectsInterface.controllers.js";
 
 export default function mainProjectsInterface(datas, index = 0) {
@@ -24,11 +24,11 @@ export default function mainProjectsInterface(datas, index = 0) {
   }
 
   // //! anims
-  categoriesDataAnims().forEach((anim) => anim.play());
+  CategoriesDatasAnims.play
 
   // //~ Controllers
   mainProjectsInterfaceControllers(datas)
-  buttonsControllers(datas);
+  new ButtonsControllers(datas).play
 }
 
 function cardProject(data) {

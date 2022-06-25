@@ -21,6 +21,6 @@ export default function headerProjectsInterface(datas) {
   header.append(p, add, nextPrevious);
 
   //! anims
-  headerInterfaceAnims().forEach((anim) => anim.play());
+  HeaderInterfaceAnims.play
   headerProjectsInterfaceControllers(datas)
 }

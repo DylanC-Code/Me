@@ -3,7 +3,7 @@
 import Request from "../../public/api/Request.js";
 import datasInterfaceContainer from "../containers/datasInterface.container.js";
 import HeaderDatasInterface from "../components/HeaderDatasInterface.js";
-import { mainDatasInterface } from "../components/mainDatasInterface.js";
+import MainDatasInterface from "../components/MainDatasInterface.js";
 import subNavbarInterfaceControllers from "../controllers/subNavbarInterface.controllers.js";
 
 export default class DatasInterfaceView {
@@ -34,9 +34,6 @@ export default class DatasInterfaceView {
 
     // Call the header and the section of the view
     new HeaderDatasInterface(this.table, this.datas).display
-
-    // TODO
-    await mainDatasInterface(this.table, this.datas);
-    // TODO
+    new MainDatasInterface(this.table, this.datas).display
   }
 }
