@@ -5,20 +5,6 @@ import HeaderInterfaceAnims from "../animations/HeaderInterface.animations.js";
 import Buttons from "./Buttons.js";
 import HeaderProjectsInterfaceControllers from "../controllers/HeaderProjectsInterface.controllers.js";
 
-// //^ Components for display header of datas interface
-// export default function headerProjectsInterface(datas) {
-//   let header = document.querySelector("#container header");
-
-//   let p = new HTMLElement("p").text("loremm")
-
-//   //~ Append all of us to header
-//   header.append(p, Buttons.add, Buttons.switch);
-
-//   //! anims
-//   HeaderInterfaceAnims.play
-//   headerProjectsInterfaceControllers(datas)
-// }
-
 export default class HeaderProjectsInterface {
   #datas
   constructor(datas) {

@@ -42,9 +42,6 @@ export default class HeaderDatasInterface {
     else if (this.#table == "concepts")
       p.textContent = ContentsAdmin.interfaceData.categories.p;
 
-    // let add = addBtn(); //!Remove
-    // let nextPrevious = nextPreviousBtn(this.#datas);//!Remove
-
     // Append all of us to header
     header.append(p, Buttons.add, Buttons.switch);
   }
@@ -53,8 +50,6 @@ export default class HeaderDatasInterface {
   #animsAndControllers() {
     HeaderInterfaceAnims.play
     new HeaderDatasInterfaceControllers(this.#table, this.#datas).play
-    // !Remove 
-    // headerDatasInterfaceControllers(this.#table, this.#datas)
   }
 }
 
@@ -96,9 +91,6 @@ export class HeaderInterface {
     else
       p.textContent = "tessttt"
 
-    // let add = addBtn(); //!Remove
-    // let nextPrevious = nextPreviousBtn(this.#datas);//!Remove
-
     // Append all of us to header
     header.append(p, Buttons.add, Buttons.switch);
   }
@@ -107,7 +99,5 @@ export class HeaderInterface {
   #animsAndControllers() {
     HeaderInterfaceAnims.play
     new HeaderDatasInterfaceControllers(this.#table, this.#datas).play
-    // !Remove 
-    // headerDatasInterfaceControllers(this.#table, this.#datas)
   }
 }
