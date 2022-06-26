@@ -1,9 +1,7 @@
 "use-strict";
 
-import Data from "../components/Data.js";
-import CreateControllers from "./Create.controllers.js";
-import DeleteControllers from "./Delete.controllers.js";
-import UpdateControllers from "./Update.controllers.js";
+import Datas from "../components/Datas.js";
+import DatasControllers from "./Datas.controllers.js";
 
 // !remove
 // // Control many events for the main of the data interface view
@@ -108,7 +106,7 @@ export default class MainDatasInterfaceControllers {
     add.addEventListener("click", async () => {
       // Create modal
       // let modal = await new Create(this.#table).create();
-      let modal = await new Data.Create(this.#table).display
+      let modal = await new Datas.Create(this.#table).display
       document.querySelector("#subContainer section").appendChild(modal);
 
       // Apply controllers to the modal
@@ -129,7 +127,7 @@ export default class MainDatasInterfaceControllers {
 
         // Create an instance of delete class (extend of modal)
         // let modal = new Delete(this.#table, data).create();
-        let modal = new Data.Remove(this.#table, data).display
+        let modal = new Datas.Remove(this.#table, data).display
         document.querySelector("#subContainer section").append(modal);
 
         // Apply controllers to the modal
@@ -151,7 +149,7 @@ export default class MainDatasInterfaceControllers {
 
         // Create new modal
         // let modal = await new Update(this.#table, data, id_click).create();
-        let modal = await new Data.Update(this.#table, data, id_click).display
+        let modal = await new Datas.Update(this.#table, data, id_click).display
         document.querySelector("#subContainer section").append(modal);
 
         // Apply controllers to the modal
@@ -168,9 +166,9 @@ export default class MainDatasInterfaceControllers {
     // Apply click listener for left button of the each modal
     buttons[0].addEventListener("click", async () => {
       // Verify the method about the modal
-      if (method == "CREATE") new CreateControllers(this.#table).active;
-      if (method == "UPDATE") new UpdateControllers(this.#table, primaryKey).active;
-      if (method == "DELETE") new DeleteControllers(this.#table, primaryKey).request();
+      if (method == "CREATE") new DatasControllers.Create(this.#table).active;
+      if (method == "UPDATE") new DatasControllers.Update(this.#table, primaryKey).active;
+      if (method == "DELETE") new DatasControllers.Remove(this.#table, primaryKey).request();
     });
 
     // Apply click listener for close the modal

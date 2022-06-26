@@ -19,6 +19,7 @@ export class Remove extends Modal {
 
   get display() {
     this.#create()
+    return this.element;
   }
   //^ Method for create the modal
   //^ Return 'this.element'
@@ -38,7 +39,6 @@ export class Remove extends Modal {
     `;
 
     this.element.append(h1, div);
-    return this.element;
   }
 }
 
@@ -52,6 +52,7 @@ export class Create extends Modal {
   }
   get display() {
     this.#create()
+    return this.element;
   }
   //^ Create the modal and append the to 'this.modal'
   async #create() {
@@ -69,8 +70,6 @@ export class Create extends Modal {
     //~ Append them
     div.append(btn1, btn2);
     this.element.append(name, special, div);
-
-    return this.element;
   }
 
   //^ Control the difference between the table
@@ -205,6 +204,7 @@ export class Update extends Modal {
   }
   get display() {
     this.#create()
+    return this.element;
   }
   //^ Create the modal
   async #create() {
@@ -229,7 +229,6 @@ export class Update extends Modal {
 
     //~ Append elements to this.element
     this.element.append(special[0], div);
-    return this.element;
   }
 
   //^ Create fragment with the difference between the table
@@ -272,7 +271,7 @@ export class Update extends Modal {
   }
 }
 
-export default class Data {
+export default class Datas {
   static Create = Create
   static Remove = Remove
   static Update = Update
