@@ -2,12 +2,9 @@
 
 import Tools from "../../global/utils/Tools.js";
 import Container from "../../global/classes/Container.js"
-import ProjectsInterfaceAnims from "../animations/projectsInteface.animations.js"
+import ProjectsInterfaceAnims from "../animations/ProjectsInterface.animations.js"
 
 export default function projectsInterfaceContainer() {
-  // let main = document.getElementById('main') //!remove
-  // main.className = "main_interface_project" //!remove
-
   Tools.getClearMain("main_interface_project")
   let container = new Container("container").element
 
