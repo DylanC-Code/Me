@@ -5,7 +5,7 @@ import Input from "../../global/classes/Input.js"
 import Modal from "../../global/classes/Modal.js"
 
 function removeProject(data) {
-  let modal = new Modal()._modal
+  let modal = new Modal().element
   let h1 = new HTMLElement("h1").text(`Are you sure you want to delete ${data.name} project?!`)
   let div = new HTMLElement("div").element
   let btn1 = new HTMLElement("button").text("Yes")
@@ -32,7 +32,7 @@ function updateProject(data) {
   let collaborators = new Input("text", "collabs", data.collaborators).element
   div.append(name, url, text, image, date, collaborators, div2)
 
-  let modal = new Modal()._modal
+  let modal = new Modal().element
   let error = new HTMLElement("p", "error").element
   let h1 = new HTMLElement("h1").text(`Update ${data.name}`)
   modal.append(error, h1, div)
@@ -54,7 +54,7 @@ function addProject() {
   let collaborators = new Input("text", "collabs").attributes([["placeholder", "Collaborators"]])
   div.append(name, url, text, date, collaborators, div2)
 
-  let modal = new Modal()._modal
+  let modal = new Modal().element
   let error = new HTMLElement("p", "error").element
   let h1 = new HTMLElement("h1").text(`Add a project`)
   let image = new Input("file", "file").attributes([["placeholder", "image"]])

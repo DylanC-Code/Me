@@ -3,7 +3,7 @@
 import Request from "../../public/api/Request.js";
 import checkName from "../tools/checkName.js";
 
-class ModalProjectsControllers {
+class ModalControllers {
   /**Parent class for differents projects modal
    */
   constructor() {
@@ -29,7 +29,7 @@ async function deleteControllers(primaryKey) {
   document.getElementById('modal').remove()
 }
 
-class updateProjectControllers extends ModalProjectsControllers {
+class updateControllers extends ModalControllers {
   constructor(primaryKey) {
     super()
     this.body.pk = primaryKey
@@ -73,7 +73,7 @@ class updateProjectControllers extends ModalProjectsControllers {
   }
 }
 
-class createProjectControllers extends ModalProjectsControllers {
+class createControllers extends ModalControllers {
   constructor() {
     super()
   }
@@ -122,4 +122,8 @@ class createProjectControllers extends ModalProjectsControllers {
   }
 }
 
-export { deleteControllers, updateProjectControllers, createProjectControllers }
+export default class ProjectsModalsControllers {
+  static delete = deleteControllers
+  static create = createControllers
+  static update = updateControllers
+}
