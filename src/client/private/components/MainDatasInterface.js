@@ -2,8 +2,7 @@
 
 import Tools from "../../global/utils/Tools.js";
 import Request from "../../public/api/Request.js";
-import CategoriesDatasAnims from "../animations/categoriesData.animations.js";
-// import Card from "./Card.js";
+import CategoriesDatasAnims from "../animations/CategoriesDatas.animations.js";
 import ButtonsControllers from "../controllers/Buttons.controllers.js";
 import MainDatasInterfaceControllers from "../controllers/MainDatasInterface.controllers.js";
 import Cards from "./Cards.js";
@@ -46,8 +45,8 @@ export default class MainDatasInterface {
     this.index = index
   }
 
-  get display() {
-    this.#create()
+  async display() {
+    await this.#create()
     this.#animsAndControllers()
   }
 
@@ -68,7 +67,6 @@ export default class MainDatasInterface {
       // let card = new Card(this.table, d).card;
       let card = new Cards.Data(this.table, d).display
       main.appendChild(card);
-
     }
   }
 

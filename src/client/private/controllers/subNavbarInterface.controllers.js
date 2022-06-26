@@ -3,12 +3,12 @@
 import DatasInterfaceView from "../views/DatasInterface.view.js";
 
 //* Controllers For SubNavbar Interface
-export default function subNavbarInterfaceControllers() {
+export default async function subNavbarInterfaceControllers() {
   // Change datas display for each buttons
   let buttons = document.querySelectorAll("#container li");
-  buttons[0].addEventListener("click", () => new DatasInterfaceView("categories").create());
-  buttons[1].addEventListener("click", () => new DatasInterfaceView("languages").create());
-  buttons[2].addEventListener("click", () => new DatasInterfaceView("concepts").create());
+  buttons[0].addEventListener("click", () => new DatasInterfaceView("categories").display);
+  buttons[1].addEventListener("click", () => new DatasInterfaceView("languages").display);
+  buttons[2].addEventListener("click", () => new DatasInterfaceView("concepts").display);
 
 
   // Remove colors and add to the category clicked

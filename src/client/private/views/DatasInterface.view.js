@@ -42,6 +42,6 @@ export default class DatasInterfaceView {
 
     // Call the header and the section of the view
     new HeaderDatasInterface(this.#table, this.#datas).display
-    new MainDatasInterface(this.#table, this.#datas).display
+    new MainDatasInterface(this.#table, this.#datas).display()
   }
 }

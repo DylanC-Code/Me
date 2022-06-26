@@ -1,6 +1,6 @@
 "use-strict"
   ;
-import CategoriesDatasAnims from "../animations/categoriesData.animations.js";
+import CategoriesDatasAnims from "../animations/CategoriesDatas.animations.js";
 import ButtonsControllers from "../controllers/Buttons.controllers.js";
 import MainProjectsInterfaceControllers from "../controllers/MainProjectsInterface.controllers.js";
 import Cards from "./Cards.js";

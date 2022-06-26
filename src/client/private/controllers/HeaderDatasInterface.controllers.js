@@ -50,7 +50,7 @@ export default class HeaderDatasInterfaceControllers {
 
       // Reload the interface with new datas
       new HeaderDatasInterface(this.#table, this.#datas).display
-      new MainDatasInterface(this.#table, this.#datas, last).display
+      new MainDatasInterface(this.#table, this.#datas, last).display()
     });
 
     // Listener on previous button element
@@ -60,7 +60,7 @@ export default class HeaderDatasInterfaceControllers {
 
       // Reload the interface with new datas
       new HeaderDatasInterface(this.#table, this.#datas).display
-      new MainDatasInterface(this.#table, this.#datas, first).display
+      new MainDatasInterface(this.#table, this.#datas, first).display()
     });
   }
 }

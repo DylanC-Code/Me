@@ -50,9 +50,9 @@ export class Create extends Modal {
   constructor(table) {
     super(table);
   }
+
   get display() {
-    this.#create()
-    return this.element;
+    return this.#create()
   }
   //^ Create the modal and append the to 'this.modal'
   async #create() {
@@ -70,6 +70,7 @@ export class Create extends Modal {
     //~ Append them
     div.append(btn1, btn2);
     this.element.append(name, special, div);
+    return this.element;
   }
 
   //^ Control the difference between the table
@@ -203,8 +204,7 @@ export class Update extends Modal {
     this.id = id;
   }
   get display() {
-    this.#create()
-    return this.element;
+    return this.#create()
   }
   //^ Create the modal
   async #create() {
@@ -221,14 +221,13 @@ export class Update extends Modal {
 
     if (special[1]) this.element.appendChild(special[1]);
 
+    let btn1 = new HTMLElement("button", "yes").text("Update")
+    let btn2 = new HTMLElement("button", "no").text("Cancel")
     let div = document.createElement("div");
-    div.innerHTML = `
-      <button id="yes">Update</button>
-      <button id="no">Cancel</button>
-     `;
-
+    div.append(btn1, btn2)
     //~ Append elements to this.element
     this.element.append(special[0], div);
+    return this.element;
   }
 
   //^ Create fragment with the difference between the table
