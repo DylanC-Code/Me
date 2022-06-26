@@ -1,7 +1,7 @@
 "use-strict";
 
 import IconsAnims from "../animations/Icons.animations.js";
-import projectInterfaceView from "../views/projectsInterface.view.js";
+import ProjectsInterfaceView from "../views/ProjectsInterface.view.js";
 import DatasInterfaceView from "../views/DatasInterface.view.js";
 
 //* Control Events On Thoses Buttons, Launch Anims And Display Views
@@ -23,8 +23,8 @@ export default function iconsControllers() {
     });
   });
 
-  buttons[0].addEventListener("click", () => new DatasInterfaceView("categories").create());
-  buttons[1].addEventListener("click", () => projectInterfaceView());
+  buttons[0].addEventListener("click", () => new DatasInterfaceView("categories").display);
+  buttons[1].addEventListener("click", () => new ProjectsInterfaceView().display);
 }
 
 /**

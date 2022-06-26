@@ -10,20 +10,28 @@ export default class DatasInterfaceView {
   /**
    * Create the data interface view for each table
    * @param  { STRING } table The table of the data of load
+   * @param  { Array } datas Content datas to display
    */
+
+  #table;
+  #datas;
   constructor(table, datas) {
-    this.table = table;
-    this.datas = datas;
+    this.#table = table;
+    this.#datas = datas;
+  }
+
+  get display() {
+    this.#create()
   }
 
   //* Create The Interface For Categories, Languages Or Concepts
-  async create() {
+  async #create() {
     let subMenu = document.querySelector("#container > ul");
 
     // If datas is null, get datas to the server
-    if (!this.datas) {
-      this.datas = await new Request("GET", `/${this.table}`).play;
-      this.datas = this.datas.result;
+    if (!this.#datas) {
+      this.#datas = await new Request("GET", `/${this.#table}`).play;
+      this.#datas = this.#datas.result;
     }
 
     // Call the container of the view if not exist already
@@ -33,7 +41,7 @@ export default class DatasInterfaceView {
     subNavbarInterfaceControllers()
 
     // Call the header and the section of the view
-    new HeaderDatasInterface(this.table, this.datas).display
-    new MainDatasInterface(this.table, this.datas).display
+    new HeaderDatasInterface(this.#table, this.#datas).display
+    new MainDatasInterface(this.#table, this.#datas).display
   }
 }
