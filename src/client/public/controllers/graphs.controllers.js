@@ -27,7 +27,7 @@ function spiderControllers() {
 }
 
 function curvesControllers() {
-  let skills = document.querySelectorAll("#curves > text")
+  let skills = document.querySelectorAll("#text text")
 
   skills.forEach(v => {
     v.addEventListener("click", async () => {

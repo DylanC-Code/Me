@@ -39,6 +39,6 @@ export default class ModalControllers {
 
     //~ If no error is send remove modal and display Data_interface_view
     document.getElementById("modal").remove();
-    new DatasInterfaceView(this.table).create();
+    new DatasInterfaceView(this.table).display
   }
 }

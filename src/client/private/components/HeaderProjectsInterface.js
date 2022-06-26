@@ -7,8 +7,10 @@ import HeaderProjectsInterfaceControllers from "../controllers/HeaderProjectsInt
 
 export default class HeaderProjectsInterface {
   #datas
-  constructor(datas) {
+  #speed
+  constructor(datas, speed = "fast") {
     this.#datas = datas
+    this.#speed
   }
 
   get display() {
@@ -27,7 +29,7 @@ export default class HeaderProjectsInterface {
 
   //* Play Anims And Controllers Of The HeaderProjectsInterface
   #animsAndControllers() {
-    HeaderInterfaceAnims.play
+    this.#speed == "fast" ? HeaderInterfaceAnims.fast : HeaderInterfaceAnims.slow
     new HeaderProjectsInterfaceControllers(this.#datas).play
   }
 }

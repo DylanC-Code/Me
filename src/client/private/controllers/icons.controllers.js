@@ -23,8 +23,8 @@ export default function iconsControllers() {
     });
   });
 
-  buttons[0].addEventListener("click", () => new DatasInterfaceView("categories").display);
-  buttons[1].addEventListener("click", () => new ProjectsInterfaceView().display);
+  buttons[0].addEventListener("click", () => new DatasInterfaceView("categories", null, "slow").display);
+  buttons[1].addEventListener("click", () => new ProjectsInterfaceView(null, "slow").display);
 }
 
 /**

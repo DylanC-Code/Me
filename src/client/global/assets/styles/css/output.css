@@ -862,4 +862,8 @@ canvas {
   place-items: center;
 }
 
+#spider #text text, #curves #text text {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=output.css.map */

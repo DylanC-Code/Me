@@ -11,8 +11,10 @@ export default class ProjectsInterfaceView {
    */
 
   #datas
-  constructor(datas = false) {
+  #speed
+  constructor(datas = false, speed = 'fast') {
     this.#datas = datas
+    this.#speed = speed
   }
 
   get display() {
@@ -29,7 +31,7 @@ export default class ProjectsInterfaceView {
 
     // Call the container of the view if not exist already
     projectsInterfaceContainer()
-    new HeaderProjectsInterface(this.#datas).display
-    new MainProjectsInterface(this.#datas).display
+    new HeaderProjectsInterface(this.#datas, this.#speed).display
+    new MainProjectsInterface(this.#datas, this.#speed).display
   }
 }

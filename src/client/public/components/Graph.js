@@ -4,6 +4,8 @@ import Tools from "../../global/utils/Tools.js";
 import Request from "../api/Request.js";
 import graphsControllers from "../controllers/graphs.controllers.js";
 import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
+import changeGraph from "./SwitchGraphs.js";
+import SwitchGraphs from "./SwitchGraphs.js";
 
 async function SpiderGraph() {
   let { result } = await new Request("GET", "/notes").fetch()
@@ -58,6 +60,7 @@ function CurvesGraph(datas) {
   }
 
   graph(params)
+  SwitchGraphs()
 }
 
 function LinesGraph(datas) {
@@ -81,6 +84,7 @@ function LinesGraph(datas) {
   }
 
   lines(params)
+  SwitchGraphs()
 }
 
 export { SpiderGraph, CurvesGraph, LinesGraph }

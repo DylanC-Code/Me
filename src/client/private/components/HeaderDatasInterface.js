@@ -10,16 +10,17 @@ import { ContentsAdmin } from "../../public/contents/admin.contents.js";
 export default class HeaderDatasInterface {
   #table
   #datas
-
+  #speed
   /**
    * Components For Display Header Of DatasInterfaceView
    * @param  { String } table The name of the about table
    * @param  { Array } datas The datas to display
    */
 
-  constructor(table, datas) {
+  constructor(table, datas, speed = "fast") {
     this.#table = table;
     this.#datas = datas;
+    this.#speed = speed
   }
 
   get display() {
@@ -48,56 +49,7 @@ export default class HeaderDatasInterface {
 
   //* Play Anims Of The Header And Active Controllers
   #animsAndControllers() {
-    HeaderInterfaceAnims.play
-    new HeaderDatasInterfaceControllers(this.#table, this.#datas).play
-  }
-}
-
-
-export class HeaderInterface {
-  #table
-  #datas
-
-  /**
-   * Components For Display Header Of DatasInterfaceView
-   * @param  { String } table The name of the about table
-   * @param  { Array } datas The datas to display
-   */
-
-  constructor(table, datas) {
-    this.#table = table;
-    this.#datas = datas;
-  }
-
-  get display() {
-    this.#create()
-    this.#animsAndControllers()
-  }
-
-  //* Create The Elements Of The Header
-  #create() {
-    // Remove childs of the the header
-    let header = document.querySelector("#subContainer header");
-    Tools.removeChilds(header);
-
-    // Create and add content to the paragraphe
-    let p = document.createElement("p");
-    if (this.#table == "categories")
-      p.textContent = ContentsAdmin.interfaceData.categories.p;
-    else if (this.#table == "languages")
-      p.textContent = ContentsAdmin.interfaceData.categories.p;
-    else if (this.#table == "concepts")
-      p.textContent = ContentsAdmin.interfaceData.categories.p;
-    else
-      p.textContent = "tessttt"
-
-    // Append all of us to header
-    header.append(p, Buttons.add, Buttons.switch);
-  }
-
-  //* Play Anims Of The Header And Active Controllers
-  #animsAndControllers() {
-    HeaderInterfaceAnims.play
+    this.#speed == "fast" ? HeaderInterfaceAnims.fast : HeaderInterfaceAnims.slow
     new HeaderDatasInterfaceControllers(this.#table, this.#datas).play
   }
 }

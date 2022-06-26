@@ -49,4 +49,15 @@ export default class Tools {
 
     return main
   }
+
+  static Percentage = class {
+    constructor(total) {
+      this.total = total;
+    }
+
+    value(Percentage) {
+      return Math.round((Percentage * this.total) / 100)
+    }
+  }
+
 }

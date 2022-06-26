@@ -11,12 +11,10 @@ export default class CategoriesDatasAnims {
   static #keyframes2 = { opacity: [0, 1] }
   static #options1 = { delay: 2000, duration: 2500, fill: "forwards" };
   static #options2 = { delay: 2700, duration: 1000, fill: "forwards" };
+  static #options3 = { delay: 0, duration: 2500, fill: "forwards" };
+  static #options4 = { delay: 700, duration: 1000, fill: "forwards" };
 
-  static get play() {
-    this.#create()
-  }
-
-  static #create() {
+  static get slow() {
     let categories = document.querySelectorAll(".card_category");
     let text = document.querySelectorAll(".card_category p, .card_category h1");
     let anims = []
@@ -27,6 +25,23 @@ export default class CategoriesDatasAnims {
 
     text.forEach((txt) => {
       let kE = new KeyframeEffect(txt, this.#keyframes2, this.#options2);
+      anims.push(new Animation(kE, document.timeline));
+    });
+
+    anims.forEach(anim => anim.play())
+  }
+
+  static get fast() {
+    let categories = document.querySelectorAll(".card_category");
+    let text = document.querySelectorAll(".card_category p, .card_category h1");
+    let anims = []
+    categories.forEach(cat => {
+      let kE = new KeyframeEffect(cat, this.#keyframes1, this.#options3);
+      anims.push(new Animation(kE, document.timeline));
+    })
+
+    text.forEach((txt) => {
+      let kE = new KeyframeEffect(txt, this.#keyframes2, this.#options4);
       anims.push(new Animation(kE, document.timeline));
     });
 

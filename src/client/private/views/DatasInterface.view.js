@@ -9,15 +9,18 @@ import subNavbarInterfaceControllers from "../controllers/subNavbarInterface.con
 export default class DatasInterfaceView {
   /**
    * Create the data interface view for each table
-   * @param  { STRING } table The table of the data of load
+   * @param  { String } table The table of the data of load
    * @param  { Array } datas Content datas to display
+   * @param  { String } speed For control the display of the interface
    */
 
   #table;
   #datas;
-  constructor(table, datas) {
+  #speed
+  constructor(table, datas, speed = "fast") {
     this.#table = table;
     this.#datas = datas;
+    this.#speed = speed
   }
 
   get display() {
@@ -41,7 +44,7 @@ export default class DatasInterfaceView {
     subNavbarInterfaceControllers()
 
     // Call the header and the section of the view
-    new HeaderDatasInterface(this.#table, this.#datas).display
-    new MainDatasInterface(this.#table, this.#datas).display()
+    new HeaderDatasInterface(this.#table, this.#datas, this.#speed).display
+    new MainDatasInterface(this.#table, this.#datas, 0, this.#speed).display()
   }
 }

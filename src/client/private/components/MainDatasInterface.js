@@ -8,10 +8,11 @@ import MainDatasInterfaceControllers from "../controllers/MainDatasInterface.con
 import Cards from "./Cards.js";
 
 export default class MainDatasInterface {
-  constructor(table, datas, index = 0) {
+  constructor(table, datas, index = 0, speed = "fast") {
     this.table = table;
     this.datas = datas;
     this.index = index
+    this.speed = speed
   }
 
   async display() {
@@ -39,7 +40,7 @@ export default class MainDatasInterface {
   }
 
   #animsAndControllers() {
-    CategoriesDatasAnims.play
+    this.speed == "fast" ? CategoriesDatasAnims.fast : CategoriesDatasAnims.slow
     new MainDatasInterfaceControllers(this.table, this.datas).play
     new ButtonsControllers(this.datas).play
   }

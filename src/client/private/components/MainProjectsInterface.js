@@ -8,9 +8,11 @@ import Cards from "./Cards.js";
 export default class MainProjectsInterface {
   #datas;
   #index;
-  constructor(datas, index = 0) {
+  #speed
+  constructor(datas, index = 0, speed = "fast") {
     this.#datas = datas;
     this.#index = index
+    this.#speed = speed
   }
 
   get display() {
@@ -33,8 +35,7 @@ export default class MainProjectsInterface {
   }
 
   #animsAndControllers() {
-    CategoriesDatasAnims.play
-
+    this.#speed == "fast" ? CategoriesDatasAnims.fast : CategoriesDatasAnims.slow
     new MainProjectsInterfaceControllers(this.#datas).play
     new ButtonsControllers(this.#datas).play
   }
