@@ -7,8 +7,8 @@ import { headerProjectsInterfaceControllers } from "../controllers/headerProject
 
 //^ Components for display header of datas interface
 export default function headerProjectsInterface(datas) {
-  let header = document.querySelector("#subContainer header");
-  Tools.removeChilds(header);
+  let header = document.querySelector("#container header");
+  // Tools.removeChilds(header); //!remove
 
   //~ Create paragraphe with difference
   let p = document.createElement("p");

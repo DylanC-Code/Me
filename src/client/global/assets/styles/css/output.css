@@ -719,10 +719,6 @@ canvas {
   grid-template: 14vh 64vh/80%;
 }
 
-.main_interface_project #subContainer {
-  border: 1px dashed white;
-}
-
 .main_interface_project #container, .main_interface #container {
   border-bottom: 1px dashed white;
   height: 100%;
@@ -816,6 +812,54 @@ canvas {
   width: 0;
   height: 0;
   margin: auto;
+  width: 70%;
+  height: 0;
+  margin-left: 10%;
+  overflow: hidden;
+  border-left: 1px dashed white;
+  border-right: 1px dashed white;
+}
+.main_interface_project #container header {
+  display: grid;
+  height: 33%;
+  grid-template: 50% 50%/70% 30%;
+  overflow: hidden;
+}
+.main_interface_project #container header p {
+  grid-area: 1/1/3/1;
+  text-align: center;
+  line-height: 30px;
+  padding: 0 2rem;
+  font-size: 1.3rem;
+  opacity: 0;
+}
+.main_interface_project #container header article {
+  display: flex;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0rem 1.5rem;
+  color: transparent;
+  cursor: pointer;
+}
+.main_interface_project #container header article h1 {
+  padding-top: 0.4rem;
+  font: 1.2rem Jumper;
+}
+.main_interface_project #container header article svg {
+  transition: 5s;
+}
+.main_interface_project #container header article:hover > svg {
+  transform: rotate(25turn) scale(1.5);
+}
+.main_interface_project #container section {
+  height: 66%;
+  display: grid;
+  grid-template: 50% 50%/50% 50%;
+  place-items: center;
 }
 
 /*# sourceMappingURL=output.css.map */
