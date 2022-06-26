@@ -6,13 +6,13 @@ import ProjectsInterfaceAnims from "../animations/ProjectsInterface.animations.j
 
 export default function projectsInterfaceContainer() {
   Tools.getClearMain("main_interface_project")
-  let container = new Container("container").element
 
+  let container = new Container("container").element
   let header = document.createElement("header");
   let section = document.createElement("section");
 
   // Append them to containers
   container.append(header, section);
 
-  new ProjectsInterfaceAnims.play
+  ProjectsInterfaceAnims.play
 }

@@ -8,8 +8,7 @@ import { mainProjectsInterfaceControllers } from "../controllers/mainProjectsInt
 
 export default function mainProjectsInterface(datas, index = 0) {
   //~ Remove child of the main
-  let main = document.querySelector("#subContainer section");
-  Tools.removeChilds(main);
+  let main = document.querySelector("#container section");
 
   //~ Create maximum four cards
   for (const d of datas) {
