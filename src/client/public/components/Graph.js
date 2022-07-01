@@ -4,10 +4,11 @@ import Tools from "../../global/utils/Tools.js";
 import Request from "../api/Request.js";
 import graphsControllers from "../controllers/graphs.controllers.js";
 import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
-import changeGraph from "./SwitchGraphs.js";
 import SwitchGraphs from "./SwitchGraphs.js";
 
 async function SpiderGraph() {
+  let subContainer = document.getElementById("subContainer")
+  Tools.removeChilds(subContainer)
   let { result } = await new Request("GET", "/notes").fetch()
   let spider = chibrery.Graph("spider")
 
@@ -28,7 +29,7 @@ async function SpiderGraph() {
   spider(params)
 }
 
-function CurvesGraph(datas) {
+function CurvesGraph(datas, id_category) {
   let graph = chibrery.Graph("curves")
   let subContainer = document.getElementById("subContainer")
   Tools.removeChilds(subContainer)
@@ -56,14 +57,14 @@ function CurvesGraph(datas) {
       cartesien: { anim: "synchronous" },
       curves: { anim: "crescendo", color: "random" }
     },
-    controllers: graphsControllers
+    controllers: graphsControllers,
+    modules: SwitchGraphs(id_category)
   }
 
   graph(params)
-  SwitchGraphs()
 }
 
-function LinesGraph(datas) {
+function LinesGraph(datas, id_category) {
   let lines = chibrery.Graph('lines')
   let subContainer = document.getElementById("subContainer")
   Tools.removeChilds(subContainer)
@@ -80,11 +81,11 @@ function LinesGraph(datas) {
       lines: { anim: "synchronous", fill: "rgba(255, 75, 51, 0.1)", stroke: "#FF4B33" },
       texts: { position: "oblique", fill: "white" }
     },
-    controllers: graphsControllers
+    controllers: graphsControllers,
+    modules: SwitchGraphs(id_category),
   }
 
   lines(params)
-  SwitchGraphs()
 }
 
 export { SpiderGraph, CurvesGraph, LinesGraph }

@@ -21,7 +21,7 @@ function spiderControllers() {
   categories.forEach(cat => {
     cat.addEventListener("click", async () => {
       let { result } = await new Request("GET", `/notes/category/${cat.id}`).play
-      CurvesGraph(result)
+      CurvesGraph(result, cat.id)
     })
   })
 }
@@ -31,8 +31,9 @@ function curvesControllers() {
 
   skills.forEach(v => {
     v.addEventListener("click", async () => {
+      let id_category = document.querySelector('#switch > text').id
       let { result } = await new Request("GET", `/notes/language/${v.id}`).play
-      LinesGraph(result)
+      LinesGraph(result, id_category)
     })
   })
 }

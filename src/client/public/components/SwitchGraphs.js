@@ -3,17 +3,19 @@
 import Animate from "../../global/classes/Animate.js"
 import SVGElement from "../../global/classes/SVGElement.js"
 import Tools from "../../global/utils/Tools.js"
+import switchGraphsController from "../controllers/switchGraphs.controllers.js"
 
-export default function SwitchGraphs() {
+export default function SwitchGraphs(id_category) {
   let graph = document.querySelector("#subContainer svg")
   let line_arrow = lineArrow(graph)
-  let texts = textsCategories(graph)
+  let texts = textsCategories(graph, id_category)
   let scrolls = textsScroll(graph)
   let g = new SVGElement("g", "switch").element
 
   g.append(...line_arrow, ...texts, ...scrolls)
 
   graph.appendChild(g)
+  switchGraphsController()
 }
 
 function lineArrow(graph) {
@@ -32,11 +34,11 @@ function lineArrow(graph) {
   return [line, arrow]
 }
 
-function textsCategories(graph) {
+function textsCategories(graph, id_category) {
   let w_perc = new Tools.Percentage(graph.clientWidth)
   let h_perc = new Tools.Percentage(graph.clientHeight)
 
-  let languages = new SVGElement("text").attributes([["x", "4%"], ["y", "25%"], ["text-anchor", "middle"], ["transform", `rotate(-90,${w_perc.value(4)} ,${h_perc.value(25)})`]])
+  let languages = new SVGElement("text", id_category).attributes([["x", "4%"], ["y", "25%"], ["text-anchor", "middle"], ["transform", `rotate(-90,${w_perc.value(4)} ,${h_perc.value(25)})`]])
   languages.textContent = "Languages"
 
   let categories = new SVGElement("text").attributes([["x", "4%"], ["y", "75%"], ["text-anchor", "middle"], ["transform", `rotate(-90 ,${w_perc.value(4)}, ${h_perc.value(75)})`]])
