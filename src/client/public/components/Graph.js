@@ -4,7 +4,7 @@ import Tools from "../../global/utils/Tools.js";
 import Request from "../api/Request.js";
 import graphsControllers from "../controllers/graphs.controllers.js";
 import { chibrery } from "../../../../node_modules/chibrery/chibrery.js";
-import SwitchGraphs from "./SwitchGraphs.js";
+import SwitchGraphs, { switchGraphResize } from "./SwitchGraphs.js";
 
 async function SpiderGraph() {
   let subContainer = document.getElementById("subContainer")
@@ -58,7 +58,10 @@ function CurvesGraph(datas) {
       curves: { anim: "crescendo", color: "random" }
     },
     controllers: graphsControllers,
-    modules: { base: SwitchGraphs }
+    modules: {
+      base: SwitchGraphs,
+      resize: switchGraphResize
+    }
   }
 
   graph(params)
@@ -82,7 +85,10 @@ function LinesGraph(datas) {
       texts: { position: "oblique", fill: "white" }
     },
     controllers: graphsControllers,
-    modules: { base: SwitchGraphs }
+    modules: {
+      base: SwitchGraphs,
+      resize: switchGraphResize
+    }
   }
 
   lines(params)

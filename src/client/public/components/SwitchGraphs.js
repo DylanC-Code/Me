@@ -3,7 +3,6 @@
 import Animate from "../../global/classes/Animate.js"
 import SVGElement from "../../global/classes/SVGElement.js"
 import Tools from "../../global/utils/Tools.js"
-import switchGraphsController from "../controllers/switchGraphs.controllers.js"
 
 export default function SwitchGraphs() {
   let graph = document.querySelector("#subContainer svg")
@@ -59,4 +58,28 @@ function textsScroll(graph) {
 
   if (graph.id == "curves") return [scrollDown]
   else if (graph.id == "lines") return [scrollDown, scrollUp]
+}
+
+export function switchGraphResize() {
+  let graph = document.querySelector("#subContainer svg")
+  let line_arrow = lineArrowResize(graph)
+  let texts = textsCategories(graph)
+  let scrolls = textsScroll(graph)
+  let g = new SVGElement("g", "switch").element
+
+  g.append(...line_arrow, ...texts, ...scrolls)
+
+  graph.appendChild(g)
+}
+
+function lineArrowResize(graph) {
+  let w_perc = new Tools.Percentage(graph.clientWidth)
+  let h_perc = new Tools.Percentage(graph.clientHeight)
+
+  let line = new SVGElement("line").attributes([["x1", "5%"], ["x2", "5%"], ["y1", "15%"], ["y2", "85%"], ["stroke", "white"]])
+
+  let d = `M${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5)} ${h_perc.value(85) + 5}L${w_perc.value(5) + 3} ${h_perc.value(85)}Z`
+  let arrow = new SVGElement("path").attributes([["d", d], ["stroke", "white"]])
+
+  return [line, arrow]
 }
