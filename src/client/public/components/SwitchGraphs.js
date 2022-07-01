@@ -5,17 +5,16 @@ import SVGElement from "../../global/classes/SVGElement.js"
 import Tools from "../../global/utils/Tools.js"
 import switchGraphsController from "../controllers/switchGraphs.controllers.js"
 
-export default function SwitchGraphs(id_category) {
+export default function SwitchGraphs() {
   let graph = document.querySelector("#subContainer svg")
   let line_arrow = lineArrow(graph)
-  let texts = textsCategories(graph, id_category)
+  let texts = textsCategories(graph)
   let scrolls = textsScroll(graph)
   let g = new SVGElement("g", "switch").element
 
   g.append(...line_arrow, ...texts, ...scrolls)
 
   graph.appendChild(g)
-  switchGraphsController()
 }
 
 function lineArrow(graph) {
@@ -34,7 +33,9 @@ function lineArrow(graph) {
   return [line, arrow]
 }
 
-function textsCategories(graph, id_category) {
+function textsCategories(graph) {
+  let id_category = sessionStorage.getItem("category")
+
   let w_perc = new Tools.Percentage(graph.clientWidth)
   let h_perc = new Tools.Percentage(graph.clientHeight)
 

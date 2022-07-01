@@ -29,7 +29,7 @@ async function SpiderGraph() {
   spider(params)
 }
 
-function CurvesGraph(datas, id_category) {
+function CurvesGraph(datas) {
   let graph = chibrery.Graph("curves")
   let subContainer = document.getElementById("subContainer")
   Tools.removeChilds(subContainer)
@@ -58,13 +58,13 @@ function CurvesGraph(datas, id_category) {
       curves: { anim: "crescendo", color: "random" }
     },
     controllers: graphsControllers,
-    modules: SwitchGraphs(id_category)
+    modules: { base: SwitchGraphs }
   }
 
   graph(params)
 }
 
-function LinesGraph(datas, id_category) {
+function LinesGraph(datas) {
   let lines = chibrery.Graph('lines')
   let subContainer = document.getElementById("subContainer")
   Tools.removeChilds(subContainer)
@@ -82,7 +82,7 @@ function LinesGraph(datas, id_category) {
       texts: { position: "oblique", fill: "white" }
     },
     controllers: graphsControllers,
-    modules: SwitchGraphs(id_category),
+    modules: { base: SwitchGraphs }
   }
 
   lines(params)

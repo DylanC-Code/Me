@@ -2,6 +2,7 @@
 
 import { bioSkillsContainer } from "../containers/bioSkills.container.js";
 import { SpiderGraph } from "../components/Graph.js";
+import switchGraphsController from "../controllers/switchGraphs.controllers.js";
 
 //^ Display Skills View
 export default async function skillsView() {
@@ -11,4 +12,5 @@ export default async function skillsView() {
   // subContainer.style.height = "90%"
 
   await SpiderGraph()
+  switchGraphsController()
 }

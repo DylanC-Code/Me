@@ -16,12 +16,15 @@ export default function graphsControllers() {
 }
 
 function spiderControllers() {
+  sessionStorage.removeItem('category')
   let categories = document.querySelectorAll("text")
 
   categories.forEach(cat => {
     cat.addEventListener("click", async () => {
+      sessionStorage.setItem("category", cat.id)
+      
       let { result } = await new Request("GET", `/notes/category/${cat.id}`).play
-      CurvesGraph(result, cat.id)
+      CurvesGraph(result)
     })
   })
 }
@@ -31,9 +34,8 @@ function curvesControllers() {
 
   skills.forEach(v => {
     v.addEventListener("click", async () => {
-      let id_category = document.querySelector('#switch > text').id
       let { result } = await new Request("GET", `/notes/language/${v.id}`).play
-      LinesGraph(result, id_category)
+      LinesGraph(result)
     })
   })
 }
