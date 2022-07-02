@@ -633,14 +633,30 @@ canvas {
 }
 
 .main_projects {
-  margin: 5rem;
   width: 70%;
-  height: 80%;
+  height: 100%;
 }
 .main_projects .projects_container {
   height: 100%;
   display: grid;
-  grid-template: 20% 60% 20%/20% repeat(2, 30%) 20%;
+  grid-template: 25% 60% 15%/15% repeat(2, 35%) 15%;
+}
+.main_projects #headerProject {
+  padding: 2rem 0 0;
+  grid-area: 1/2/2/3;
+}
+.main_projects #headerProject h1 {
+  font: 400 3.5rem Jumper;
+  padding-top: 0.5rem;
+  letter-spacing: 5px;
+}
+.main_projects #headerProject h2 {
+  font: 500 1.4rem Jumper;
+  text-transform: uppercase;
+}
+.main_projects #headerProject h2 span {
+  font: 500 1.4rem Jumper;
+  text-transform: uppercase;
 }
 .main_projects #subContainer {
   grid-area: 2/2/3/4;
@@ -648,9 +664,10 @@ canvas {
   place-items: center;
   width: 0;
   height: 0;
-  border: 1px dashed white;
   transition: 0.3s;
   position: relative;
+  box-shadow: 0 0 30px 0px #DA06AE, inset 0 0 30px 0px #DA06AE;
+  border-radius: 1rem;
 }
 .main_projects #subContainer * {
   transition: 0.3s;
