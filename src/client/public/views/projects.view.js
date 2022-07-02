@@ -2,10 +2,12 @@
 
 import Tools from "../../global/utils/Tools.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
+import SVGElement from "../../global/classes/SVGElement.js";
 import projectAnims from "../animations/projects.animations.js";
 import Request from "../api/Request.js";
 import projectsContainer from "../containers/projects.container.js";
-import toWords from "../../global/utils/toWords.js"
+import toWords from "../../global/utils/new.js"
+import Arrow from "../components/svg/arrow.js"
 
 export async function projectsView() {
   let { result } = await new Request("GET", "/projects").play
@@ -58,11 +60,13 @@ function switchProject(result) {
 }
 
 function nextArrow(project) {
-  let arrow = new HTMLElement("img", "next").attributes([["src", "./global/assets/images/next_arrow.svg"], ["data-project", project]])
+  let arrow = new SVGElement("svg", "next").attributes([["data-project", project]])
+  arrow.innerHTML = Arrow()
   document.getElementById('container').appendChild(arrow)
 }
 function previousArrow(project) {
-  let arrow = new HTMLElement("img", "previous").attributes([["src", "./global/assets/images/next_arrow.svg"], ["data-project", project]])
+  let arrow = new SVGElement("svg", "previous").attributes([["data-project", project]])
+  arrow.innerHTML = Arrow()
   document.getElementById('container').appendChild(arrow)
 }
 

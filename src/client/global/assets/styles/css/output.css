@@ -661,13 +661,24 @@ canvas {
 .main_projects #subContainer {
   grid-area: 2/2/3/4;
   display: grid;
-  place-items: center;
+  place-self: center;
   width: 0;
   height: 0;
   transition: 0.3s;
   position: relative;
-  box-shadow: 0 0 30px 0px #DA06AE, inset 0 0 30px 0px #DA06AE;
+  box-shadow: 0 0 20px 0px #DA06AE, inset 0 0 20px 0px #DA06AE;
   border-radius: 1rem;
+}
+.main_projects #subContainer p {
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.main_projects #subContainer a {
+  color: #38C7C7;
+}
+.main_projects #subContainer h3 {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 .main_projects #subContainer * {
   transition: 0.3s;
@@ -683,12 +694,14 @@ canvas {
   opacity: 1;
 }
 .main_projects #next {
+  height: 50px;
   cursor: pointer;
   grid-area: 3/3/4/4;
   justify-self: end;
   margin-top: 1rem;
 }
 .main_projects #previous {
+  height: 50px;
   cursor: pointer;
   grid-area: 3/2/4/3;
   margin-top: 1rem;
