@@ -3,6 +3,7 @@
 import Animate from "../../global/classes/Animate.js"
 import SVGElement from "../../global/classes/SVGElement.js"
 import Tools from "../../global/utils/Tools.js"
+import { switchGraphOnClick } from "../controllers/switchGraphs.controllers.js"
 
 export default function SwitchGraphs() {
   let graph = document.querySelector("#subContainer svg")
@@ -14,6 +15,7 @@ export default function SwitchGraphs() {
   g.append(...line_arrow, ...texts, ...scrolls)
 
   graph.appendChild(g)
+  switchGraphOnClick()
 }
 
 function lineArrow(graph) {
@@ -77,6 +79,7 @@ export function switchGraphResize() {
   g.append(...line_arrow, ...texts, ...scrolls)
 
   graph.appendChild(g)
+  switchGraphOnClick()
 }
 
 function lineArrowResize(graph) {
