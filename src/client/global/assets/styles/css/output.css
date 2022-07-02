@@ -866,4 +866,32 @@ canvas {
   cursor: pointer;
 }
 
+#curves #switch text {
+  fill: white;
+}
+#curves #switch text:nth-of-type(1), #curves #switch text:nth-of-type(2) {
+  text-transform: uppercase;
+}
+#curves #switch text:nth-of-type(2) {
+  cursor: pointer;
+  opacity: 0.2;
+}
+#curves #switch text:nth-of-type(2):hover {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+#lines #switch text {
+  fill: white;
+}
+#lines #switch text:nth-of-type(1), #lines #switch text:nth-of-type(2) {
+  text-transform: uppercase;
+  opacity: 0.2;
+  cursor: pointer;
+}
+#lines #switch text:nth-of-type(1):hover, #lines #switch text:nth-of-type(2):hover {
+  transition: 0.4s;
+  opacity: 1;
+}
+
 /*# sourceMappingURL=output.css.map */
