@@ -34,7 +34,7 @@ function displayProject(project) {
   let subContainer = document.getElementById('subContainer')
   Tools.removeChilds(subContainer)
 
-  let arrows = document.querySelectorAll('#container img')
+  let arrows = document.querySelectorAll('#container svg')
   arrows.forEach(a => a.remove())
 
   subContainer.setAttribute("data-project", project.id)

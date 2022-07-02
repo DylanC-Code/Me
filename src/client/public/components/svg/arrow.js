@@ -34,7 +34,7 @@ export default function Arrow() {
        from="10 70, 20 30,10 70, 20 30"
        to="10 70, 20 30, 70 30,60 70"
        begin="0"
-       dur="0.4"
+       dur="0.2"
        fill="freeze" />
   </polygon>
   <polygon
@@ -46,8 +46,8 @@ export default function Arrow() {
        attributeName="points"
        from="80 70, 90 30,80 70, 90 30"
        to="80 70, 90 30, 140 30,130 70"
-       begin="0.4"
-       dur="0.4"
+       begin="0.2"
+       dur="0.2"
        fill="freeze" />
   </polygon>
   <polygon
@@ -59,8 +59,8 @@ export default function Arrow() {
        attributeName="points"
        from="150 70, 160 30,150 70, 160 30"
        to="150 70, 160 30, 210 30,200 70"
-       begin="0.8"
-       dur="0.4"
+       begin="0.4"
+       dur="0.2"
        fill="freeze" />
   </polygon>
   <polygon
@@ -72,8 +72,8 @@ export default function Arrow() {
        attributeName="points"
        from="220 70, 230 30,220 70, 230 30"
        to="220 70, 230 30, 280 30,270 70"
-       begin="1.2"
-       dur="0.4"
+       begin="0.6"
+       dur="0.2"
        fill="freeze" />
   </polygon>
   <g
@@ -88,8 +88,8 @@ export default function Arrow() {
          attributeName="points"
          from="0 130,9 85,15 40,20 0,15 40,12 65,9 85"
          to="0 130, 85 83, 90 50, 20 0, 15 40,52 65,9 85"
-         begin='1.6'
-         dur="0.4"
+         begin='0.8'
+         dur="0.2"
          fill="freeze" />
     </polygon>
   </g>

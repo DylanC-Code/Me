@@ -63,16 +63,16 @@
     }
   }
   #next{
+    width: 60px;
     height: 50px;
     cursor: pointer;
     grid-area: 3/3/4/4;
     justify-self: end;
-    margin-top: 1rem;
   }
   #previous{
+    width: 60px;
     height: 50px;
     cursor: pointer;
     grid-area: 3/2/4/3;
-    margin-top: 1rem;
   }
 }
