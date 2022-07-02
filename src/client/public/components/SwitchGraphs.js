@@ -23,13 +23,20 @@ function lineArrow(graph) {
   let l_anim = new Animate("y2", "15%", "85%", 1, 0.5, "freeze").element
   line.appendChild(l_anim)
 
-  let start_d = `M${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5) - 3} ${h_perc.value(85)}Z`
-  let final_d = `M${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5)} ${h_perc.value(85) + 5}L${w_perc.value(5) + 3} ${h_perc.value(85)}Z`
-  let arrow = new SVGElement("path").attributes([["d", start_d], ["stroke", "white"]])
-  let a_anim = new Animate("d", start_d, final_d, 0.5, 1.5, "freeze").element
-  arrow.appendChild(a_anim)
+  let start_dt = `M${w_perc.value(5) - 3} ${h_perc.value(15)}L${w_perc.value(5) - 3} ${h_perc.value(15)}L${w_perc.value(5) - 3} ${h_perc.value(15)}Z`
+  let final_dt = `M${w_perc.value(5) - 3} ${h_perc.value(15)}L${w_perc.value(5)} ${h_perc.value(15) - 5}L${w_perc.value(5) + 3} ${h_perc.value(15)}Z`
+  let arrow_t = new SVGElement("path").attributes([["d", start_dt], ["stroke", "white"]])
+  let at_anim = new Animate("d", start_dt, final_dt, 0.5, 0, "freeze").element
+  arrow_t.appendChild(at_anim)
 
-  return [line, arrow]
+  let start_db = `M${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5) - 3} ${h_perc.value(85)}Z`
+  let final_db = `M${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5)} ${h_perc.value(85) + 5}L${w_perc.value(5) + 3} ${h_perc.value(85)}Z`
+  let arrow_b = new SVGElement("path").attributes([["d", start_db], ["stroke", "white"]])
+  let ab_anim = new Animate("d", start_db, final_db, 0.5, 1.5, "freeze").element
+  arrow_b.appendChild(ab_anim)
+
+  if (graph.id == 'curves') return [line, arrow_b]
+  if (graph.id == 'lines') return [line, arrow_b, arrow_t]
 }
 
 function textsCategories(graph) {
@@ -78,8 +85,12 @@ function lineArrowResize(graph) {
 
   let line = new SVGElement("line").attributes([["x1", "5%"], ["x2", "5%"], ["y1", "15%"], ["y2", "85%"], ["stroke", "white"]])
 
-  let d = `M${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5)} ${h_perc.value(85) + 5}L${w_perc.value(5) + 3} ${h_perc.value(85)}Z`
-  let arrow = new SVGElement("path").attributes([["d", d], ["stroke", "white"]])
+  let dt = `M${w_perc.value(5) - 3} ${h_perc.value(15)}L${w_perc.value(5)} ${h_perc.value(15) - 5}L${w_perc.value(5) + 3} ${h_perc.value(15)}Z`
+  let arrow_t = new SVGElement("path").attributes([["d", dt], ["stroke", "white"]])
 
-  return [line, arrow]
+  let db = `M${w_perc.value(5) - 3} ${h_perc.value(85)}L${w_perc.value(5)} ${h_perc.value(85) + 5}L${w_perc.value(5) + 3} ${h_perc.value(85)}Z`
+  let arrow_b = new SVGElement("path").attributes([["d", db], ["stroke", "white"]])
+
+  if (graph.id == 'curves') return [line, arrow_b]
+  if (graph.id == 'lines') return [line, arrow_b, arrow_t]
 }
