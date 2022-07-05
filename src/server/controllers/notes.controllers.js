@@ -107,7 +107,6 @@ async function GetAllCategories(req, res) {
 async function GetLanguagesOfCategory(req, res) {
   // Get all the languages with id_category
   let { id_category } = req.params;
-  console.log(id_category);
   let languages = await Language.findAll({ where: { id_category }, attributes: { exclude: ["id_category"] }, raw: true });
 
   let result = [];
