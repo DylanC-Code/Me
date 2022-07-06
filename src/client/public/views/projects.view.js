@@ -38,7 +38,7 @@ function displayProject(project) {
   arrows.forEach(a => a.remove())
 
   subContainer.setAttribute("data-project", project.id)
-  subContainer.style.background = `center/cover no-repeat url(./private/static/${project.image})`
+  subContainer.style.background = `center/cover no-repeat url(/src/client/private/static/${project.image})`
 
   title.textContent = project.name
   let desc = new HTMLElement('p').text(project.text)
