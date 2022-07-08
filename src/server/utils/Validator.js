@@ -102,6 +102,6 @@ export const Validator = {
 
   email: (email) => {
     if (typeof email != "string") return false
-    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
+    return /^[\w\.\-]+@([\w\-]+\.)+[\w\-]{2,4}$/.test(email)
   }
 }

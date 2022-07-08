@@ -1,5 +1,6 @@
 "use-strict";
 
+import { Validator } from "../../../server/utils/Validator.js";
 import { TypeWriter } from "../animations/TypeWriter.js";
 import { Contents } from "../contents/global.contents.js";
 
@@ -10,19 +11,27 @@ export function contactControllers() {
   new TypeWriter(h1, Contents.contact.h1).play();
   new TypeWriter(p, Contents.contact.p).play();
 
-  document.getElementById('submit').addEventListener('click', () => controlInputs())
-}
-function controlInputs() {
-  email()
+  document.getElementById('submit').addEventListener('click', () => formControllers())
 }
 
-function email() {
-  let email = document.getElementById("email")
-  let regex = /^[A-Za-z0-9_.-]{3,30}@[a-z]{2,15}.[A-Za-z]{2,15}/
+function formControllers() {
+  let inputs = ["email", "object", "text"].map(controlInput)
+  let valid = true;
 
-  if (!regex.test(email.value)) {
-    email.value = ""
-    email.setAttribute("placeholder", "Email invalid !")
-    return false
-  } else return true
+  inputs.forEach(i => { if (!i) valid = false })
+  if (!valid) return
+}
+
+function controlInput(name) {
+  let input = document.getElementById(name)
+  let validator = name == 'email' ? Validator.email(input.value) : Validator.text(input.value)
+
+  if (!validator) {
+    input.value = ""
+    input.setAttribute("placeholder", name.charAt(0).toUpperCase() + name.slice(1) + ` invalid !`)
+    return false;
+  } else {
+    input.setAttribute("placeholder", "")
+    return input.value
+  }
 }

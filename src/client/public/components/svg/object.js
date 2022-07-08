@@ -23,7 +23,7 @@ export default function ObjectInput() {
   line4.appendChild(object4)
 
   let fO = new SVGElement("foreignObject").attributes([["x", "65%"], ["width", "35%"], ["height", "45px"], ["maxlength", "500"]])
-  let input = new Input("object", "text").attributes([["placeholder", "Object"]])
+  let input = new Input("object", "object").attributes([["placeholder", "Object"]])
   fO.appendChild(input)
 
   g.append(rect, line1, line2, line3, line4, fO)
