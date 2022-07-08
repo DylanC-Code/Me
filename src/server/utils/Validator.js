@@ -42,8 +42,7 @@ export const Validator = {
    */
 
   date: (date) => {
-    if (typeof url != "string") return false
-    return /^([\d]{2,4}[\/]){1,2}([\d]{2,4})$/.test(date)
+    return /^([\d]{2,4}[\/\-]){1,2}([\d]{2,4})$/.test(date)
   },
 
   /**

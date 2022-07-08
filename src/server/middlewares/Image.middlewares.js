@@ -13,13 +13,13 @@ let dest = multer.diskStorage({
   },
   //~ Set filename
   filename: function (req, file, cb) {
-    cb(null, `${req.body.name}.svg`);
+    cb(null, `${req.body.name}.${file.mimetype.split('/')[1]}`);
   },
 });
 
 //* Control extension and mimetype
 function checkTypes(file, cb) {
-  const filetype = /svg/;
+  const filetype = /svg|jpeg|jpg|png/;
   let extname = filetype.test(path.extname(file.originalname));
   let mimetype = filetype.test(file.mimetype);
 
@@ -30,7 +30,7 @@ function checkTypes(file, cb) {
 //* Set the middleware with the options
 let uploadSingleImage = multer({
   storage: dest,
-  limits: { fileSize: 10000 },
+  limits: { fileSize: 100000 },
   fileFilter: function (req, file, cb) {
     checkTypes(file, cb);
   },
@@ -39,6 +39,7 @@ let uploadSingleImage = multer({
 //* Send the response to the client
 export default function upload(req, res, next) {
   uploadSingleImage(req, res, function (err) {
+
     if (err) res.status(404).send({ result: err, error: true });
     else {
       if (req.file == undefined)

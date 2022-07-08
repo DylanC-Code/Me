@@ -24,7 +24,7 @@ const Project = sequelize.define(
     text: { type: DataTypes.TEXT() },
     image: DataTypes.STRING,
     date: DataTypes.DATEONLY,
-    collaborators: DataTypes.STRING,
+    github: DataTypes.STRING,
   },
   { timestamps: false }
 );

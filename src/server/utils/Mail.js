@@ -4,7 +4,7 @@ import Express from "express"
 import pkg from "../../../node_modules/nodemailer/lib/nodemailer.js";
 import { Validator } from "./Validator.js";
 
-const {createTransport, getTestMessageUrl } = pkg
+const { createTransport, getTestMessageUrl } = pkg
 
 const router = Express.Router()
 
@@ -29,11 +29,11 @@ router.post("/", async (req, res) => {
   })
 
   let info = await transport.sendMail({
-    from: mail,
+    from: process.env.MAIL,
     to: "dylanc.code@gmail.com",
     subject: object,
-    text: "Mail envoyé depuis 'Me' : ",
-    html: text
+    text: `Mail envoyé depuis 'Me' par : ${mail} \n`,
+    html: `<h1>Mail envoyé depuis 'Me' par : ${mail}<h1><br>` + text
   });
 
   res.status(200).send({ result: `The mail has been send succesfully !` })

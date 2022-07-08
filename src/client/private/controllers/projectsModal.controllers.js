@@ -13,7 +13,7 @@ class ModalControllers {
     this.url = document.getElementById("url")
     this.text = document.getElementById("text")
     this.date = document.getElementById("date")
-    this.collabs = document.getElementById("collabs")
+    this.github = document.getElementById("github")
     this.err ? (this.err.textContent = "") : null;
     this.body = {};
     this.req = null;
@@ -60,10 +60,10 @@ class updateControllers extends ModalControllers {
       this.body.date = this.date.value
       this.date.setAttribute("placeholder", "")
     }
-    if (!this.collabs.value) this.collabs.setAttribute("placeholder", "The collabs input is empty")
+    if (!this.github.value) this.github.setAttribute("placeholder", "The github input is empty")
     else {
-      this.body.collabs = this.collabs.value
-      this.collabs.setAttribute("placeholder", "")
+      this.body.github = this.github.value
+      this.github.setAttribute("placeholder", "")
     }
 
     // Request for update project
@@ -104,10 +104,10 @@ class createControllers extends ModalControllers {
       this.body.set("date", this.date.value);
       this.date.setAttribute("placeholder", "")
     }
-    if (!this.collabs.value) this.collabs.setAttribute("placeholder", "The collabs input is empty")
+    if (!this.github.value) this.github.setAttribute("placeholder", "The github input is empty")
     else {
-      this.body.set("collabs", this.collabs.value);
-      this.collabs.setAttribute("placeholder", "")
+      this.body.set("github", this.github.value);
+      this.github.setAttribute("placeholder", "")
     }
     if (this.file.files[0]) this.body.set("image", this.file.files[0])
 
@@ -118,6 +118,7 @@ class createControllers extends ModalControllers {
     }).then((res) => res.json());
     // Request for add project
     // If error is return display it to the client
+    console.log(error);
     if (error.result) this.err.value = error.result
   }
 }

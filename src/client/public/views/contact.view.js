@@ -13,6 +13,13 @@ export function contactView() {
   main.className = "main_contact";
   Tools.removeChilds(main);
 
+  sessionStorage.getItem("mail") ? contactSuccesfull() : formContact()
+
+  //~ Call the controllers of this view
+  contactControllers();
+}
+
+function formContact() {
   let container = new Container("container").element
 
   //~ Create HTML, SVG elements and append them
@@ -21,8 +28,14 @@ export function contactView() {
   let svg = new SVGElement("svg").element;
   svg.appendChild(Contact())
   container.append(h1, p, svg);
+}
 
-  // document.createElement("");
-  //~ Call the controllers of this view
-  contactControllers();
+function contactSuccesfull() {
+  let container = new Container("container", "succesfull").element
+
+  //~ Create HTML, SVG elements and append them
+  let h1 = new HTMLElement("h1").element;
+  let p = new HTMLElement("p").element;
+
+  container.append(h1, p)
 }

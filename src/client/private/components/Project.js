@@ -23,8 +23,8 @@ export default class Project {
     let url = new Input("url", "url").attributes([["placeholder", "URL"]])
     let text = new Input("text", "text").attributes([["placeholder", "Description"]])
     let date = new Input("date", "date").attributes([["placeholder", "Date"]])
-    let collaborators = new Input("text", "collabs").attributes([["placeholder", "Collaborators"]])
-    div.append(name, url, text, date, collaborators, div2)
+    let github = new Input("text", "github").attributes([["placeholder", "Github"]])
+    div.append(name, url, text, date, github, div2)
 
     let error = new HTMLElement("p", "error").element
     let h1 = new HTMLElement("h1").text(`Add a project`)
@@ -60,8 +60,8 @@ export default class Project {
     let text = new Input("text", "text", this.#data.text).element
     let image = new Input("file", "file", this.#data.image).element
     let date = new Input("text", "date", this.#data.date).element
-    let collaborators = new Input("text", "collabs", this.#data.collaborators).element
-    div.append(name, url, text, image, date, collaborators, div2)
+    let github = new Input("text", "collabs", this.#data.github).element
+    div.append(name, url, text, image, date, github, div2)
 
     let error = new HTMLElement("p", "error").element
     let h1 = new HTMLElement("h1").text(`Update ${this.#data.name}`)

@@ -1,7 +1,5 @@
 "use-strict"
 
-import HTMLElement from "../classes/HTMLElement.js"
-
 export default class Tools {
 
   /** Get width of screen if the window is bigger or return width of window

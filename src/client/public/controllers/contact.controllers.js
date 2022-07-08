@@ -1,25 +1,42 @@
 "use-strict";
 
 import { Validator } from "../../../server/utils/Validator.js";
+import { contactView } from "../views/contact.view.js"
 import { TypeWriter } from "../animations/TypeWriter.js";
 import { Contents } from "../contents/global.contents.js";
+import Request from "../api/Request.js";
 
 export function contactControllers() {
-  let h1 = document.querySelector("#container > h1");
-  let p = document.querySelector("#container > p");
+  sessionStorage.getItem("mail") ? contactSuccesfull() : formControllers()
 
-  new TypeWriter(h1, Contents.contact.h1).play();
-  new TypeWriter(p, Contents.contact.p).play();
-
-  document.getElementById('submit').addEventListener('click', () => formControllers())
 }
 
 function formControllers() {
-  let inputs = ["email", "object", "text"].map(controlInput)
-  let valid = true;
+  const content = Contents.contact.form
+  let h1 = document.querySelector("#container > h1");
+  let p = document.querySelector("#container > p");
 
-  inputs.forEach(i => { if (!i) valid = false })
-  if (!valid) return
+  new TypeWriter(h1, content.h1).play();
+  new TypeWriter(p, content.p).play();
+
+  document.getElementById('submit').addEventListener('click', () => {
+    let inputs = ["email", "object", "text"].map(controlInput)
+    let valid = true;
+
+    inputs.forEach(i => { if (!i) valid = false })
+    if (!valid) return
+
+    let body = {
+      mail: inputs[0],
+      object: inputs[1],
+      text: inputs[2],
+    }
+
+    let res = new Request("POST", "/mail", body).play
+
+    if (res.error) console.log(res.error);
+    else contactView()
+  })
 }
 
 function controlInput(name) {
@@ -34,4 +51,13 @@ function controlInput(name) {
     input.setAttribute("placeholder", "")
     return input.value
   }
+}
+
+function contactSuccesfull() {
+  const content = Contents.contact.succes
+  let h1 = document.querySelector("#container > h1");
+  let p = document.querySelector("#container > p");
+
+  new TypeWriter(h1, content.h1).play();
+  new TypeWriter(p, content.p).play();
 }

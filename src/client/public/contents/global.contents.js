@@ -9,7 +9,13 @@ export const Contents = {
     p: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus doloribus numquam blanditiis laboriosam voluptatibus eius dicta libero tempore facere alias!",
   },
   contact: {
-    h1: "You want me ?!",
-    p: "Loremp ipsum dolor sit amet consectetur adipisicing elit.",
+    form: {
+      h1: "You want me ?!",
+      p: "Loremp ipsum dolor sit amet consectetur adipisicing elit.",
+    },
+    succes: {
+      h1: "Message has been send succesfully !",
+      p: "Enculé ! Tu pourras pas spam 🖕🏿 🐍 💩"
+    }
   },
 };
