@@ -2,13 +2,18 @@
 
 import Express from "express"
 import pkg from "../../../node_modules/nodemailer/lib/nodemailer.js";
+import { Validator } from "./Validator.js";
 
-const { createTestAccount, createTransport, getTestMessageUrl } = pkg
+const {createTransport, getTestMessageUrl } = pkg
 
 const router = Express.Router()
 
 router.post("/", async (req, res) => {
-  let test = await createTestAccount()
+  const { mail, object, text } = req.body
+
+  if (!Validator.email(mail)) return res.status(400).send({ error: `'${mail}' isn't valid mail !` })
+  if (!Validator.text(object)) return res.status(400).send({ error: `The object isn't valid !` })
+  if (!Validator.text(text)) return res.status(400).send({ error: `The text isn't valid !` })
 
   let transport = createTransport({
     host: "smtp-mail.outlook.com",
@@ -24,16 +29,14 @@ router.post("/", async (req, res) => {
   })
 
   let info = await transport.sendMail({
-    from: "Habibi",
-    to: "dylanc.code@hotmail.com",
-    subject: "BLABLA",
-    text: "Hello world",
-    html: "<p>Babouin</p>"
+    from: mail,
+    to: "dylanc.code@gmail.com",
+    subject: object,
+    text: "Mail envoyé depuis 'Me' : ",
+    html: text
   });
 
-  console.log(`Message send: %s`, info.messageId);
-
-  console.log(`Preview url : %s`, getTestMessageUrl(info));
+  res.status(200).send({ result: `The mail has been send succesfully !` })
 })
 
 export { router as Sendmail }

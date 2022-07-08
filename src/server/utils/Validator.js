@@ -92,5 +92,16 @@ export const Validator = {
   username: (username) => {
     if (typeof username != "string") return false
     return /^[\w\sÜü_-]{2,60}$/.test(username)
+  },
+
+  /**
+   * Control if the input is an email valid 
+   * Return Boolean
+   * @param  { String } email The input to control
+   */
+
+  email: (email) => {
+    if (typeof email != "string") return false
+    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
   }
 }
