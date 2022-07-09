@@ -5,10 +5,10 @@ export default function projectsAnims() {
 
   let kE1 = new KeyframeEffect(box,
     {
-      width: [0, "100%", "100%"],
-      height: [0, 0, "100%"]
+      height: [0, "100%"],
+      // boxShadow: ["0 0 20px 0px #DA06AE, inset 0 0 20px 0px #DA06AE"]
     },
-    { duration: 1500, easing: "ease-in-out", fill: "forwards" }
+    { duration: 750, easing: "ease-in-out", fill: "forwards" }
   )
 
   return new Animation(kE1, document.timeline)

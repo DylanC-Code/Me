@@ -1,12 +1,10 @@
 "use-strict";
 
-import Tools from "../../global/utils/Tools.js";
-import HTMLElement from "../../global/classes/HTMLElement.js";
-import projectAnims from "../animations/projects.animations.js";
 import Request from "../api/Request.js";
 import projectsContainer from "../containers/projects.container.js";
 import ArrowProject from "../components/Arrow.js";
 import HeaderProject from "../components/HeaderProject.js";
+import Project from "../components/Project.js";
 
 export default async function projectsView() {
   let { result } = await new Request("GET", "/projects").play
@@ -15,39 +13,8 @@ export default async function projectsView() {
   main.appendChild(container)
 
   new HeaderProject(result).display
-  // headerProject(result)
-  displayProject(result[0])
+  new Project(result[0]).display
   switchProject(result)
-}
-
-// function headerProject(project) {
-//   let container = document.getElementById('container')
-//   let div = new HTMLElement('div', 'headerProject').element
-//   let h2 = new HTMLElement('h2').inner(`Project <span id='counter'>${toWords(1)}</span>/<span>${toWords(project.length)}</span>`)
-//   let h1 = new HTMLElement('h1', 'title').text(project[0].name)
-//   div.append(h2, h1)
-
-//   container.appendChild(div)
-// }
-
-function displayProject(project) {
-  let subContainer = document.getElementById('subContainer')
-  Tools.removeChilds(subContainer)
-
-  let arrows = document.querySelectorAll('#container svg')
-  arrows.forEach(a => a.remove())
-
-  subContainer.setAttribute("data-project", project.id)
-  subContainer.style.background = `center/cover no-repeat url(/src/client/private/static/${project.image})`
-
-  title.textContent = project.name
-  let desc = new HTMLElement('p').text(project.text)
-  let url = new HTMLElement('a').attributes([["href", project.url], ["target", "_blank"]])
-  url.textContent = project.url
-  let date = new HTMLElement('h3').text(project.date)
-  subContainer.append(desc, url, date)
-
-  projectAnims().play()
 }
 
 function switchProject(result) {
@@ -66,13 +33,13 @@ function arrowsControllers(result) {
 
   if (next) next.addEventListener("click", () => {
     counter.textContent = toWords(parseInt(next.dataset.project) + 1)
-    displayProject(result[next.dataset.project])
+    new Project(result[next.dataset.project]).display
     switchProject(result)
   })
 
   if (previous) previous.addEventListener("click", () => {
     counter.textContent = toWords(parseInt(previous.dataset.project) + 1)
-    displayProject(result[previous.dataset.project])
+    new Project(result[previous.dataset.project]).display
     switchProject(result)
   })
 }

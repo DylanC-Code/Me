@@ -666,41 +666,49 @@ canvas {
 }
 .main_projects #subContainer {
   grid-area: 2/2/3/4;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   place-self: center;
-  place-items: center;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 0px;
   transition: 0.3s;
   position: relative;
-  box-shadow: 0 0 20px 0px #DA06AE, inset 0 0 20px 0px #DA06AE;
+  box-shadow: 0 0 2rem 4px #DA06AE;
   border-radius: 1rem;
 }
-.main_projects #subContainer p {
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-.main_projects #subContainer a {
-  color: #38C7C7;
-}
-.main_projects #subContainer h3 {
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+.main_projects #subContainer #blur {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  z-index: 2;
+  border-radius: 1rem;
+  transition: 0.5s;
+  box-shadow: inset 0 0 1rem 7px #DA06AE;
 }
 .main_projects #subContainer * {
-  vertical-align: middle;
+  display: block;
   transition: 0.3s;
   opacity: 0;
   width: 100%;
-  height: 100%;
+  height: min-content;
   text-align: center;
-  padding-top: 3rem;
-  color: white;
+  color: black;
+}
+.main_projects #subContainer p {
+  font: 1.3rem Jumper;
+}
+.main_projects #subContainer h3 {
+  font-size: 1.3rem;
 }
 .main_projects #subContainer:hover * {
-  backdrop-filter: blur(10px);
-  background: rgba(0, 0, 0, 0.801);
+  z-index: 100;
   opacity: 1;
+}
+.main_projects #subContainer:hover #blur {
+  filter: blur(1rem);
+  box-shadow: 0 0 2rem 4px #DA06AE, inset 0 0 1rem 4px #DA06AE;
 }
 .main_projects #next {
   width: 60px;
