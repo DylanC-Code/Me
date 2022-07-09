@@ -2,11 +2,11 @@
 
 import Tools from "../../global/utils/Tools.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import { TypeWriter } from "../animations/TypeWriter.js";
+import TypeWriter from "../animations/TypeWriter.js";
 import { ContentsAdmin } from "../contents/admin.contents.js";
 import { Contents } from "../contents/global.contents.js";
 
-export function homeView() {
+export default function homeView() {
   let p = new HTMLElement("p").element;
   let main = document.getElementById("main");
   Tools.removeChilds(main)

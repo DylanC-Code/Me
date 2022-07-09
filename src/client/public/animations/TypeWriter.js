@@ -1,9 +1,9 @@
 "use-strict";
 
-//^ Class For Create TypeWriter Animation
 
-export class TypeWriter {
+export default class TypeWriter {
   /**
+   * Create animations for the text and play it
    * @param  { HTMLBodyElement } element
    * @param  { String } text
    * @param  { Integer } speedWrite=200

@@ -1,12 +1,12 @@
 "use-strict";
 
-import { Validator } from "../../../server/utils/Validator.js";
-import { contactView } from "../views/contact.view.js"
-import { TypeWriter } from "../animations/TypeWriter.js";
-import { Contents } from "../contents/global.contents.js";
+import contactView from "../views/contact.view.js"
+import TypeWriter from "../animations/TypeWriter.js";
 import Request from "../api/Request.js";
+import { Validator } from "../../../server/utils/Validator.js";
+import { Contents } from "../contents/global.contents.js";
 
-export function contactControllers() {
+export default function contactControllers() {
   sessionStorage.getItem("mail") ? contactSuccesfull() : formControllers()
 
 }

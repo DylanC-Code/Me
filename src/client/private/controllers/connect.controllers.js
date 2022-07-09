@@ -6,14 +6,17 @@ import iconsControllers from "./icons.controllers.js";
 
 //* Controllers For The Connect View
 export default async function connectControllers() {
+  // Control if the request can be send
   async function requestController(key) {
+    // Control key and session
     if (key.keyCode !== 13) return;
     if (sessionStorage.getItem("admin")) return
 
+    // Send request
     let result = await connectRequest()
-
     if (!result) return;
 
+    // Display view and anims
     connectSucces()
   }
 

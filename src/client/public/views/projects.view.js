@@ -9,7 +9,7 @@ import projectsContainer from "../containers/projects.container.js";
 import toWords from "../../global/utils/new.js"
 import Arrow from "../components/svg/arrow.js"
 
-export async function projectsView() {
+export default async function projectsView() {
   let { result } = await new Request("GET", "/projects").play
   let main = document.getElementById("main");
   let container = projectsContainer()

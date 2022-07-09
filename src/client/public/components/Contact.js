@@ -5,7 +5,7 @@ import ObjectInput from "./svg/object.js";
 import TextBoxInput from "./svg/textBox.js";
 import SubmitInput from "./svg/submit.js";
 
-export function Contact() {
+export default function Contact() {
   let fragment = new DocumentFragment()
 
   fragment.append(EmailInput(), ObjectInput(), TextBoxInput(), SubmitInput())
