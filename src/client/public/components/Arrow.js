@@ -1,6 +1,7 @@
 "use-strict"
 
 import Arrow from "./svg/arrow.js"
+import SVGElement from "../../global/classes/SVGElement.js"
 
 export default class ArrowProject {
   #id_project

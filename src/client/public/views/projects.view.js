@@ -2,13 +2,11 @@
 
 import Tools from "../../global/utils/Tools.js";
 import HTMLElement from "../../global/classes/HTMLElement.js";
-import SVGElement from "../../global/classes/SVGElement.js";
 import projectAnims from "../animations/projects.animations.js";
 import Request from "../api/Request.js";
 import projectsContainer from "../containers/projects.container.js";
-import toWords from "../../global/utils/new.js"
 import ArrowProject from "../components/Arrow.js";
-// import Arrow from "../components/svg/arrow.js"
+import HeaderProject from "../components/HeaderProject.js";
 
 export default async function projectsView() {
   let { result } = await new Request("GET", "/projects").play
@@ -16,20 +14,21 @@ export default async function projectsView() {
   let container = projectsContainer()
   main.appendChild(container)
 
-  headerProject(result)
+  new HeaderProject(result).display
+  // headerProject(result)
   displayProject(result[0])
   switchProject(result)
 }
 
-function headerProject(project) {
-  let container = document.getElementById('container')
-  let div = new HTMLElement('div', 'headerProject').element
-  let h2 = new HTMLElement('h2').inner(`Project <span id='counter'>${toWords(1)}</span>/<span>${toWords(project.length)}</span>`)
-  let h1 = new HTMLElement('h1', 'title').text(project[0].name)
-  div.append(h2, h1)
+// function headerProject(project) {
+//   let container = document.getElementById('container')
+//   let div = new HTMLElement('div', 'headerProject').element
+//   let h2 = new HTMLElement('h2').inner(`Project <span id='counter'>${toWords(1)}</span>/<span>${toWords(project.length)}</span>`)
+//   let h1 = new HTMLElement('h1', 'title').text(project[0].name)
+//   div.append(h2, h1)
 
-  container.appendChild(div)
-}
+//   container.appendChild(div)
+// }
 
 function displayProject(project) {
   let subContainer = document.getElementById('subContainer')
@@ -59,17 +58,6 @@ function switchProject(result) {
   if (result.length > 1 && project_now > 0) new ArrowProject(project_now - 1, 'previous').display
   arrowsControllers(result)
 }
-
-// function nextArrow(project) {
-//   let arrow = new SVGElement("svg", "next").attributes([["data-project", project]])
-//   arrow.innerHTML = Arrow()
-//   document.getElementById('container').appendChild(arrow)
-// }
-// function previousArrow(project) {
-//   let arrow = new SVGElement("svg", "previous").attributes([["data-project", project]])
-//   arrow.innerHTML = Arrow()
-//   document.getElementById('container').appendChild(arrow)
-// }
 
 function arrowsControllers(result) {
   let previous = document.getElementById("previous")
