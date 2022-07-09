@@ -2,7 +2,7 @@
 
 export const Contents = {
   home: {
-    p: "Hello everyone my name is Dylan and welcome to my site ..",
+    p: "Hello everyone my name is Dylan,<br> I am passionate about electronics and welcome to my site.",
   },
   about: {
     h1: "Manuel Ferrara",

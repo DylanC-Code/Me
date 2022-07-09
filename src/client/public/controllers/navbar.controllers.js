@@ -9,7 +9,7 @@ import { homeView } from "../views/home.view.js";
 //^ Controllers For The Navbar Element
 //^ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-export function navbarControllers() {
+export default function navbarControllers() {
   let buttons = document.querySelectorAll("nav > div > button");
   let anim = navbarAnims();
   let valid = false;

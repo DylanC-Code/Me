@@ -12,10 +12,10 @@ export function homeView() {
   Tools.removeChilds(main)
   main.removeAttribute("class");
   main.appendChild(p);
-  
+
   let session = Tools.checkSession();
 
   session
-    ? new TypeWriter(p, ContentsAdmin.home.p).play()
-    : new TypeWriter(p, Contents.home.p).play();
+    ? new TypeWriter(p, ContentsAdmin.home.p, 35).play()
+    : new TypeWriter(p, Contents.home.p, 35).play();
 }

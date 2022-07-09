@@ -6,23 +6,37 @@ import iconsControllers from "./icons.controllers.js";
 
 //* Controllers For The Connect View
 export default async function connectControllers() {
-  // EventListener on keydown
-  window.addEventListener("keydown", async (e) => {
+  async function requestController(key) {
+    if (key.keyCode !== 13) return;
+    if (sessionStorage.getItem("admin")) return
+
+    let result = await connectRequest()
+
+    if (!result) return;
+
+    connectSucces()
+  }
+
+  // The request to the db
+  function connectRequest() {
     let username = document.querySelector("input[type=password]:nth-of-type(1)");
     let password = document.querySelector("input[type=password]:nth-of-type(2)");
 
-    if (e.keyCode !== 13) return;
-
     // Send the request
     let body = { username: username.value, password: password.value };
-    let result = await new Request("POST", "/users/login", body).play;
+    return new Request("POST", "/users/login", body).play;
+  }
 
+  // Event when the request is a succes
+  function connectSucces() {
     // Create sessionStorage
-    // if (!result) return;
-    // sessionStorage.setItem("admin", "true");
+    sessionStorage.setItem("admin", "true");
 
     // Launch the anims
     ConnectAnims.end
     iconsControllers();
-  });
+  }
+
+  // EventListener on keydown
+  window.addEventListener("keydown", (e) => requestController(e));
 }

@@ -59,8 +59,10 @@ main {
       display: none;
     }
   }
-
-  > figure {
+  a{
+    max-height: 50px;
+  }
+  a> figure {
     cursor: pointer;
     max-height: 50px;
     @include display(flex,center);

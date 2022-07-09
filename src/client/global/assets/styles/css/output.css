@@ -430,7 +430,10 @@ main > div:first-of-type {
     display: none;
   }
 }
-#socials > figure {
+#socials a {
+  max-height: 50px;
+}
+#socials a > figure {
   cursor: pointer;
   max-height: 50px;
   display: flex;
