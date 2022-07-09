@@ -7,7 +7,8 @@ import projectAnims from "../animations/projects.animations.js";
 import Request from "../api/Request.js";
 import projectsContainer from "../containers/projects.container.js";
 import toWords from "../../global/utils/new.js"
-import Arrow from "../components/svg/arrow.js"
+import ArrowProject from "../components/Arrow.js";
+// import Arrow from "../components/svg/arrow.js"
 
 export default async function projectsView() {
   let { result } = await new Request("GET", "/projects").play
@@ -54,21 +55,21 @@ function switchProject(result) {
   let project_now = result.find(v => v.id == document.getElementById("subContainer").dataset.project)
   project_now = result.findIndex(v => v == project_now)
 
-  if (result.length > 1 && project_now < result.length - 1) nextArrow(project_now + 1)
-  if (result.length > 1 && project_now > 0) previousArrow(project_now - 1)
+  if (result.length > 1 && project_now < result.length - 1) new ArrowProject(project_now + 1, 'next').display
+  if (result.length > 1 && project_now > 0) new ArrowProject(project_now - 1, 'previous').display
   arrowsControllers(result)
 }
 
-function nextArrow(project) {
-  let arrow = new SVGElement("svg", "next").attributes([["data-project", project]])
-  arrow.innerHTML = Arrow()
-  document.getElementById('container').appendChild(arrow)
-}
-function previousArrow(project) {
-  let arrow = new SVGElement("svg", "previous").attributes([["data-project", project]])
-  arrow.innerHTML = Arrow()
-  document.getElementById('container').appendChild(arrow)
-}
+// function nextArrow(project) {
+//   let arrow = new SVGElement("svg", "next").attributes([["data-project", project]])
+//   arrow.innerHTML = Arrow()
+//   document.getElementById('container').appendChild(arrow)
+// }
+// function previousArrow(project) {
+//   let arrow = new SVGElement("svg", "previous").attributes([["data-project", project]])
+//   arrow.innerHTML = Arrow()
+//   document.getElementById('container').appendChild(arrow)
+// }
 
 function arrowsControllers(result) {
   let previous = document.getElementById("previous")
