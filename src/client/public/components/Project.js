@@ -20,7 +20,6 @@ export default class Project {
 
     subContainer.setAttribute("data-project", this.#project.id)
 
-    console.log(this.#project);
     title.textContent = this.#project.name
     let div = new HTMLElement('div', "blur").element
     div.style.background = `center/cover no-repeat url(/src/client/private/static/${this.#project.image})`

@@ -5,6 +5,7 @@ import projectsContainer from "../containers/projects.container.js";
 import ArrowProject from "../components/Arrow.js";
 import HeaderProject from "../components/HeaderProject.js";
 import Project from "../components/Project.js";
+import toWords from "../../global/utils/toWords.js";
 
 export default async function projectsView() {
   let { result } = await new Request("GET", "/projects").play

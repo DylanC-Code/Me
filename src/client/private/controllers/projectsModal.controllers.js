@@ -118,7 +118,6 @@ class createControllers extends ModalControllers {
     }).then((res) => res.json());
     // Request for add project
     // If error is return display it to the client
-    console.log(error);
     if (error.result) this.err.value = error.result
   }
 }
